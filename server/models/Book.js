@@ -9,7 +9,7 @@ const bookSchema = new Schema(
     author: { type: String },
     translator: { type: String },
     pages: { type: Number },
-    year: { type: String },
+    year: { type: Number },
     coverPictureUrl: { type: String, default: '' },
   },
   {
