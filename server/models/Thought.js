@@ -7,7 +7,7 @@ const thoughtSchema = new Schema(
     _group: { type: Schema.Types.ObjectId, ref: 'Group' },
     title: { type: String, default: 'Nutrias Punching Marmots' },
     quote: { type: String },
-    book_chapter: { type: Number },
+    book_chapter: { type: String },
     book_page: { type: Number },
     content: { type: String, required: true },
     titlePictureUrl: { type: String, default: '' },
