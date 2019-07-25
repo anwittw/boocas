@@ -20,8 +20,15 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   let id = req.params.id
-  Book.findbyId(id)
+  Book.findById(id)
     .then(book => {
+      if (!book) {
+        next({
+          status: 404,
+          message: `book with Id: ${id.toString()} not found`,
+        })
+        return
+      }
       res.json(book)
     })
     .catch(err => {
@@ -38,7 +45,7 @@ router.post('/', (req, res, next) => {
     isbn_13: req.body.isbn_13,
     title: req.body.title,
     author: req.body.author,
-    trasnlator: req.body.translator,
+    translator: req.body.translator,
     pages: req.body.pages,
     year: req.body.year,
     coverPictureUrl: req.body.coverPictureUrl,

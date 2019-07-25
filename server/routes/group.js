@@ -4,13 +4,16 @@ const router = express.Router()
 
 const Group = require('../models/Group')
 
+const Membership = require('../models/Membership')
+
 // GET all
 
 router.get('/', (req, res, next) => {
   let filter = {}
   if (req.query.book) {
-    filter = filter._book = req.query.book
+    filter = { ...filter, _book: req.query.book }
   }
+
   Group.find(filter)
     .then(groups => {
       res.json(groups)
@@ -25,7 +28,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   let id = req.params.id
-  Group.findbyId(id)
+  Group.findById(id)
     .then(group => {
       res.json(group)
     })
@@ -54,13 +57,19 @@ router.post('/', (req, res, next) => {
 
 // DELETE one
 //! Secure roots with Logged in
-//! Create Admin to secure book delete process
 
 router.delete('/:id', (req, res, next) => {
   let id = req.params.id
-  Group.findByIdAndDelete(id)
-    .then(group => {
-      next({ message: group })
+  Membership.find({ _group: id, _user: req.user._id, isCreator: true })
+    .then(membership => {
+      if (!membership) {
+        next({ message: 'You are not allowed' })
+        return
+      } else {
+        Group.findByIdAndDelete(id).then(group => {
+          res.json({ message: 'Group was deleted' })
+        })
+      }
     })
     .catch(err => {
       next({ status: 400, message: err })

@@ -83,8 +83,8 @@ app.use((err, req, res, next) => {
 
     // A limited amount of information sent in production
     if (process.env.NODE_ENV === 'production') res.json(err)
-    else
-      res.json(JSON.parse(JSON.stringify(err, Object.getOwnPropertyNames(err))))
+    else res.json(err)
+    // res.json(JSON.parse(JSON.stringify(err, Object.getOwnPropertyNames(err))))
   }
 })
 

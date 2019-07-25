@@ -9,7 +9,7 @@ const Membership = require('../models/Membership')
 router.get('/', (req, res, next) => {
   let filter = {}
   if (req.query.mine) {
-    filter = filter._user = req.user._id
+    filter = { ...filter, _user: req.user._id }
   }
   Membership.find(filter) // .find()  === .find({})
     .populate('_user')
@@ -26,7 +26,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   let id = req.params.id
-  Membership.findbyId(id)
+  Membership.findById(id)
     .populate('_user')
     .populate('_group')
     .then(membership => {
