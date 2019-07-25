@@ -29,6 +29,28 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
+// Create a book
+//! Secure roots with Logged in
+
+router.post('/', (req, res, next) => {
+  Book.create({
+    isbn_10: req.body.isbn_10,
+    isbn_13: req.body.isbn_13,
+    title: req.body.title,
+    author: req.body.author,
+    trasnlator: req.body.translator,
+    pages: req.body.pages,
+    year: req.body.year,
+    coverPictureUrl: req.body.coverPictureUrl,
+  })
+    .then(book => {
+      next({ message: book })
+    })
+    .catch(err => {
+      next({ status: 400, message: err })
+    })
+})
+
 // DELETE one
 
 router.delete('/:id', (req, res, next) => {

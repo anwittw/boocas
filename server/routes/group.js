@@ -7,7 +7,11 @@ const Group = require('../models/Group')
 // GET all
 
 router.get('/', (req, res, next) => {
-  Group.find()
+  let filter = {}
+  if (req.query.book) {
+    filter = filter._book = req.query.book
+  }
+  Group.find(filter)
     .then(groups => {
       res.json(groups)
     })
@@ -17,6 +21,7 @@ router.get('/', (req, res, next) => {
 })
 
 // GET by Id
+//! Secure roots with Logged in
 
 router.get('/:id', (req, res, next) => {
   let id = req.params.id
@@ -29,21 +34,15 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
-// Give groups where bookid = :bookid
-
-router.get('/:bookId', (req, res, next) =>
-  Group.find({ _book: req.params.bookId }).populate('_book')
-)
-
 // Create a group
+//! Secure roots with Logged in
 
 router.post('/', (req, res, next) => {
   Group.create({
-    isbn10: req.body.isbn_10,
-    isbn13: req.body.isbn_13,
-    title: req.body.title,
-    author: req.body.author,
-    year: req.body.year,
+    _book: req.body._book,
+    name: req.body.name,
+    description: req.body.description,
+    isPrivate: req.body.isPrivate,
   })
     .then(group => {
       next({ message: group })
@@ -54,6 +53,8 @@ router.post('/', (req, res, next) => {
 })
 
 // DELETE one
+//! Secure roots with Logged in
+//! Create Admin to secure book delete process
 
 router.delete('/:id', (req, res, next) => {
   let id = req.params.id
