@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
   if (req.query.mine) {
     filter = filter._user = req.user._id
   }
-  Membership.find(filter)
+  Membership.find(filter) // .find()  === .find({})
     .populate('_user')
     .populate('_group')
     .then(memberships => {

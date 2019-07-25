@@ -7,9 +7,7 @@ const Comment = require('../models/Group')
 router.get('/', (req, res, next) => {
   // empty Object === No Filter
   let filter = {}
-
   //Filteroption: mine
-
   if (req.query.mine) {
     filter = filter._user = req.user._id
   }
