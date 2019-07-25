@@ -8,8 +8,8 @@ function MainNavbar(props) {
     api.logout()
   }
   return (
-    <nav className="App-header">
-      <h1 className="App-title">bookbook</h1>
+    <nav>
+      <h1>bookbook</h1>
       <NavLink to="/" exact>
         Home
       </NavLink>
