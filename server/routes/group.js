@@ -58,9 +58,9 @@ router.post('/', (req, res, next) => {
 // DELETE one
 //! Secure roots with Logged in
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', isLoggedIn, (req, res, next) => {
   let id = req.params.id
-  Membership.find({ _group: id, _user: req.user._id, isCreator: true })
+  Membership.findOne({ _group: id, _user: req.user._id, isCreator: true })
     .then(membership => {
       if (!membership) {
         next({ message: 'You are not allowed' })

@@ -46,9 +46,13 @@ router.get('/:id', (req, res, next) => {
 // POST Create a membership
 
 router.post('/', (req, res, next) => {
-  const { user, group, isCreator } = req.body
+  const { group, isCreator } = req.body
 
-  Membership.create({ _user: user, _group: group, isCreator: isCreator })
+  Membership.create({
+    _user: req.user._id,
+    _group: group,
+    isCreator: isCreator,
+  })
     .then(membership => {
       next({
         message: membership,
@@ -70,16 +74,18 @@ router.delete('/:id', (req, res, next) => {
           status: 404,
           message: `membership with Id: ${id.toString()} not found`,
         })
+        return
       }
       if (req.user._id.toString() !== membership._user.toString()) {
         next({
           status: 403,
           message: 'You are not allowed to delete this membership',
         })
+        return
       }
       Membership.findByIdAndDelete(id).then(membership =>
-        next({
-          message: membership,
+        res.json({
+          message: 'membership was deleted',
         })
       )
     })
