@@ -5,7 +5,14 @@ const router = express.Router()
 const Comment = require('../models/Group')
 
 router.get('/', (req, res, next) => {
-  Comment.find()
+  let filter = {}
+  if (req.query.mine) {
+    filter = filter._user = req.user._id
+  }
+  if (req.query.thought) {
+    filter = filter._thought = req.query.thought
+  }
+  Comment.find({})
     .then(comments => {
       res.json(comments)
     })
@@ -25,24 +32,48 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
-// DELETE one
+router.post('/', (req, res, next) => {
+  const { title, content, user, thought } = req.body
+
+  Comment.create({
+    _user: user,
+    _thought: thought,
+    title: title,
+    content: content,
+  })
+    .then(comment => {
+      next({
+        message: comment,
+      })
+    })
+    .catch(err => {
+      next({ status: 400, message: err })
+    })
+})
+
+// DELETE one comment
 
 router.delete('/:id', (req, res, next) => {
-  let userId = req.user._id
   let id = req.params.id
-
-  Comment.findbyId(id)
+  Comment.findById(id)
     .then(comment => {
-      if (userId.toString() === comment._user.toString()) {
-        Comment.findByIdAndDelete(id).then(comment => {
-          next({ message: comment })
-        })
-      } else {
+      if (!comment) {
         next({
-          status: 400,
+          status: 404,
+          message: `comment with Id: ${id.toString()} not found`,
+        })
+      }
+      if (req.user._id.toString() !== comment._user.toString()) {
+        next({
+          status: 403,
           message: 'You are not allowed to delete this comment',
         })
       }
+      Comment.findByIdAndDelete(id).then(comment =>
+        next({
+          message: comment,
+        })
+      )
     })
     .catch(err => {
       next({ status: 400, message: err })
