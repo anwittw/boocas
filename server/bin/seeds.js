@@ -77,7 +77,7 @@ let groupDocs = [
     name: 'Ironhack Lisbon DevSquad #144',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quidem doloremque fugit doloribus ex deleniti eum dolorum quasi cupiditate velit laboriosam molestias neque distinctio tempora, quas ipsum enim quo harum ut sit error explicabo laborum sequi. Aliquam eaque magnam voluptatem. Voluptate aliquam perspiciatis culpa, fugiat molestias deserunt ut deleniti ad.',
-    isPrivate: false,
+    isPrivate: true,
   }),
   new Group({
     _book: bookDocs[2]._id,
@@ -105,27 +105,57 @@ let groupDocs = [
 let membershipDocs = [
   new Membership({
     _user: userDocs[0]._id,
-    _gruop: groupDocs[3]._id,
-    isCreator: false,
-  }),
-  new Membership({
-    _user: userDocs[2]._id,
-    _group: groupDocs[1]._id,
+    _gruop: groupDocs[0]._id,
     isCreator: false,
   }),
   new Membership({
     _user: userDocs[1]._id,
-    _group: groupDocs[2]._id,
-    isCreator: true,
-  }),
-  new Membership({
-    _user: userDocs[0]._id,
     _group: groupDocs[0]._id,
     isCreator: false,
   }),
   new Membership({
     _user: userDocs[2]._id,
+    _group: groupDocs[0]._id,
+    isCreator: true,
+  }),
+  new Membership({
+    _user: userDocs[0]._id,
     _group: groupDocs[1]._id,
+    isCreator: false,
+  }),
+  new Membership({
+    _user: userDocs[1]._id,
+    _group: groupDocs[1]._id,
+    isCreator: true,
+  }),
+  new Membership({
+    _user: userDocs[2]._id,
+    _group: groupDocs[1]._id,
+    isCreator: false,
+  }),
+  new Membership({
+    _user: userDocs[0]._id,
+    _group: groupDocs[2]._id,
+    isCreator: true,
+  }),
+  new Membership({
+    _user: userDocs[1]._id,
+    _group: groupDocs[2]._id,
+    isCreator: false,
+  }),
+  new Membership({
+    _user: userDocs[2]._id,
+    _group: groupDocs[2]._id,
+    isCreator: false,
+  }),
+  new Membership({
+    _user: userDocs[0]._id,
+    _group: groupDocs[3]._id,
+    isCreator: true,
+  }),
+  new Membership({
+    _user: userDocs[2]._id,
+    _group: groupDocs[3]._id,
     isCreator: false,
   }),
 ]
