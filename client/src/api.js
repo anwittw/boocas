@@ -6,7 +6,7 @@ const service = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
       ? '/api'
-      : `http://${window.location.hostname}:5001/api`,
+      : `http://${window.location.hostname}:5000/api`,
 
   withCredentials: true,
 })
