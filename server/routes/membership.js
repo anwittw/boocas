@@ -11,6 +11,9 @@ router.get('/', (req, res, next) => {
   if (req.query.mine) {
     filter = { ...filter, _user: req.user._id }
   }
+  if (req.query.group) {
+    filter = { ...filter, _group: req.query.group }
+  }
   Membership.find(filter) // .find()  === .find({})
     .populate('_user')
     .populate('_group')

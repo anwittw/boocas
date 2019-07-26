@@ -78,12 +78,6 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
-  getMyMemberships() {
-    return service
-      .get('/memberships?mine=true')
-      .then(res => res.data)
-      .catch(errHandler)
-  },
   getBooks() {
     return service
       .get('/books')
@@ -102,9 +96,15 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
-  getThoughts(groupId) {
+  getThoughtsByGroup(groupId) {
     return service
-      .get('/groups/' + groupId)
+      .get('/thoughts/?group=' + groupId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  getMyThoughtsByGroup(groupId) {
+    return service
+      .get('/thoughts/?mine=true&group=' + groupId)
       .then(res => res.data)
       .catch(errHandler)
   },
@@ -118,6 +118,18 @@ export default {
   createMembership(body) {
     return service
       .post('/memberships', body)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  getMyMemberships() {
+    return service
+      .get('/memberships/?mine=true')
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  getMembershipsByGroup(groupId) {
+    return service
+      .get('/memberships/?group=' + groupId)
       .then(res => res.data)
       .catch(errHandler)
   },
