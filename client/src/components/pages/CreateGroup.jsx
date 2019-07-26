@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Form, FormGroup, Input, Label, Button } from 'reactstrap'
 import api from '../../api'
 
-export default function CreateGroup() {
+export default function CreateGroup(props) {
   const [state, setState] = useState({
     _book: '',
     name: '',
@@ -46,6 +46,7 @@ export default function CreateGroup() {
           .createMembership({ _group: response._id, isCreator: true })
           .then(response => {
             //console.log('Membership', response)
+            props.history.push('/group-detail/' + response._id)
           })
       })
       .catch(err => console.log(err))
