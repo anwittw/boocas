@@ -96,6 +96,25 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
+  getGroup(groupId) {
+    return service
+      .get('/groups/' + groupId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  getThoughts(groupId) {
+    return service
+      .get('/groups/' + groupId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  getGroup(groupId) {
+    return service
+      .get('/groups/' + groupId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+
   createMembership(body) {
     return service
       .post('/memberships', body)

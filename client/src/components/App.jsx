@@ -21,7 +21,7 @@ function App(props) {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/create-group" component={CreateGroup} />
-          <Route path="/group-detail/:groupdId" component={GroupDetail} />
+          <Route path="/group-detail/:groupId" component={GroupDetail} />
           <Route render={() => <h2>404</h2>} />
         </Switch>
       </div>
