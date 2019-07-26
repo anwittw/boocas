@@ -44,9 +44,7 @@ router.post('/', (req, res, next) => {
     content: content,
   })
     .then(comment => {
-      next({
-        message: comment,
-      })
+      res.json(comment)
     })
     .catch(err => {
       next({ status: 400, message: err })
@@ -73,11 +71,7 @@ router.delete('/:id', (req, res, next) => {
         })
         return
       }
-      Comment.findByIdAndDelete(id).then(comment =>
-        next({
-          message: comment,
-        })
-      )
+      Comment.findByIdAndDelete(id).then(comment => res.json(comment))
     })
     .catch(err => {
       next({ status: 400, message: err })

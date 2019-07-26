@@ -51,7 +51,7 @@ router.post('/', (req, res, next) => {
     coverPictureUrl: req.body.coverPictureUrl,
   })
     .then(book => {
-      next({ message: book })
+      res.json(book)
     })
     .catch(err => {
       next({ status: 400, message: err })
@@ -64,7 +64,7 @@ router.delete('/:id', (req, res, next) => {
   let id = req.params.id
   Book.findByIdAndDelete(id)
     .then(book => {
-      next({ message: book })
+      res.json(book)
     })
     .catch(err => {
       next({ status: 400, message: err })
