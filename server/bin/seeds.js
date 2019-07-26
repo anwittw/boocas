@@ -105,7 +105,7 @@ let groupDocs = [
 let membershipDocs = [
   new Membership({
     _user: userDocs[0]._id,
-    _gruop: groupDocs[0]._id,
+    _group: groupDocs[0]._id,
     isCreator: false,
   }),
   new Membership({
