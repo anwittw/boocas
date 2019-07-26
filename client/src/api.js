@@ -6,7 +6,7 @@ const service = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
       ? '/api'
-      : `http://${window.location.hostname}:5001/api`,
+      : `http://${window.location.hostname}:5000/api`,
 
   withCredentials: true,
 })
@@ -75,6 +75,12 @@ export default {
           'Content-Type': 'multipart/form-data',
         },
       })
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  getMyMemberships() {
+    return service
+      .get('/memberships?mine=true')
       .then(res => res.data)
       .catch(errHandler)
   },
