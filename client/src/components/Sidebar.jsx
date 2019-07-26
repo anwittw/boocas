@@ -33,7 +33,7 @@ export default function Sidebar() {
       {myGroups.length === 0 && <h1>Fetching Groups...GluckGluckGluck</h1>}
       {myGroups.length !== 0 &&
         myGroups.map((group, i) => (
-          <div>
+          <div key={i}>
             <NavLink to={'/group-detail/' + group._id}>{group.name}</NavLink>
           </div>
         ))}

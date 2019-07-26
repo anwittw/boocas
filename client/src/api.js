@@ -84,6 +84,24 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
+  getBooks() {
+    return service
+      .get('/books')
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  createGroup(body) {
+    return service
+      .post('/groups', body)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  createMembership(body) {
+    return service
+      .post('/memberships', body)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
 }
 
 // This is an example on how to use this method in a different file

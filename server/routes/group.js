@@ -41,14 +41,9 @@ router.get('/:id', (req, res, next) => {
 //! Secure roots with Logged in
 
 router.post('/', (req, res, next) => {
-  Group.create({
-    _book: req.body._book,
-    name: req.body.name,
-    description: req.body.description,
-    isPrivate: req.body.isPrivate,
-  })
+  Group.create(req.body)
     .then(group => {
-      next({ message: group })
+      res.json(group)
     })
     .catch(err => {
       next({ status: 400, message: err })

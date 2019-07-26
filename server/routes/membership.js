@@ -46,17 +46,13 @@ router.get('/:id', (req, res, next) => {
 // POST Create a membership
 
 router.post('/', (req, res, next) => {
-  const { group, isCreator } = req.body
-
   Membership.create({
     _user: req.user._id,
-    _group: group,
-    isCreator: isCreator,
+    _group: req.body._group,
+    isCreator: req.body.isCreator,
   })
     .then(membership => {
-      next({
-        message: membership,
-      })
+      res.json(membership)
     })
     .catch(err => {
       next({ status: 400, message: err })
