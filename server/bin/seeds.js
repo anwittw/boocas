@@ -21,12 +21,12 @@ require('../configs/database')
 
 let userDocs = [
   new User({
-    username: 'beautyAlice',
+    username: 'alice',
     email: 'alice@gmail.com',
     password: bcrypt.hashSync('alice', bcrypt.genSaltSync(bcryptSalt)),
   }),
   new User({
-    username: 'nastyBob',
+    username: 'bob',
     email: 'bob@gmail.com',
     password: bcrypt.hashSync('bob', bcrypt.genSaltSync(bcryptSalt)),
   }),
