@@ -110,9 +110,11 @@ export default function CreateGroup(props) {
       </div>
       <div className="App__right__body">
         <span className="App__right__circle" />
-        <pre>{JSON.stringify(stateGroup, null, 2)}</pre>
-        <pre>{JSON.stringify(stateBook, null, 2)}</pre>
-        <pre>{JSON.stringify(books, null, 2)}</pre>}
+        {
+          // <pre>{JSON.stringify(stateGroup, null, 2)}</pre>
+          // <pre>{JSON.stringify(stateBook, null, 2)}</pre>
+          // <pre>{JSON.stringify(books, null, 2)}</pre>}
+        }
         <Input
           type="select"
           name="_book"
@@ -120,13 +122,13 @@ export default function CreateGroup(props) {
           value={stateGroup._book}
         >
           <option value="">Pick a book!</option>
+          <option value="create"> Create a new book</option>
           {books.length !== 0 &&
             books.map((book, i) => (
               <option key={i} value={book.id}>
                 {book.title}
               </option>
             ))}
-          <option value="create"> Create a new book</option>
         </Input>
         {stateGroup._book === 'create' && (
           <div className="border m-5">

@@ -118,7 +118,6 @@ export default {
   getMyThoughtsByGroup(groupId) {
     return service
       .get('/thoughts/?mine=true&group=' + groupId)
-      .then(res => res.data)
       .catch(errHandler)
   },
   createMembership(body) {
