@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import api from '../../api'
 import { Button } from 'reactstrap'
+import { withRouter } from 'react-router'
 
-export default function GroupDetail(props) {
+function GroupDetail(props) {
   console.log('props: ', props.match)
 
   let groupId = props.match.params.groupId
-  console.log('groupId_value: ', groupId)
 
-  const [page, setPage] = useState(groupId)
+  // The book is populated in group
 
   const [groupDetails, setGroupDetails] = useState({
     group: '',
@@ -29,27 +29,68 @@ export default function GroupDetail(props) {
         group: group,
         memberships: memberships,
         thoughts: thoughts,
-        myThoughts: thoughts,
+        myThoughts: myThoughts,
       })
     })
   }, [groupId])
 
+  let book = (groupDetails.group || {})._book
+  let group = groupDetails.group
+  let memberships = groupDetails.memberships
+  let thoughts = groupDetails.thoughts
+
   return (
     <div>
-      <h2>GroupDetail</h2>
-      <pre>{JSON.stringify(groupDetails, null, 2)}</pre>
-      <div>
+      <div className="App__right__header">
+        <h1>GroupDetail</h1>
+      </div>
+
+      {
+        //<pre>{JSON.stringify(groupDetails, null, 2)}</pre>
+      }
+      <div className="App__right__body">
+        <span className="App__right__circle" />
         <div>
           <Button tag={Link} to={'/create-thought'} className="btn btn-primary">
-            Create a search
+            Create a thought
           </Button>
         </div>
-        <div>
-          <Button tag={Link} to={'/create-group'} className="btn btn-primary">
-            Create a Group
-          </Button>
-        </div>
+        {groupDetails.group && (
+          <div>
+            <h2>Group</h2>
+            <ul>
+              <li> {group.name} </li>
+              <li> {group.description} </li>
+              <li> {group.isPrivate && <span>PRIVATE GROUP</span>} </li>
+            </ul>
+            <h2>book</h2>
+            <ul>
+              <li> {book.title} </li>
+              <li> {book.author} </li>
+              <li> {book.year} </li>
+            </ul>
+            <img src={book.coverPictureUrl} width="100" />
+            <h2>Members</h2>
+            <ul>
+              {memberships.map((membership, i) => (
+                <li
+                  className={memberships[i].isCreator ? 'font-weight-bold' : ''}
+                >
+                  {memberships[i]._user.username}
+                </li>
+              ))}
+            </ul>
+            <h2>Thoughts</h2>
+            <ul>
+              {thoughts.map((thought, i) => (
+                <li>{thought.title}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   )
 }
+
+export default withRouter(GroupDetail)

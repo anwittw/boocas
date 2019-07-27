@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import GroupDetail from './pages/GroupDetail'
 import CreateGroup from './pages/CreateGroup'
+import SearchGroup from './pages/SearchGroup'
 import api from '../api'
 import { withRouter } from 'react-router'
 
@@ -15,12 +16,15 @@ function App(props) {
     <div className="App">
       {api.isLoggedIn() && <Sidebar />}
       <div className="App__right">
-        <MainNavbar />
+        {
+          // <MainNavbar />
+        }
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/create-group" component={CreateGroup} />
+          <Route path="/search-group" component={SearchGroup} />
           <Route path="/group-detail/:groupId" component={GroupDetail} />
           <Route render={() => <h2>404</h2>} />
         </Switch>
