@@ -29,6 +29,7 @@ router.get('/', (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   let id = req.params.id
   Group.findById(id)
+    .populate('_book')
     .then(group => {
       res.json(group)
     })

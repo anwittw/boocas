@@ -113,12 +113,7 @@ export default function CreateThought(props) {
           </FormGroup>
           <FormGroup>
             <Label for="picture">Picture</Label>
-            <Input
-              type="file"
-              name="picture"
-              value={state.titlePictureUrl}
-              onChange={handleFileChange}
-            />
+            <Input type="file" name="picture" onChange={handleFileChange} />
           </FormGroup>
           <FormGroup>
             <Label for="links">Links</Label>

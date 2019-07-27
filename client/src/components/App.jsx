@@ -7,7 +7,11 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import GroupDetail from './pages/GroupDetail'
 import CreateGroup from './pages/CreateGroup'
+<<<<<<< HEAD
 import CreateThought from './pages/CreateThought'
+=======
+import SearchGroup from './pages/SearchGroup'
+>>>>>>> a4ce2b1b412d225340864e35bea225d1c464a4f1
 import api from '../api'
 import { withRouter } from 'react-router'
 
@@ -16,16 +20,22 @@ function App(props) {
     <div className="App">
       {api.isLoggedIn() && <Sidebar />}
       <div className="App__right">
-        <MainNavbar />
+        {
+          // <MainNavbar />
+        }
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/create-group" component={CreateGroup} />
+<<<<<<< HEAD
           <Route
             path="/group-detail/:groupId/create-thought"
             component={CreateThought}
           />
+=======
+          <Route path="/search-group" component={SearchGroup} />
+>>>>>>> a4ce2b1b412d225340864e35bea225d1c464a4f1
           <Route path="/group-detail/:groupId" component={GroupDetail} />
           <Route render={() => <h2>404</h2>} />
         </Switch>
