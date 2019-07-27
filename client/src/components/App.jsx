@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import GroupDetail from './pages/GroupDetail'
 import CreateGroup from './pages/CreateGroup'
+import CreateThought from './pages/CreateThought'
 import api from '../api'
 import { withRouter } from 'react-router'
 
@@ -21,6 +22,10 @@ function App(props) {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/create-group" component={CreateGroup} />
+          <Route
+            path="/group-detail/:groupId/create-thought"
+            component={CreateThought}
+          />
           <Route path="/group-detail/:groupId" component={GroupDetail} />
           <Route render={() => <h2>404</h2>} />
         </Switch>

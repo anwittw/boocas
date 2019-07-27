@@ -44,7 +44,7 @@ router.post('/', uploader.single('picture'), (req, res, next) => {
     title: req.body.title,
     quote: req.body.quote,
     book_chapter: req.body.book_chapter,
-    book_page: req.body.book_chapter,
+    book_page: req.body.book_page,
     content: req.body.content,
     titlePictureUrl: req.file.url,
     links: req.body.links,

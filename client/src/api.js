@@ -114,7 +114,6 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
-
   createMembership(body) {
     return service
       .post('/memberships', body)
@@ -130,6 +129,12 @@ export default {
   getMembershipsByGroup(groupId) {
     return service
       .get('/memberships/?group=' + groupId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  createThought(uploadData) {
+    return service
+      .post('/thoughts', uploadData)
       .then(res => res.data)
       .catch(errHandler)
   },
