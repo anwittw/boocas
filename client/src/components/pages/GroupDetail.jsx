@@ -51,7 +51,11 @@ function GroupDetail(props) {
       <div className="App__right__body">
         <span className="App__right__circle" />
         <div>
-          <Button tag={Link} to={'/create-thought'} className="btn btn-primary">
+          <Button
+            tag={Link}
+            to={groupId + '/create-thought'}
+            className="btn btn-primary"
+          >
             Create a thought
           </Button>
         </div>
