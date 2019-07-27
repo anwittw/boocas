@@ -38,12 +38,14 @@ export default function CreateThought(props) {
     // To send information with "form-data" (like in Postman)
     const uploadData = new FormData()
     uploadData.append('title', state.title)
+    uploadData.append('_group', state._group)
     uploadData.append('content', state.content)
     uploadData.append('book_chapter', state.book_chapter)
     uploadData.append('book_page', state.book_page)
     uploadData.append('picture', state.picture)
     uploadData.append('links', state.links)
 
+    console.log(uploadData)
     api
       .createThought(uploadData)
       .then(createdThought => {
@@ -55,7 +57,7 @@ export default function CreateThought(props) {
           book_chapter: '',
           book_page: '',
           content: '',
-          picture: null,
+          picture: '',
           links: '',
         })
 

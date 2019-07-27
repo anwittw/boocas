@@ -38,15 +38,17 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.post('/', uploader.single('picture'), (req, res, next) => {
+  let fileUrl = (req.file || {}).url
+
   Thought.create({
     _user: req.user._id,
-    _group: req.body._groupId,
+    _group: req.body._group,
     title: req.body.title,
     quote: req.body.quote,
     book_chapter: req.body.book_chapter,
     book_page: req.body.book_page,
     content: req.body.content,
-    titlePictureUrl: req.file.url,
+    titlePictureUrl: fileUrl,
     links: req.body.links,
   })
     .then(thought => {

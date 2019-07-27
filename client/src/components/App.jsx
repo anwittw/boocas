@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import MainNavbar from './MainNavbar'
 import Sidebar from './Sidebar'
 import Home from './pages/Home'
 import Login from './pages/Login'

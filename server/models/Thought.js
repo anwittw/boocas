@@ -10,7 +10,7 @@ const thoughtSchema = new Schema(
     book_chapter: { type: String },
     book_page: { type: Number },
     content: { type: String, required: true },
-    titlePictureUrl: { type: String, default: '' },
+    titlePictureUrl: { type: String },
     links: { type: Array, default: [] },
   },
   {

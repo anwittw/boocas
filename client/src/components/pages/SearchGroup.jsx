@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { Form, FormGroup, Input, Label, Button } from 'reactstrap'
-import api from '../../api'
+import React from 'react'
 
 export default function CreateGroup(props) {
   return (

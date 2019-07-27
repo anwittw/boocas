@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-console.log(process.env.NODE_ENV)
+// console.log(process.env.NODE_ENV)
 
 const service = axios.create({
   baseURL:
@@ -118,12 +118,6 @@ export default {
   getMyThoughtsByGroup(groupId) {
     return service
       .get('/thoughts/?mine=true&group=' + groupId)
-      .then(res => res.data)
-      .catch(errHandler)
-  },
-  getGroup(groupId) {
-    return service
-      .get('/groups/' + groupId)
       .then(res => res.data)
       .catch(errHandler)
   },
