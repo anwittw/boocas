@@ -144,6 +144,24 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
+  getThought(thoughtId) {
+    return service
+      .get('/thoughts/' + thoughtId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  createComment(comment) {
+    return service
+      .post('/comments', comment)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  getCommentsByThought(thoughtId) {
+    return service
+      .get('/thoughts/?thought=' + thoughtId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
 }
 
 // This is an example on how to use this method in a different file

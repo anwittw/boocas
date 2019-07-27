@@ -88,7 +88,12 @@ function GroupDetail(props) {
             <h2>Thoughts</h2>
             <ul>
               {thoughts.map((thought, i) => (
-                <li key={i}>{thought.title}</li>
+                <li key={i}>
+                  {' '}
+                  <Link to={'/thought-detail/' + thought._id}>
+                    {thought.title}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>

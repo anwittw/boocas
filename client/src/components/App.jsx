@@ -9,6 +9,7 @@ import CreateGroup from './pages/CreateGroup'
 import CreateThought from './pages/CreateThought'
 import SearchGroup from './pages/SearchGroup'
 import LandingPage from './pages/LandingPage'
+import ThoughtDetail from './pages/ThoughtDetail'
 import api from '../api'
 import { withRouter } from 'react-router'
 import MainNavbar from './MainNavbar'
@@ -32,6 +33,10 @@ function App(props) {
               />
               <Route path="/search-group" component={SearchGroup} />
               <Route path="/group-detail/:groupId" component={GroupDetail} />
+              <Route
+                path="/thought-detail/:thoughtId"
+                component={ThoughtDetail}
+              />
               <Route render={() => <h2>404</h2>} />
             </Switch>
           </div>

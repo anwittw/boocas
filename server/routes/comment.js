@@ -35,13 +35,10 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-  const { title, content, user, thought } = req.body
-
   Comment.create({
-    _user: user,
-    _thought: thought,
-    title: title,
-    content: content,
+    _user: req.user._id,
+    _thought: req.body._thought,
+    content: req.body.content,
   })
     .then(comment => {
       res.json(comment)
