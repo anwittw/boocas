@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from 'reactstrap'
-import posed from 'react-pose'
 
 export default function LandingPage() {
   return (

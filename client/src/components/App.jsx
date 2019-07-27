@@ -11,31 +11,51 @@ import SearchGroup from './pages/SearchGroup'
 import LandingPage from './pages/LandingPage'
 import api from '../api'
 import { withRouter } from 'react-router'
+import MainNavbar from './MainNavbar'
 
 function App(props) {
   return (
-    <div className="App">
-      <LandingPage />
-      {api.isLoggedIn() && <Sidebar />}
-      <div className="App__right">
-        {
-          // <MainNavbar />
-        }
-        <Switch>
-          {/* <Route path="/" exact component={LandingPage} /> */}
-          <Route path="/" exact component={Home} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/create-group" component={CreateGroup} />
-          <Route
-            path="/group-detail/:groupId/create-thought"
-            component={CreateThought}
-          />
-          <Route path="/search-group" component={SearchGroup} />
-          <Route path="/group-detail/:groupId" component={GroupDetail} />
-          <Route render={() => <h2>404</h2>} />
-        </Switch>
-      </div>
+    <div>
+      {api.isLoggedIn() && (
+        <div className="App">
+          <Sidebar />
+          <div className="App__right">
+            <MainNavbar />
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
+              <Route path="/create-group" component={CreateGroup} />
+              <Route
+                path="/group-detail/:groupId/create-thought"
+                component={CreateThought}
+              />
+              <Route path="/search-group" component={SearchGroup} />
+              <Route path="/group-detail/:groupId" component={GroupDetail} />
+              <Route render={() => <h2>404</h2>} />
+            </Switch>
+          </div>
+        </div>
+      )}
+      {!api.isLoggedIn() && (
+        <div className="App__Logout">
+          <MainNavbar />
+          <Switch>
+            <Route path="/landing" exact component={LandingPage} />
+            <Route path="/" exact component={Home} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/login" component={Login} />
+            <Route path="/create-group" component={CreateGroup} />
+            <Route
+              path="/group-detail/:groupId/create-thought"
+              component={CreateThought}
+            />
+            <Route path="/search-group" component={SearchGroup} />
+            <Route path="/group-detail/:groupId" component={GroupDetail} />
+            <Route render={() => <h2>404</h2>} />
+          </Switch>
+        </div>
+      )}
     </div>
   )
 }
