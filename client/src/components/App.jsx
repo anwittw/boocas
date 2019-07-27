@@ -8,18 +8,21 @@ import GroupDetail from './pages/GroupDetail'
 import CreateGroup from './pages/CreateGroup'
 import CreateThought from './pages/CreateThought'
 import SearchGroup from './pages/SearchGroup'
+import LandingPage from './pages/LandingPage'
 import api from '../api'
 import { withRouter } from 'react-router'
 
 function App(props) {
   return (
     <div className="App">
+      <LandingPage />
       {api.isLoggedIn() && <Sidebar />}
       <div className="App__right">
         {
           // <MainNavbar />
         }
         <Switch>
+          {/* <Route path="/" exact component={LandingPage} /> */}
           <Route path="/" exact component={Home} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
