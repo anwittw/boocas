@@ -91,6 +91,12 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
+  createBook(body) {
+    return service
+      .post('/books', body)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
   createGroup(body) {
     return service
       .post('/groups', body)
