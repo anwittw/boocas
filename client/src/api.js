@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-console.log(process.env.NODE_ENV)
+// console.log(process.env.NODE_ENV)
 
 const service = axios.create({
   baseURL:
@@ -91,6 +91,12 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
+  createBook(body) {
+    return service
+      .post('/books', body)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
   createGroup(body) {
     return service
       .post('/groups', body)
@@ -115,13 +121,6 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
-  getGroup(groupId) {
-    return service
-      .get('/groups/' + groupId)
-      .then(res => res.data)
-      .catch(errHandler)
-  },
-
   createMembership(body) {
     return service
       .post('/memberships', body)
@@ -137,6 +136,12 @@ export default {
   getMembershipsByGroup(groupId) {
     return service
       .get('/memberships/?group=' + groupId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  createThought(uploadData) {
+    return service
+      .post('/thoughts', uploadData)
       .then(res => res.data)
       .catch(errHandler)
   },

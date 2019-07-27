@@ -1,12 +1,12 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import MainNavbar from './MainNavbar'
 import Sidebar from './Sidebar'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import GroupDetail from './pages/GroupDetail'
 import CreateGroup from './pages/CreateGroup'
+import CreateThought from './pages/CreateThought'
 import SearchGroup from './pages/SearchGroup'
 import LandingPage from './pages/LandingPage'
 import api from '../api'
@@ -27,6 +27,10 @@ function App(props) {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/create-group" component={CreateGroup} />
+          <Route
+            path="/group-detail/:groupId/create-thought"
+            component={CreateThought}
+          />
           <Route path="/search-group" component={SearchGroup} />
           <Route path="/group-detail/:groupId" component={GroupDetail} />
           <Route render={() => <h2>404</h2>} />

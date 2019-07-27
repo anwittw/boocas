@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import api from '../../api'
 import { Button } from 'reactstrap'
 import { withRouter } from 'react-router'
 
 function GroupDetail(props) {
-  console.log('props: ', props.match)
+  //console.log('props: ', props.match)
 
   let groupId = props.match.params.groupId
 
@@ -51,7 +51,11 @@ function GroupDetail(props) {
       <div className="App__right__body">
         <span className="App__right__circle" />
         <div>
-          <Button tag={Link} to={'/create-thought'} className="btn btn-primary">
+          <Button
+            tag={Link}
+            to={groupId + '/create-thought'}
+            className="btn btn-primary"
+          >
             Create a thought
           </Button>
         </div>
@@ -69,11 +73,12 @@ function GroupDetail(props) {
               <li> {book.author} </li>
               <li> {book.year} </li>
             </ul>
-            <img src={book.coverPictureUrl} width="100" />
+            <img src={book.coverPictureUrl} width="100" alt="book-cover" />
             <h2>Members</h2>
             <ul>
               {memberships.map((membership, i) => (
                 <li
+                  key={i}
                   className={memberships[i].isCreator ? 'font-weight-bold' : ''}
                 >
                   {memberships[i]._user.username}
@@ -83,7 +88,7 @@ function GroupDetail(props) {
             <h2>Thoughts</h2>
             <ul>
               {thoughts.map((thought, i) => (
-                <li>{thought.title}</li>
+                <li key={i}>{thought.title}</li>
               ))}
             </ul>
           </div>

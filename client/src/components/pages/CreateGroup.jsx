@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Form, FormGroup, Input, Label, Button } from 'reactstrap'
+import { Input, Button } from 'reactstrap'
 import api from '../../api'
 
 export default function CreateGroup(props) {
@@ -52,7 +52,7 @@ export default function CreateGroup(props) {
   function handleSubmitGroup(e) {
     e.preventDefault()
     api
-      .createBook(stateBook)
+      .createGroup(stateGroup)
       .then(response => {
         setStateGroup({
           _book: '',
@@ -65,7 +65,7 @@ export default function CreateGroup(props) {
           .createMembership({ _group: response._id, isCreator: true })
           .then(response => {
             //console.log('Membership', response)
-            props.history.push('/group-detail/' + response._id)
+            props.history.push('/group-detail/' + response._group)
           })
       })
       .catch(err => console.log(err))
@@ -73,25 +73,34 @@ export default function CreateGroup(props) {
 
   function handleSubmitBook(e) {
     e.preventDefault()
-    api
-      .createGroup(stateGroup)
-      .then(response => {
-        setStateBook({
-          isbn_10: '',
-          isbn_13: '',
-          title: '',
-          author: '',
-          translator: '',
-          pages: 0,
-          year: 0,
-          coverPictureUrl: '',
-        })
-        setStateGroup({
-          ...stateGroup,
-          _book: response._id,
-        })
+    api.createBook(stateBook).then(response => {
+      setStateBook({
+        isbn_10: '',
+        isbn_13: '',
+        title: '',
+        author: '',
+        translator: '',
+        pages: 0,
+        year: 0,
+        coverPictureUrl: '',
       })
-      .catch(err => console.log(err))
+      let id = response._id
+      api
+        .getBooks()
+        .then(response => {
+          setBooks(
+            response.map(book => {
+              return { id: book._id, title: book.title }
+            })
+          )
+        })
+        .then(() => {
+          setStateGroup({
+            ...stateGroup,
+            _book: id,
+          })
+        })
+    })
   }
 
   return (
