@@ -10,6 +10,7 @@ import CreateThought from './pages/CreateThought'
 import SearchGroup from './pages/SearchGroup'
 import LandingPage from './pages/LandingPage'
 import ThoughtDetail from './pages/ThoughtDetail'
+import HowItWorks from './pages/HowItWorks'
 import api from '../api'
 import { withRouter } from 'react-router'
 import MainNavbar from './MainNavbar'
@@ -25,7 +26,7 @@ function App(props) {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
+              <Route path="/" component={Login} />
               <Route path="/create-group" component={CreateGroup} />
               <Route
                 path="/group-detail/:groupId/create-thought"
@@ -48,6 +49,7 @@ function App(props) {
           <Switch>
             <Route path="/" exact component={LandingPage} />
             {/* <Route path="/" exact component={Home} /> */}
+            <Route path="/how-it-works" component={HowItWorks} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/create-group" component={CreateGroup} />

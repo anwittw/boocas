@@ -1,3 +1,11 @@
+// @font-face {
+//   font-family: 'letter_gothicregular';
+//   src: url('letter_gothic-webfont.woff2') format('woff2'),
+//     url('letter_gothic-webfont.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
 // --------------------
 // Definition of variables
 $primary: #000000;
@@ -13,7 +21,7 @@ $background: rgba(244, 237, 222, 1);
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: verdana;
 }
 
 .App {
@@ -66,21 +74,23 @@ body {
   width: 610px;
   height: 670px;
   background: white;
-
   position: absolute;
   left: 140px;
   bottom: 0px;
+  border-radius: 5px;
+  box-shadow: 2px 0.1px 10px slategrey;
 }
 
 .Green__card {
   position: absolute;
   right: 48px;
-  top: 48px;
+  top: 44px;
   display: block;
   background: $green70;
-  width: 245px;
+  width: 240px;
   height: 325px;
   z-index: 1;
+  border-radius: 5px;
 }
 
 .second__box {
@@ -90,17 +100,35 @@ body {
   background: white;
   position: absolute;
   right: 140px;
+  border-radius: 5px;
+  box-shadow: 6px 5px 20px slategrey;
 }
 
 .Green__strip {
   position: absolute;
   left: -0.5px;
-
   display: block;
   background: $green70;
   width: 103px;
   height: 70vh;
   z-index: 1;
+  border-radius: 5px;
+}
+.Green__strip__2 {
+  position: absolute;
+  right: 520px;
+  display: block;
+  background: $green70;
+  width: 340px;
+  height: 650px;
+  top: 45px;
+  border-radius: 5px;
+}
+.Books {
+  position: absolute;
+  width: 514px;
+  top: 395px;
+  right: 46px;
 }
 .Landing__circle {
   display: block;
