@@ -44,10 +44,10 @@ function App(props) {
       )}
       {!api.isLoggedIn() && (
         <div className="App__Logout">
-          <MainNavbar />
+          {/* <MainNavbar /> */}
           <Switch>
-            <Route path="/landing" exact component={LandingPage} />
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact component={LandingPage} />
+            {/* <Route path="/" exact component={Home} /> */}
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/create-group" component={CreateGroup} />
