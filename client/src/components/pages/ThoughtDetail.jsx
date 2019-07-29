@@ -43,27 +43,30 @@ function ThoughtDetail(props) {
     ]).then(([comments, thought]) => {
       setThought({ comments: comments, thought: thought })
     })
-  }, [])
+  }, [comment])
 
   return (
     <div>
       <div className="App__right__header">
         <MainNavbar title="Group Detail" />
-        <pre>{JSON.stringify(comment, null, 2)}</pre>
       </div>
 
-      <Input
-        type="text"
-        name="content"
-        value={comment.content}
-        onChange={handleChangeComment}
-        placeholder="isbn_10"
-      />
-
-      <Button onClick={handleSubmitComment}>Create Comment</Button>
-
-      {<pre>{JSON.stringify(thought, null, 2)}</pre>}
       <div className="App__right__body">
+        <div>
+          <pre>{JSON.stringify(thought, null, 2)}</pre>
+          <pre>{JSON.stringify(comment, null, 2)}</pre>
+        </div>
+        <div>
+          <Input
+            type="text"
+            name="content"
+            value={comment.content}
+            onChange={handleChangeComment}
+            placeholder="isbn_10"
+          />
+
+          <Button onClick={handleSubmitComment}>Create Comment</Button>
+        </div>
         <span className="App__right__circle" />
         )}
       </div>

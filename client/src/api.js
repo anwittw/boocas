@@ -109,6 +109,12 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
+  getGroups(groupId) {
+    return service
+      .get('/groups/')
+      .then(res => res.data)
+      .catch(errHandler)
+  },
   getThoughtsByGroup(groupId) {
     return service
       .get('/thoughts/?group=' + groupId)
