@@ -158,7 +158,7 @@ export default {
   },
   getCommentsByThought(thoughtId) {
     return service
-      .get('/thoughts/?thought=' + thoughtId)
+      .get('/comments/?thought=' + thoughtId)
       .then(res => res.data)
       .catch(errHandler)
   },
