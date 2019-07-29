@@ -4,6 +4,7 @@ import api from '../../api'
 
 import Autosuggest from 'react-autosuggest'
 import MainNavbar from '../MainNavbar'
+import BackButton from '../BackButton'
 
 export default function CreateGroup(props) {
   const [stateGroup, setStateGroup] = useState({
@@ -160,10 +161,10 @@ export default function CreateGroup(props) {
       <div className="App__right__header">
         <MainNavbar title="create a Group" />
       </div>
-      <div className="App__right__body">
+      <div className="App__right__body container">
         <span className="App__right__circle" />
         {
-          <pre>{JSON.stringify(stateGroup, null, 2)}</pre>
+          // <pre>{JSON.stringify(stateGroup, null, 2)}</pre>
           // <pre>{JSON.stringify(stateBook, null, 2)}</pre>
           // <pre>{JSON.stringify(books, null, 2)}</pre>}
         }
@@ -182,6 +183,7 @@ export default function CreateGroup(props) {
         */}
 
         <Input
+          className="col-12 col-md-6 offset-md-3 text-center"
           type="select"
           name="_book"
           onChange={handleChangeGroup}
@@ -197,8 +199,9 @@ export default function CreateGroup(props) {
             ))}
         </Input>
         {stateGroup._book === 'create' && (
-          <div className="border m-5">
+          <div className="m-5">
             <Input
+              className="col-12 col-md-6 offset-md-3 text-center"
               type="text"
               name="isbn_10"
               value={stateBook.isbn_10}
@@ -206,6 +209,7 @@ export default function CreateGroup(props) {
               placeholder="isbn_10"
             />
             <Input
+              className="col-12 col-md-6 offset-md-3 text-center"
               type="text"
               name="isbn_13"
               value={stateBook.isbn_13}
@@ -213,6 +217,7 @@ export default function CreateGroup(props) {
               placeholder="isbn_13"
             />
             <Input
+              className="col-12 col-md-6 offset-md-3 text-center"
               type="text"
               name="title"
               value={stateBook.title}
@@ -220,6 +225,7 @@ export default function CreateGroup(props) {
               placeholder="Book Title"
             />
             <Input
+              className="col-12 col-md-6 offset-md-3 text-center"
               type="text"
               name="author"
               value={stateBook.author}
@@ -227,6 +233,7 @@ export default function CreateGroup(props) {
               placeholder="Name of Author"
             />
             <Input
+              className="col-12 col-md-6 offset-md-3 text-center"
               type="text"
               name="translator"
               value={stateBook.name}
@@ -234,6 +241,7 @@ export default function CreateGroup(props) {
               placeholder="Name of Translator"
             />
             <Input
+              className="col-12 col-md-6 offset-md-3 text-center"
               type="number"
               name="pages"
               value={stateBook.pages}
@@ -241,6 +249,7 @@ export default function CreateGroup(props) {
               placeholder="number of pages"
             />
             <Input
+              className="col-12 col-md-6 offset-md-3 text-center"
               type="number"
               name="year"
               value={stateGroup.year}
@@ -248,16 +257,24 @@ export default function CreateGroup(props) {
               placeholder="Year of book"
             />
             <Input
+              className="col-12 col-md-6 offset-md-3 text-center"
               type="file"
               name="coverPictureUrl"
               value={stateBook.coverPictureUrl}
               onChange={handleChangeBook}
               placeholder="upload a picture"
             />
-            <Button onClick={handleSubmitBook}>Create Book</Button>
+            <Button
+              className="col-12 col-md-6 offset-md-3 text-center"
+              onClick={handleSubmitBook}
+            >
+              Create Book
+            </Button>
           </div>
         )}
         <Input
+          className="col-12 col-md-6 offset-md-3 text-center"
+          required
           type="text"
           name="name"
           value={stateGroup.name}
@@ -265,6 +282,8 @@ export default function CreateGroup(props) {
           placeholder="Give a name to your group"
         />
         <Input
+          className="col-12 col-md-6 offset-md-3 text-center"
+          required
           type="textarea"
           name="description"
           value={stateGroup.description}
@@ -272,12 +291,19 @@ export default function CreateGroup(props) {
           placeholder="Desacribe your new group"
         />
         <Input
+          className="col-12 col-md-6 offset-md-3 text-center"
           type="checkbox"
           name="isPrivate"
           value={stateGroup.isPrivate}
           onChange={handleChangeGroup}
         />
-        <Button onClick={handleSubmitGroup}>Create Group</Button>
+        <Button
+          className="col-12 col-md-2 offset-md-5 text-center"
+          onClick={handleSubmitGroup}
+        >
+          Create Group
+        </Button>
+        <BackButton history={props.history} />
       </div>
     </div>
   )
