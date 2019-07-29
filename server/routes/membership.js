@@ -49,17 +49,31 @@ router.get('/:id', (req, res, next) => {
 // POST Create a membership
 
 router.post('/', (req, res, next) => {
-  Membership.create({
-    _user: req.user._id,
-    _group: req.body._group,
-    isCreator: req.body.isCreator,
-  })
-    .then(membership => {
-      res.json(membership)
+  if (req.body._user) {
+    Membership.create({
+      _user: req.body._user,
+      _group: req.body._group,
+      isCreator: req.body.isCreator,
     })
-    .catch(err => {
-      next({ status: 400, message: err })
+      .then(membership => {
+        res.json(membership)
+      })
+      .catch(err => {
+        next({ status: 400, message: err })
+      })
+  } else {
+    Membership.create({
+      _user: req.user._id,
+      _group: req.body._group,
+      isCreator: req.body.isCreator,
     })
+      .then(membership => {
+        res.json(membership)
+      })
+      .catch(err => {
+        next({ status: 400, message: err })
+      })
+  }
 })
 
 // DELETE Delete a membership

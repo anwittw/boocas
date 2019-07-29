@@ -79,7 +79,7 @@ export default function CreateThought(props) {
         <div className="App__right__header">
           <MainNavbar title="Create a new Thought" />
         </div>
-        <pre>{JSON.stringify(state, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
         <Form onSubmit={handleSubmit}>
           <FormGroup>
             <Label for="title">Title</Label>

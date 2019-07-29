@@ -57,6 +57,7 @@ require('./passport')(app)
 //! ADD Route Prefixes HERE
 app.use('/api', require('./routes/index'))
 app.use('/api', require('./routes/auth'))
+app.use('/api/users', require('./routes/user'))
 app.use('/api/books', require('./routes/book'))
 app.use('/api/groups', require('./routes/group'))
 app.use('/api/comments', require('./routes/comment'))

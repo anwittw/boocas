@@ -29,6 +29,11 @@ export default {
     return localStorage.getItem('user') != null
   },
 
+  getUserId() {
+    let user = JSON.parse(localStorage.getItem('user'))
+    return user._id
+  },
+
   // This method returns the user from the localStorage
   // Be careful, the value is the one when the user logged in for the last time
   getLocalStorageUser() {
@@ -165,6 +170,12 @@ export default {
   getCommentsByThought(thoughtId) {
     return service
       .get('/comments/?thought=' + thoughtId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+  getUsers() {
+    return service
+      .get('/users/')
       .then(res => res.data)
       .catch(errHandler)
   },
