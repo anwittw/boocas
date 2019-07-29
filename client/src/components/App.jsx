@@ -11,6 +11,7 @@ import SearchGroup from './pages/SearchGroup'
 import LandingPage from './pages/LandingPage'
 import ThoughtDetail from './pages/ThoughtDetail'
 import HowItWorks from './pages/HowItWorks'
+import AddUser from './pages/AddUser'
 import api from '../api'
 import { withRouter } from 'react-router'
 import MainNavbar from './MainNavbar'
@@ -31,10 +32,13 @@ function App(props) {
         <div className="App">
           <Sidebar />
           <div className="App__right">
-            <MainNavbar />
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/create-group" component={CreateGroup} />
+              <Route
+                path="/group-detail/:groupId/add-user"
+                component={AddUser}
+              />
               <Route
                 path="/group-detail/:groupId/create-thought"
                 component={CreateThought}

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import api from '../../api'
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
 
+import MainNavbar from '../MainNavbar'
+
 export default function CreateThought(props) {
   let groupId = props.match.params.groupId
 
@@ -74,8 +76,10 @@ export default function CreateThought(props) {
   return (
     <div>
       <div>
-        <h1>Create a new Thought</h1>
-        <pre>{JSON.stringify(state, null, 2)}</pre>
+        <div className="App__right__header">
+          <MainNavbar title="Create a new Thought" />
+        </div>
+        {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
         <Form onSubmit={handleSubmit}>
           <FormGroup>
             <Label for="title">Title</Label>
