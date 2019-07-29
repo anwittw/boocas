@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import api from '../../api'
 import { Button } from 'reactstrap'
 import { withRouter } from 'react-router'
+import MainNavbar from '../MainNavbar'
 
 function GroupDetail(props) {
   //console.log('props: ', props.match)
@@ -42,7 +43,7 @@ function GroupDetail(props) {
   return (
     <div>
       <div className="App__right__header">
-        <h1>GroupDetail</h1>
+        <MainNavbar title="Group Detail" />
       </div>
 
       {

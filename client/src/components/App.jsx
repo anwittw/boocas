@@ -22,7 +22,6 @@ function App(props) {
         <div className="App">
           <Sidebar />
           <div className="App__right">
-            <MainNavbar />
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/signup" component={Signup} />

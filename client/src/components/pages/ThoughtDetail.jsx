@@ -4,6 +4,7 @@ import api from '../../api'
 import { Input, Button } from 'reactstrap'
 import { withRouter } from 'react-router'
 import { promises } from 'fs'
+import MainNavbar from '../MainNavbar'
 
 function ThoughtDetail(props) {
   let thoughtId = props.match.params.thoughtId
@@ -47,8 +48,7 @@ function ThoughtDetail(props) {
   return (
     <div>
       <div className="App__right__header">
-        <h1>Thought Detail {thoughtId}</h1>
-
+        <MainNavbar title="Group Detail" />
         <pre>{JSON.stringify(comment, null, 2)}</pre>
       </div>
 

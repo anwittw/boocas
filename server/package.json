@@ -23,6 +23,7 @@
     "nocache": "^2.0.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "react-autosuggest": "^9.4.3",
     "serve-favicon": "^2.5.0",
     "xml-js": "^1.6.11",
     "xml-to-json-stream": "^1.1.0"
