@@ -3,6 +3,7 @@ import api from '../../api'
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
 
 import MainNavbar from '../MainNavbar'
+import BackButton from '../BackButton'
 
 export default function CreateThought(props) {
   let groupId = props.match.params.groupId
@@ -80,58 +81,67 @@ export default function CreateThought(props) {
           <MainNavbar title="Create a new Thought" />
         </div>
         {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
-        <Form onSubmit={handleSubmit}>
-          <FormGroup>
-            <Label for="title">Title</Label>
-            <Input
-              type="text"
-              name="title"
-              value={state.title}
-              onChange={handleChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="content">Content</Label>
-            <Input
-              type="textarea"
-              name="content"
-              value={state.content}
-              onChange={handleChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="book_chapter">Chapter</Label>
-            <Input
-              type="text"
-              name="book_chapter"
-              value={state.book_chapter}
-              onChange={handleChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="book_page">Page</Label>
-            <Input
-              type="number"
-              name="book_page"
-              value={state.book_page}
-              onChange={handleChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="picture">Picture</Label>
-            <Input type="file" name="picture" onChange={handleFileChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="links">Links</Label>
-            <Input
-              type="text"
-              name="links"
-              value={state.links}
-              onChange={handleChange}
-            />
-          </FormGroup>
-          <Button> Create Thought</Button>
-        </Form>
+        <div className="App__right__body container mt-5 mb-5">
+          <span className="App__right__circle" />
+          <Form onSubmit={handleSubmit}>
+            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
+              <Label className="" for="title">
+                Title
+              </Label>
+              <Input
+                type="text"
+                name="title"
+                value={state.title}
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
+              <Label for="content">Content</Label>
+              <Input
+                type="textarea"
+                name="content"
+                value={state.content}
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
+              <Label for="book_chapter">Chapter</Label>
+              <Input
+                type="text"
+                name="book_chapter"
+                value={state.book_chapter}
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
+              <Label for="book_page">Page</Label>
+              <Input
+                type="number"
+                name="book_page"
+                value={state.book_page}
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
+              <Label for="picture">Picture</Label>
+              <Input type="file" name="picture" onChange={handleFileChange} />
+            </FormGroup>
+            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
+              <Label for="links">Links</Label>
+              <Input
+                type="text"
+                name="links"
+                value={state.links}
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <Button className="col-12 col-md-2 offset-md-5 text-center">
+              {' '}
+              Create Thought
+            </Button>
+          </Form>
+          <BackButton history={props.history} />
+        </div>
       </div>
     </div>
   )

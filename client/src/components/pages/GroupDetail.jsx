@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import api from '../../api'
 import { Button } from 'reactstrap'
 import { withRouter } from 'react-router'
-import { get } from 'https'
 import MainNavbar from '../MainNavbar'
 import ThoughtCard from './ThoughtCard'
 
@@ -42,23 +41,6 @@ function GroupDetail(props) {
   let memberships = groupDetails.memberships
   let thoughts = groupDetails.thoughts
 
-  console.log('DEBUG', api.getLocalStorageUser())
-
-  function getIdOfCreator(memberships) {
-    for (let i = 0; i < memberships.length; i++) {
-      if (memberships[i].isCreator === true)
-        return memberships[i]._user._id.toString()
-    }
-  }
-
-  function userIsCreator() {
-    let myId = api.getUserId().toString()
-    let creatorId = getIdOfCreator(groupDetails.memberships)
-    // console.log('myId', myId)
-    // console.log('creatorId', creatorId)
-    return myId === creatorId
-  }
-
   return (
     <div>
       <div className="App__right__header" style={{ padding: '15px 30px' }}>
@@ -78,19 +60,6 @@ function GroupDetail(props) {
           >
             Create a thought
           </Button>
-
-          {/* {memberships.map((membership,i) => (
-            memberships[i]._user._id */}
-
-          {userIsCreator() && (
-            <Button
-              tag={Link}
-              to={groupId + '/add-user'}
-              className="btn btn-primary"
-            >
-              Add a user
-            </Button>
-          )}
         </div>
         {groupDetails.group && (
           <div>
