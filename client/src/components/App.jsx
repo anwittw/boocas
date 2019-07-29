@@ -16,6 +16,15 @@ import api from '../api'
 import { withRouter } from 'react-router'
 import MainNavbar from './MainNavbar'
 
+const LandingPageWrapper = () => {
+  return (
+    <LandingPage>
+      <Route path="/signup" component={Signup} />
+      <Route path="/login" component={Login} />
+    </LandingPage>
+  )
+}
+
 function App(props) {
   return (
     <div>
@@ -25,7 +34,6 @@ function App(props) {
           <div className="App__right">
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/signup" component={Signup} />
               <Route path="/create-group" component={CreateGroup} />
               <Route
                 path="/group-detail/:groupId/add-user"
@@ -50,11 +58,8 @@ function App(props) {
         <div className="App__Logout">
           {/* <MainNavbar /> */}
           <Switch>
-            <Route path="/" exact component={LandingPage} />
-            {/* <Route path="/" exact component={Home} /> */}
             <Route path="/how-it-works" component={HowItWorks} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/login" component={Login} />
+            <Route path="/" component={LandingPageWrapper} />
             <Route path="/create-group" component={CreateGroup} />
             <Route
               path="/group-detail/:groupId/create-thought"
@@ -62,6 +67,7 @@ function App(props) {
             />
             <Route path="/search-group" component={SearchGroup} />
             <Route path="/group-detail/:groupId" component={GroupDetail} />
+            {/* <Route path="/" exact component={Home} /> */}
             <Route render={() => <h2>404</h2>} />
           </Switch>
         </div>
