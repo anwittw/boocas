@@ -59,7 +59,7 @@ export default function CreateGroup(props) {
   }
   return (
     <div>
-      <div className="App__right__header">
+      <div className="App__right__header" style={{ padding: '15px 30px' }}>
         <MainNavbar title="Search a Group" />
       </div>
       <div className="App__right__body">
@@ -86,8 +86,8 @@ export default function CreateGroup(props) {
       </div>
       <div>
         <h1>Result</h1>
-        {stateSearch.map(result => (
-          <li>
+        {stateSearch.map((result, i) => (
+          <li key={i}>
             <Link to={'/result-details/' + result._id}>
               {result.name || result.title}
             </Link>

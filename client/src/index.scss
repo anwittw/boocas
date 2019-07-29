@@ -21,6 +21,18 @@ $background: rgba(244, 237, 222, 1);
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+li {
+  font-size: 14px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -187,7 +199,7 @@ body {
   outline: none;
 
   position: relative;
-  transition: 3s;
+  transition: 0.3s;
   padding: 5px; // the trick
   &:hover {
     text-decoration: none;

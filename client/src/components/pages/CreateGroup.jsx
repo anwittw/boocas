@@ -157,8 +157,8 @@ export default function CreateGroup(props) {
 
   return (
     <div>
-      <div className="App__right__header">
-        <MainNavbar title="create a Group" />
+      <div className="App__right__header" style={{ padding: '15px 30px' }}>
+        <MainNavbar title="Create a Group" />
       </div>
       <div className="App__right__body">
         <span className="App__right__circle" />
