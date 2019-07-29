@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Input, Button, Table } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
+import { Input, Button, Table, Label } from 'reactstrap'
 import api from '../../api'
+import MainNavbar from '../MainNavbar'
 
 export default function AddUser(props) {
   let groupId = props.match.params.groupId
@@ -72,11 +73,14 @@ export default function AddUser(props) {
   return (
     <div>
       <div>
-        <h1>Add a User to your Group</h1>
-        <pre>{JSON.stringify(state, null, 2)}</pre>
+        <div className="App__right__header">
+          <MainNavbar title="Add a User a Group" />
+        </div>
+        {/* <pre>{JSON.stringify(state, null, 2)}</pre>
         <pre>{JSON.stringify(allUser, null, 2)}</pre>
-        <pre>{JSON.stringify(allMembership, null, 2)}</pre>
+        <pre>{JSON.stringify(allMembership, null, 2)}</pre> */}
         <div>
+          <Label for="Searchbar">Search by username</Label>
           <Input
             type="text"
             name="search"
@@ -101,7 +105,7 @@ export default function AddUser(props) {
                     <td className="align-middle">{user.username}</td>
                     <td className="align-middle">
                       <Button
-                        tag={Link}
+                        tag={NavLink}
                         id={user._id}
                         to={'/group-detail/' + groupId + '/add-user'}
                         onClick={handleSubmitMembership}
