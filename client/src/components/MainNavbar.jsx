@@ -10,9 +10,9 @@ function MainNavbar(props) {
   return (
     <nav>
       <h1>bookbook</h1>
-      <NavLink to="/" exact>
+      {/* <NavLink to="/" exact>
         Home
-      </NavLink>
+      </NavLink> */}
       {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
       {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
       {api.isLoggedIn() && (

@@ -20,12 +20,31 @@ export default function Login(props) {
 
   return (
     <div className="Login">
-      <h2>Login</h2>
+      {/* <h2>Login</h2> */}
+      <br />
+      <br />
+      <br />
       <form onSubmit={handleSubmit}>
-        Username: <input type="text" {...getInputProps('username')} /> <br />
-        Password: <input type="password" {...getInputProps('password')} />{' '}
+        {' '}
+        <input
+          placeholder="username"
+          type="text"
+          {...getInputProps('username')}
+        />{' '}
+        <br /> <br />
+        <input
+          placeholder="password"
+          type="password"
+          {...getInputProps('password')}
+        />{' '}
         <br />
-        <button>Login</button>
+        <br />
+        <button
+          style={{ width: '211px' }}
+          className="btn btn-lg btn-outline-success"
+        >
+          Login
+        </button>
       </form>
       {message && <div className="info info-danger">{message}</div>}
     </div>

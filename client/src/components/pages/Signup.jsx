@@ -32,34 +32,46 @@ export default function Signup(props) {
       .catch(err => setState({ message: err.toString() }))
   }
   return (
-    <div className="Signup">
-      <h2>Signup</h2>
+    <div className="Signup ">
+      <br />
+      {/* <h2 style={{ color: 'rgb(234, 184, 96)' }}>Signup</h2> */}
       <form>
-        Username:{' '}
+        <br />
+        <br />{' '}
         <input
+          placeholder="username"
           type="text"
           value={state.username}
           name="username"
           onChange={handleInputChange}
         />{' '}
         <br />
-        Name:{' '}
+        <br />{' '}
         <input
+          placeholder="name"
           type="text"
           value={state.name}
           name="name"
           onChange={handleInputChange}
         />{' '}
         <br />
-        Password:{' '}
+        <br />{' '}
         <input
+          placeholder="password"
           type="password"
           value={state.password}
           name="password"
           onChange={handleInputChange}
         />{' '}
         <br />
-        <button onClick={e => handleClick(e)}>Signup</button>
+        <br />
+        <button
+          style={{ width: '211px' }}
+          className="btn btn-lg btn-outline-success"
+          onClick={e => handleClick(e)}
+        >
+          Signup
+        </button>
       </form>
       {state.message && <div className="info info-danger">{state.message}</div>}
     </div>
