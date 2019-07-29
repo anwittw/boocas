@@ -2,12 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { Input, Button } from 'reactstrap'
 import api from '../../api'
 
+import Autosuggest from 'react-autosuggest'
+import MainNavbar from '../MainNavbar'
+
 export default function CreateGroup(props) {
   const [stateGroup, setStateGroup] = useState({
     _book: '',
     name: '',
     description: '',
     isPrivate: false,
+    bookTitle: '',
+    suggestions: [],
   })
 
   const [stateBook, setStateBook] = useState({
@@ -34,6 +39,7 @@ export default function CreateGroup(props) {
   }, [])
 
   function handleChangeGroup(e) {
+    console.log('OnChange: ', e.target.value)
     let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
     setStateGroup({
       ...stateGroup,
@@ -103,18 +109,76 @@ export default function CreateGroup(props) {
     })
   }
 
+  function getSuggestions(value) {
+    console.log('getSugg Value: ', value)
+    const inputValue = value
+      .toString()
+      .trim()
+      .toLowerCase()
+    const inputLength = inputValue.length
+
+    return inputLength === 0
+      ? []
+      : books.filter(
+          book => book.title.toLowerCase().slice(0, inputLength) === inputValue
+        )
+  }
+
+  const getSuggestionValue = suggestion => suggestion.title
+
+  const renderSuggestion = suggestion => <div>{suggestion.title}</div>
+
+  function onSuggestionsFetchRequested(value) {
+    console.log('fire fetch requested', value)
+    setStateGroup({
+      ...stateGroup,
+      bookTitle: value,
+      suggestions: getSuggestions(value),
+    })
+  }
+
+  function onSuggestionsClearRequested() {
+    console.log('fire clear requested')
+    setStateGroup({
+      ...stateGroup,
+      suggestions: [],
+      bookTitle: '',
+    })
+  }
+
+  const inputProps = {
+    placeholder: 'Type a programming language',
+    name: 'bookTitle',
+    value: stateGroup.bookTitle,
+    onChange: e => {
+      handleChangeGroup(e)
+    },
+  }
+
   return (
     <div>
       <div className="App__right__header">
-        <h1>Create a Group</h1>
+        <MainNavbar title="create a Group" />
       </div>
       <div className="App__right__body">
         <span className="App__right__circle" />
         {
-          // <pre>{JSON.stringify(stateGroup, null, 2)}</pre>
+          <pre>{JSON.stringify(stateGroup, null, 2)}</pre>
           // <pre>{JSON.stringify(stateBook, null, 2)}</pre>
           // <pre>{JSON.stringify(books, null, 2)}</pre>}
         }
+
+        <Autosuggest
+          inputProps={inputProps}
+          suggestions={stateGroup.suggestions}
+          onSuggestionsFetchRequested={value => {
+            onSuggestionsFetchRequested(value.value)
+          }}
+          onSuggestionsClearRequested={onSuggestionsClearRequested}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
+        />
+
         <Input
           type="select"
           name="_book"

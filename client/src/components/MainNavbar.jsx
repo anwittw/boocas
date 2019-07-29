@@ -9,7 +9,7 @@ function MainNavbar(props) {
   }
   return (
     <nav>
-      <h1>bookbook</h1>
+      <h1>{props.title}</h1>
       <NavLink to="/" exact>
         Home
       </NavLink>
