@@ -4,6 +4,7 @@ import { useForm } from '../../hooks'
 
 export default function Login(props) {
   const { formValues, getInputProps } = useForm({ lang: 'en' })
+  const [message, setMessage] = useState(null)
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -11,12 +12,10 @@ export default function Login(props) {
       .login(formValues.username, formValues.password)
       .then(result => {
         console.log('SUCCESS!')
-        props.history.push('/') // Redirect to the home page
+        props.history.push('/')
       })
       .catch(err => setMessage(err.toString()))
   }
-
-  const [message, setMessage] = useState(null)
 
   return (
     <div className="Login">
