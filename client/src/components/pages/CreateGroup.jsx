@@ -109,51 +109,51 @@ export default function CreateGroup(props) {
     })
   }
 
-  function getSuggestions(value) {
-    console.log('getSugg Value: ', value)
-    const inputValue = value
-      .toString()
-      .trim()
-      .toLowerCase()
-    const inputLength = inputValue.length
+  // function getSuggestions(value) {
+  //   console.log('getSugg Value: ', value)
+  //   const inputValue = value
+  //     .toString()
+  //     .trim()
+  //     .toLowerCase()
+  //   const inputLength = inputValue.length
 
-    return inputLength === 0
-      ? []
-      : books.filter(
-          book => book.title.toLowerCase().slice(0, inputLength) === inputValue
-        )
-  }
+  //   return inputLength === 0
+  //     ? []
+  //     : books.filter(
+  //         book => book.title.toLowerCase().slice(0, inputLength) === inputValue
+  //       )
+  // }
 
-  const getSuggestionValue = suggestion => suggestion.title
+  // const getSuggestionValue = suggestion => suggestion.title
 
-  const renderSuggestion = suggestion => <div>{suggestion.title}</div>
+  // const renderSuggestion = suggestion => <div>{suggestion.title}</div>
 
-  function onSuggestionsFetchRequested(value) {
-    console.log('fire fetch requested', value)
-    setStateGroup({
-      ...stateGroup,
-      bookTitle: value,
-      suggestions: getSuggestions(value),
-    })
-  }
+  // function onSuggestionsFetchRequested(value) {
+  //   console.log('fire fetch requested', value)
+  //   setStateGroup({
+  //     ...stateGroup,
+  //     bookTitle: value,
+  //     suggestions: getSuggestions(value),
+  //   })
+  // }
 
-  function onSuggestionsClearRequested() {
-    console.log('fire clear requested')
-    setStateGroup({
-      ...stateGroup,
-      suggestions: [],
-      bookTitle: '',
-    })
-  }
+  // function onSuggestionsClearRequested() {
+  //   console.log('fire clear requested')
+  //   setStateGroup({
+  //     ...stateGroup,
+  //     suggestions: [],
+  //     bookTitle: '',
+  //   })
+  // }
 
-  const inputProps = {
-    placeholder: 'Type a programming language',
-    name: 'bookTitle',
-    value: stateGroup.bookTitle,
-    onChange: e => {
-      handleChangeGroup(e)
-    },
-  }
+  // const inputProps = {
+  //   placeholder: 'Type a programming language',
+  //   name: 'bookTitle',
+  //   value: stateGroup.bookTitle,
+  //   onChange: e => {
+  //     handleChangeGroup(e)
+  //   },
+  // }
 
   return (
     <div>
@@ -168,6 +168,7 @@ export default function CreateGroup(props) {
           // <pre>{JSON.stringify(books, null, 2)}</pre>}
         }
 
+        {/*
         <Autosuggest
           inputProps={inputProps}
           suggestions={stateGroup.suggestions}
@@ -178,6 +179,7 @@ export default function CreateGroup(props) {
           getSuggestionValue={getSuggestionValue}
           renderSuggestion={renderSuggestion}
         />
+        */}
 
         <Input
           type="select"
