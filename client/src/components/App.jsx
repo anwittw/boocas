@@ -26,7 +26,6 @@ function App(props) {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/signup" component={Signup} />
-              <Route path="/" component={Login} />
               <Route path="/create-group" component={CreateGroup} />
               <Route
                 path="/group-detail/:groupId/create-thought"
