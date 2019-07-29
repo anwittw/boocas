@@ -187,7 +187,7 @@ body {
   outline: none;
 
   position: relative;
-  transition: 0.3s;
+  transition: 3s;
   padding: 5px; // the trick
   &:hover {
     text-decoration: none;
@@ -210,8 +210,8 @@ body {
     padding: 0; // the other part of the trick
   }
   &:active {
-    background: $green70;
-    color: white;
+    //background: $green70;
+    color: grey;
     transition: none;
   }
 }
@@ -232,7 +232,7 @@ body {
   }
   &:active {
     background: $green70;
-    color: white;
+    color: grey;
     transition: none;
   }
 }
