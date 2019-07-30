@@ -4,7 +4,7 @@ import api from '../../api'
 import { Button } from 'reactstrap'
 import { withRouter } from 'react-router'
 import MainNavbar from '../MainNavbar'
-import ThoughtCard from './ThoughtCard'
+import ThoughtCard from '../ThoughtCard'
 
 function GroupDetail(props) {
   //console.log('props: ', props.match)
