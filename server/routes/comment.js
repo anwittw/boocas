@@ -15,6 +15,7 @@ router.get('/', (req, res, next) => {
     filter = { ...filter, _thought: req.query.thought }
   }
   Comment.find(filter)
+    .populate('_user')
     .then(comments => {
       res.json(comments)
     })
