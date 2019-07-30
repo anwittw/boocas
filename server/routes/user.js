@@ -1,8 +1,11 @@
 const express = require('express')
 const router = express.Router()
+const { isLoggedIn } = require('../middlewares')
 const User = require('../models/User')
 
-router.get('/', (req, res, next) => {
+// GET all users
+
+router.get('/', isLoggedIn, (req, res, next) => {
   User.find()
     .then(users => {
       res.json(users)

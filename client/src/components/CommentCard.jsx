@@ -16,10 +16,10 @@ function CommentCard(props) {
   return (
     <div>
       <div class="card mb-3">
-        <div class="card-body pb-1">
+        <div class="card-body pb-2">
           <p class="card-text">{props.comment.content}</p>
           <p class="card-text">
-            <small class="text-muted">
+            <small class="text-muted" style={{ fontSize: '10px' }}>
               created by {props.comment._user.username},
               <Moment calendar={calendarStrings}>
                 {props.comment.created_at}

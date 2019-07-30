@@ -6,6 +6,7 @@ import { withRouter } from 'react-router'
 import { promises } from 'fs'
 import MainNavbar from '../MainNavbar'
 import CommentCard from '../CommentCard'
+import ThoughtCardDetail from '../ThoughtCardDetail'
 
 function ThoughtDetail(props) {
   let thoughtId = props.match.params.thoughtId
@@ -87,14 +88,45 @@ function ThoughtDetail(props) {
         }
         <Container>
           <Row className="mt-5 mb-5">
-            <Col md="3">
+            <Col md="3" style={{ fontSize: '14px' }}>
               {thought.comments_left.length > 0 &&
                 thought.comments_left.map(comment => (
                   <CommentCard comment={comment} />
                 ))}
             </Col>
-            <Col md="6">MIDDLE</Col>
-            <Col md="3">
+            <Col md="6">
+              <div>
+                <Input
+                  type="textarea"
+                  name="content"
+                  value={comment.content}
+                  onChange={handleChangeComment}
+                  placeholder="Comment"
+                />
+                <Link
+                  style={{
+                    fontSize: '15px',
+                    textAlign: 'center',
+                    marginTop: '-3px',
+                    fontStyle: 'oblique',
+                  }}
+                  className="Button__Shelf"
+                  onClick={handleSubmitComment}
+                >
+                  <strong>Add your Comment</strong>
+                </Link>
+              </div>
+              <div>
+                <ThoughtCardDetail
+                  title={thought.thought.title}
+                  content={thought.thought.content}
+                  titlePictureUrl={thought.thought.titlePictureUrl}
+                  book_chapter={thought.thought.book_chapter}
+                  book_page={thought.thought.book_page}
+                />
+              </div>
+            </Col>
+            <Col md="3" style={{ fontSize: '14px' }}>
               {thought.comments_right.length > 0 &&
                 thought.comments_right.map(comment => (
                   <CommentCard comment={comment} />
@@ -102,18 +134,8 @@ function ThoughtDetail(props) {
             </Col>
           </Row>
         </Container>
-        <div>
-          <Input
-            type="text"
-            name="content"
-            value={comment.content}
-            onChange={handleChangeComment}
-            placeholder="isbn_10"
-          />
-          <Button onClick={handleSubmitComment}>Create Comment</Button>
-        </div>
+
         <span className="App__right__circle" />
-        )}
       </div>
     </div>
   )
