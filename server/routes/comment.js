@@ -4,7 +4,9 @@ const router = express.Router()
 
 const Comment = require('../models/Comment')
 
-router.get('/', (req, res, next) => {
+// Get all Comments
+
+router.get('/', isLoggedIn, (req, res, next) => {
   // empty Object === No Filter
   let filter = {}
   //Filteroption: mine
@@ -24,7 +26,9 @@ router.get('/', (req, res, next) => {
     })
 })
 
-router.get('/:id', (req, res, next) => {
+// Get one Comment by ID
+
+router.get('/:id', isLoggedIn, (req, res, next) => {
   let id = req.params.id
   Comment.findById(id)
     .then(comment => {
@@ -35,7 +39,9 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
-router.post('/', (req, res, next) => {
+// Create one Comment
+
+router.post('/', isLoggedIn, (req, res, next) => {
   Comment.create({
     _user: req.user._id,
     _thought: req.body._thought,
@@ -51,7 +57,7 @@ router.post('/', (req, res, next) => {
 
 // DELETE one comment
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', isLoggedIn, (req, res, next) => {
   let id = req.params.id
   Comment.findById(id)
     .then(comment => {

@@ -6,9 +6,9 @@ const Group = require('../models/Group')
 
 const Membership = require('../models/Membership')
 
-// GET all
+// GET all groups
 
-router.get('/', (req, res, next) => {
+router.get('/', isLoggedIn, (req, res, next) => {
   let filter = {}
   if (req.query.book) {
     filter = { ...filter, _book: req.query.book }
@@ -23,10 +23,9 @@ router.get('/', (req, res, next) => {
     })
 })
 
-// GET by Id
-//! Secure roots with Logged in
+// GET one Group by Id
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', isLoggedIn, (req, res, next) => {
   let id = req.params.id
   Group.findById(id)
     .populate('_book')
@@ -39,9 +38,8 @@ router.get('/:id', (req, res, next) => {
 })
 
 // Create a group
-//! Secure roots with Logged in
 
-router.post('/', (req, res, next) => {
+router.post('/', isLoggedIn, (req, res, next) => {
   Group.create(req.body)
     .then(group => {
       res.json(group)
@@ -51,8 +49,7 @@ router.post('/', (req, res, next) => {
     })
 })
 
-// DELETE one
-//! Secure roots with Logged in
+// DELETE one group
 
 router.delete('/:id', isLoggedIn, (req, res, next) => {
   let id = req.params.id
