@@ -18,6 +18,7 @@ router.get('/', (req, res, next) => {
   }
 
   Thought.find(filter)
+    .populate('_user')
     .then(thoughts => {
       res.json(thoughts)
     })

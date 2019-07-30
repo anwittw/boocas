@@ -64,10 +64,8 @@ function GroupDetail(props) {
         <MainNavbar title={group.name} />
       </div>
 
-      {
-        //<pre>{JSON.stringify(groupDetails, null, 2)}</pre>
-      }
       <div className="App__right__body">
+        {/* <pre>{JSON.stringify(groupDetails, null, 2)}</pre> */}
         <span className="App__right__circle" />
         <div>
           <Button
@@ -89,7 +87,7 @@ function GroupDetail(props) {
         </div>
         {groupDetails.group && (
           <div>
-            <h2>Group</h2>
+            {/* <h2>Group</h2>
             <ul>
               <li> {group.name} </li>
               <li> {group.description} </li>
@@ -101,7 +99,7 @@ function GroupDetail(props) {
               <li> {book.author} </li>
               <li> {book.year} </li>
             </ul>
-            <img src={book.coverPictureUrl} width="100" alt="book-cover" />
+            <img src={book.coverPictureUrl} width="100" alt="book-cover" /> */}
             <h2>Members</h2>
             <ul>
               {memberships.map((membership, i) => (
@@ -113,17 +111,20 @@ function GroupDetail(props) {
                 </li>
               ))}
             </ul>
+            {/* ------------------------------------------------------------- */}
             <h2>Thoughts</h2>
-            <ul>
+            <div className=" card-columns" style={{ padding: '30px' }}>
               {thoughts.map((thought, i) => (
-                <li key={i}>
-                  {' '}
-                  <Link to={'/thought-detail/' + thought._id}>
-                    {thought.title}
-                  </Link>
-                </li>
+                <div key={i}>
+                  <ThoughtCard
+                    _user={thought._user}
+                    title={thought.title}
+                    content={thought.content}
+                    _id={thought._id}
+                  />
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         )}
       </div>
