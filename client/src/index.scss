@@ -21,6 +21,12 @@ $background: rgba(244, 237, 222, 1);
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
+.my__active {
+  background-color: $orange50 !important;
+  color: white !important;
+  opacity: 1 !important;
+}
+
 h1 {
   font-size: 2rem;
 }
