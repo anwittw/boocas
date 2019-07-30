@@ -16,7 +16,12 @@ router.get('/', (req, res, next) => {
   }
   Membership.find(filter) // .find()  === .find({})
     .populate('_user')
-    .populate('_group')
+    .populate({
+      path: '_group',
+      populate: {
+        path: '_book',
+      },
+    })
     .then(memberships => {
       res.json(memberships)
     })
