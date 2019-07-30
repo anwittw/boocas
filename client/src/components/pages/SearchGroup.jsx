@@ -65,17 +65,32 @@ export default function SearchGroups(props) {
     })
   }
 
+  let myId = api.getUserId().toString()
+
   function createMembership(id) {
     let groupId = id
-    let myId = api.getUserId()
     api
       .createMembership({
         _user: myId,
         _group: groupId,
         isCreator: false,
       })
-      .then(response => console.log(response))
+      .then(response => {
+        console.log(response)
+      })
+      .then(() => {
+        api.getMyMemberships().then(result => {
+          setStateMember(result)
+        })
+      })
       .catch(err => console.log(err))
+  }
+
+  function isMember(groupId, memberships) {
+    let GroupIds = memberships.map(membership =>
+      membership._group._id.toString()
+    )
+    return GroupIds.includes(groupId)
   }
 
   return (
@@ -85,11 +100,11 @@ export default function SearchGroups(props) {
       </div>
       <div className="App__right__body container">
         {
-          <div>
-            <pre>{JSON.stringify(stateInput, null, 2)}</pre>
-            <pre>{JSON.stringify(stateSearch, null, 2)}</pre>
-            <pre>{JSON.stringify(stateMember, null, 2)}</pre>
-          </div>
+          //<div>
+          // <pre>{JSON.stringify(stateInput, null, 2)}</pre>
+          // <pre>{JSON.stringify(stateSearch, null, 2)}</pre>
+          //   <pre>{JSON.stringify(stateMember, null, 2)}</pre>
+          //</div>
         }
         <Button
           disabled={stateInput.type === 'book' ? true : false}
@@ -110,18 +125,23 @@ export default function SearchGroups(props) {
         {stateInput.type == 'group' && (
           <div>
             <h1>Groups found</h1>
-            {stateSearch.map((result, i) => (
+            {stateSearch.map((group, i) => (
               <div key={i}>
                 <Link to="" id={'id' + i.toString()} style={{}}>
-                  {result.name}
+                  {group.name}
                 </Link>
                 <UncontrolledCollapse toggler={'#id' + i}>
                   <Card>
-                    <CardBody>{result.description}</CardBody>
+                    <CardBody>{group.description}</CardBody>
                     <CardBody>
-                      <Button onClick={() => createMembership(result._id)}>
-                        Join Group
-                      </Button>
+                      {!isMember(group._id, stateMember) && (
+                        <Button onClick={() => createMembership(group._id)}>
+                          Join Group
+                        </Button>
+                      )}
+                      {isMember(group._id, stateMember) && (
+                        <span>You are a member of this group</span>
+                      )}
                     </CardBody>
                   </Card>
                 </UncontrolledCollapse>
