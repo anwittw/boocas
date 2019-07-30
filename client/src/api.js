@@ -114,7 +114,7 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
-  getGroups(groupId) {
+  getGroups() {
     return service
       .get('/groups/')
       .then(res => res.data)
