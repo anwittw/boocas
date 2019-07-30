@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { Input, Button, Table, Label } from 'reactstrap'
 import api from '../../api'
 import MainNavbar from '../MainNavbar'
+import BackButton from '../BackButton'
 
 export default function AddUser(props) {
   let groupId = props.match.params.groupId
@@ -117,6 +118,7 @@ export default function AddUser(props) {
                 ))}
             </tbody>
           </Table>
+          <BackButton history={props.history} />
         </div>
       </div>
     </div>

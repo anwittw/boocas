@@ -83,6 +83,7 @@ export default function CreateGroup(props) {
         </Button>
         <Input name="searchString" onChange={handleOnChange} />
         <span className="App__right__circle" />
+<<<<<<< HEAD
       </div>
       <div>
         <h1>Result</h1>
@@ -93,6 +94,18 @@ export default function CreateGroup(props) {
             </Link>
           </li>
         ))}
+=======
+        <div>
+          <h1>Result</h1>
+          {stateSearch.map(result => (
+            <li>
+              <Link to={'/result-details/' + result._id}>
+                {result.name || result.title}
+              </Link>
+            </li>
+          ))}
+        </div>
+>>>>>>> b410955e7b4203665628f38d16feeb3ca77349a9
       </div>
     </div>
   )
