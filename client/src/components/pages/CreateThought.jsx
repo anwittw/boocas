@@ -77,7 +77,7 @@ export default function CreateThought(props) {
   return (
     <div>
       <div>
-        <div className="App__right__header">
+        <div className="App__right__header" style={{ padding: '15px 30px' }}>
           <MainNavbar title="Create a new Thought" />
         </div>
         {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}

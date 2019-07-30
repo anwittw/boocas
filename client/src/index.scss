@@ -44,9 +44,9 @@ body {
 }
 
 .App__right {
-  position: absolute;
-  left: 16vw;
-  width: 84vw;
+  width: 84%;
+  margin-left: auto;
+  position: relative;
 }
 
 .App__right__header {
@@ -64,6 +64,8 @@ body {
   height: 600px;
   background-color: $orange10;
   border-radius: 50%;
+  pointer-events: none;
+  user-select: none;
 }
 
 .App__right__body {

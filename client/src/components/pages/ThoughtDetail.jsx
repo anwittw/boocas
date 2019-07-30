@@ -5,6 +5,7 @@ import { Input, Button } from 'reactstrap'
 import { withRouter } from 'react-router'
 import { promises } from 'fs'
 import MainNavbar from '../MainNavbar'
+import CardComment from '../CardComment'
 
 function ThoughtDetail(props) {
   let thoughtId = props.match.params.thoughtId
@@ -47,8 +48,8 @@ function ThoughtDetail(props) {
 
   return (
     <div>
-      <div className="App__right__header">
-        <MainNavbar title="Group Detail" />
+      <div className="App__right__header" style={{ padding: '15px 30px' }}>
+        <MainNavbar title="Thought Details" />
       </div>
 
       <div className="App__right__body">
@@ -64,6 +65,9 @@ function ThoughtDetail(props) {
             onChange={handleChangeComment}
             placeholder="isbn_10"
           />
+          <div style={{ padding: '30px' }}>
+            <CardComment />
+          </div>
 
           <Button onClick={handleSubmitComment}>Create Comment</Button>
         </div>
