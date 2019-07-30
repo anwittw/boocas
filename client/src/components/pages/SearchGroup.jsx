@@ -59,7 +59,7 @@ export default function CreateGroup(props) {
   }
   return (
     <div>
-      <div className="App__right__header">
+      <div className="App__right__header" style={{ padding: '15px 30px' }}>
         <MainNavbar title="Search a Group" />
       </div>
       <div className="App__right__body container">
@@ -83,6 +83,18 @@ export default function CreateGroup(props) {
         </Button>
         <Input name="searchString" onChange={handleOnChange} />
         <span className="App__right__circle" />
+<<<<<<< HEAD
+      </div>
+      <div>
+        <h1>Result</h1>
+        {stateSearch.map((result, i) => (
+          <li key={i}>
+            <Link to={'/result-details/' + result._id}>
+              {result.name || result.title}
+            </Link>
+          </li>
+        ))}
+=======
         <div>
           <h1>Result</h1>
           {stateSearch.map(result => (
@@ -93,6 +105,7 @@ export default function CreateGroup(props) {
             </li>
           ))}
         </div>
+>>>>>>> 40edb23ec7c08cfec1e933e7192f918edb0aea82
       </div>
     </div>
   )

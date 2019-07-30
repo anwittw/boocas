@@ -59,6 +59,7 @@ export default function Sidebar() {
         myGroups.map((group, i) => (
           <div key={i}>
             <NavLink to={'/group-detail/' + group._id}>{group.name}</NavLink>
+            <hr />
           </div>
         ))}
     </div>

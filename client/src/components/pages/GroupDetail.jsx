@@ -4,6 +4,7 @@ import api from '../../api'
 import { Button } from 'reactstrap'
 import { withRouter } from 'react-router'
 import MainNavbar from '../MainNavbar'
+import ThoughtCard from './ThoughtCard'
 
 function GroupDetail(props) {
   //console.log('props: ', props.match)
@@ -59,8 +60,8 @@ function GroupDetail(props) {
 
   return (
     <div>
-      <div className="App__right__header">
-        <MainNavbar title="Group Detail" />
+      <div className="App__right__header" style={{ padding: '15px 30px' }}>
+        <MainNavbar title={group.name} />
       </div>
 
       {
