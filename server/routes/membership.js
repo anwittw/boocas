@@ -6,7 +6,7 @@ const Membership = require('../models/Membership')
 
 // GET memberships or memberships by user
 
-router.get('/', (req, res, next) => {
+router.get('/', isLoggedIn, (req, res, next) => {
   let filter = {}
   if (req.query.mine) {
     filter = { ...filter, _user: req.user._id }
@@ -32,7 +32,7 @@ router.get('/', (req, res, next) => {
 
 // GET Membership by ID
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', isLoggedIn, (req, res, next) => {
   let id = req.params.id
   Membership.findById(id)
     .populate('_user')
@@ -53,7 +53,7 @@ router.get('/:id', (req, res, next) => {
 
 // POST Create a membership
 
-router.post('/', (req, res, next) => {
+router.post('/', isLoggedIn, (req, res, next) => {
   if (req.body._user) {
     Membership.create({
       _user: req.body._user,
@@ -81,9 +81,9 @@ router.post('/', (req, res, next) => {
   }
 })
 
-// DELETE Delete a membership
+// DELETE a membership
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', isLoggedIn, (req, res, next) => {
   let id = req.params.id
   Membership.findById(id)
     .then(membership => {

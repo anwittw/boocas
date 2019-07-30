@@ -4,9 +4,9 @@ const router = express.Router()
 
 const Book = require('../models/Book')
 
-// GET all
+// GET all Books
 
-router.get('/', (req, res, next) => {
+router.get('/', isLoggedIn, (req, res, next) => {
   Book.find()
     .then(books => {
       res.json(books)
@@ -16,9 +16,9 @@ router.get('/', (req, res, next) => {
     })
 })
 
-// GET by Id
+// GET Book by Id
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', isLoggedIn, (req, res, next) => {
   let id = req.params.id
   Book.findById(id)
     .then(book => {
@@ -37,9 +37,8 @@ router.get('/:id', (req, res, next) => {
 })
 
 // Create a book
-//! Secure roots with Logged in
 
-router.post('/', (req, res, next) => {
+router.post('/', isLoggedIn, (req, res, next) => {
   Book.create({
     isbn_10: req.body.isbn_10,
     isbn_13: req.body.isbn_13,
@@ -58,9 +57,9 @@ router.post('/', (req, res, next) => {
     })
 })
 
-// DELETE one
+// DELETE one Book
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', isLoggedIn, (req, res, next) => {
   let id = req.params.id
   Book.findByIdAndDelete(id)
     .then(book => {

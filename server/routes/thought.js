@@ -5,7 +5,9 @@ const uploader = require('../configs/cloudinary')
 
 const Thought = require('../models/Thought')
 
-router.get('/', (req, res, next) => {
+// GET all Thoughts
+
+router.get('/', isLoggedIn, (req, res, next) => {
   // empty Object === No Filter
   let filter = {}
   //Filteroption: mine
@@ -27,7 +29,9 @@ router.get('/', (req, res, next) => {
     })
 })
 
-router.get('/:id', (req, res, next) => {
+// GET Thoughts by Id
+
+router.get('/:id', isLoggedIn, (req, res, next) => {
   let id = req.params.id
   Thought.findById(id)
     .then(thought => {
@@ -38,7 +42,9 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
-router.post('/', uploader.single('picture'), (req, res, next) => {
+// POST Create Thought
+
+router.post('/', isLoggedIn, uploader.single('picture'), (req, res, next) => {
   let fileUrl = (req.file || {}).url
 
   Thought.create({
@@ -62,7 +68,7 @@ router.post('/', uploader.single('picture'), (req, res, next) => {
 
 // DELETE one thought
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', isLoggedIn, (req, res, next) => {
   let id = req.params.id
   Thought.findById(id)
     .then(thought => {
