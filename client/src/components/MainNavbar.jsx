@@ -12,11 +12,13 @@ function MainNavbar(props) {
       <h1>{props.title}</h1>
       {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
       {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-      {api.isLoggedIn() && (
-        <Link to="/" onClick={handleLogoutClick}>
-          Logout
-        </Link>
-      )}
+      <div>
+        {api.isLoggedIn() && (
+          <Link to="/" onClick={handleLogoutClick}>
+            <span style={{ textAlign: 'rigth' }}>Logout</span>
+          </Link>
+        )}
+      </div>
     </nav>
   )
 }
