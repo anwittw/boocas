@@ -66,7 +66,7 @@ export default function Sidebar(props) {
           </div>
         </div>
         <div className="Sidebar__groups">
-          {myGroups.length === 0 && <h1>Fetching Groups...</h1>}
+          {myGroups.length === 0 && <p>No groups</p>}
           {myGroups.length !== 0 &&
             myGroups.map((group, i) => (
               <div key={i}>

@@ -5,30 +5,45 @@ import { Button } from 'reactstrap'
 // Component allows three different sizes
 
 function setSize(size) {
-  if (size === 'small') return 30
-  if (size === 'medium') return 50
-  if (size === 'large') return 80
+  if (size === 'small') return 25
+  if (size === 'medium') return 35
+  if (size === 'large') return 40
 }
 
-//Component allows all colors
+function setFontSize(size) {
+  if (size === 'small') return 12
+  if (size === 'medium') return 14
+  if (size === 'large') return 16
+}
+
+//Component allows two colors
+
+function setColor(color) {
+  if (color === 'success') return 'rgba(234, 184, 96, 0.8)'
+  if (color === 'background') return 'rgba(244, 237, 222, 1)'
+  return 'red'
+}
 
 export default function Circle(props) {
+  let backgroundColor = setColor(props.color)
+  let fontSize = setFontSize(props.size)
   let size = setSize(props.size)
   let text = ''
 
   let style = {
+    fontSize: fontSize,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     width: size,
     height: size,
-    backgroundColor: 'red',
+    backgroundColor: backgroundColor,
     borderRadius: '50%',
   }
 
   return (
-    <div style={style}>
+    <div onClick={props.onClick} style={style}>
       <span>{props.text}</span>
     </div>
   )

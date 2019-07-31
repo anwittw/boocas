@@ -15,6 +15,7 @@ import AddUser from './pages/AddUser'
 import api from '../api'
 import { withRouter } from 'react-router'
 import MainNavbar from './MainNavbar'
+import EditProfil from './pages/EditProfil'
 
 const LandingPageWrapper = () => {
   return (
@@ -62,6 +63,7 @@ function App(props) {
                 component={CreateThought}
               />
               <Route path="/search-group" component={SearchGroup} />
+              <Route path="/edit-profil" component={EditProfil} />
               <Route path="/group-detail/:groupId" component={GroupDetail} />
               <Route
                 path="/thought-detail/:thoughtId"
