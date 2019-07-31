@@ -1,6 +1,15 @@
 import React, { useState } from 'react'
 import api from '../../api'
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
+import {
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Container,
+  Row,
+  Col,
+} from 'reactstrap'
 
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'
@@ -81,66 +90,93 @@ export default function CreateThought(props) {
           <MainNavbar title="Create a new Thought" />
         </div>
         {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
-        <div className="App__right__body container mt-5 mb-5">
-          <span className="App__right__circle" />
-          <Form onSubmit={handleSubmit}>
-            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
-              <Label className="" for="title">
-                Title
-              </Label>
-              <Input
-                type="text"
-                name="title"
-                value={state.title}
-                onChange={handleChange}
-              />
-            </FormGroup>
-            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
-              <Label for="content">Content</Label>
-              <Input
-                type="textarea"
-                name="content"
-                value={state.content}
-                onChange={handleChange}
-              />
-            </FormGroup>
-            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
-              <Label for="book_chapter">Chapter</Label>
-              <Input
-                type="text"
-                name="book_chapter"
-                value={state.book_chapter}
-                onChange={handleChange}
-              />
-            </FormGroup>
-            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
-              <Label for="book_page">Page</Label>
-              <Input
-                type="number"
-                name="book_page"
-                value={state.book_page}
-                onChange={handleChange}
-              />
-            </FormGroup>
-            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
-              <Label for="picture">Picture</Label>
-              <Input type="file" name="picture" onChange={handleFileChange} />
-            </FormGroup>
-            <FormGroup className="col-12 col-md-6 offset-md-3 text-center">
-              <Label for="links">Links</Label>
-              <Input
-                type="text"
-                name="links"
-                value={state.links}
-                onChange={handleChange}
-              />
-            </FormGroup>
-            <Button className="col-12 col-md-2 offset-md-5 text-center">
-              {' '}
-              Create Thought
-            </Button>
-          </Form>
-          <BackButton history={props.history} />
+        <div className="App__right__body mt-5 mb-5">
+          <Container>
+            <Form onSubmit={handleSubmit}>
+              <Row className="my-3">
+                <Col xs="12" md={{ size: 4, offset: 2 }}>
+                  <FormGroup className=" text-center">
+                    <Input
+                      placeholder="title"
+                      type="text"
+                      name="title"
+                      value={state.title}
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row className="my-3">
+                <Col xs="12" md={{ size: 8, offset: 2 }}>
+                  <FormGroup className="text-center">
+                    <Input
+                      placeholder="Place your thought here!"
+                      type="textarea"
+                      name="content"
+                      value={state.content}
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row className="my-3">
+                <Col xs="12" md={{ size: 4, offset: 2 }}>
+                  <FormGroup className="text-center">
+                    <Input
+                      placeholder="chapter"
+                      type="text"
+                      name="book_chapter"
+                      value={state.book_chapter}
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col xs="12" md={{ size: 4 }}>
+                  <FormGroup className="text-center">
+                    <Input
+                      placeholder="page"
+                      type="number"
+                      name="book_page"
+                      value={state.book_page}
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row className="my-5">
+                <Col xs="12" md={{ size: '4', offset: 4 }}>
+                  <FormGroup className="text-center">
+                    <Input
+                      type="file"
+                      name="picture"
+                      onChange={handleFileChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row className="my-3">
+                <Col xs="12" md={{ size: 8, offset: 2 }}>
+                  <FormGroup className="text-center">
+                    <Input
+                      placeholder="add links"
+                      type="text"
+                      name="links"
+                      value={state.links}
+                      onChange={handleChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row className="my-3 ">
+                <Col xs="12" md={{ size: '3', offset: 3 }}>
+                  <Button className="text-center"> Create Thought</Button>
+                </Col>
+                <Col className="mt-3 mt-md-0" xs="12" md={{ size: '3' }}>
+                  <BackButton history={props.history} />
+                </Col>
+              </Row>
+            </Form>
+          </Container>
         </div>
       </div>
     </div>

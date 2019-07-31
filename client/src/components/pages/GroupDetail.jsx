@@ -43,6 +43,7 @@ function GroupDetail(props) {
   let thoughts = groupDetails.thoughts
 
   console.log('DEBUG', api.getLocalStorageUser())
+  console.log('DEBUUUUUUUUU', thoughts)
 
   function getIdOfCreator(memberships) {
     for (let i = 0; i < memberships.length; i++) {
@@ -114,18 +115,45 @@ function GroupDetail(props) {
               ))}
             </ul>
             {/* ------------------------------------------------------------- */}
-            <h2>Thoughts</h2>
             <div className=" card-columns" style={{ padding: '30px' }}>
-              {thoughts.map((thought, i) => (
-                <div key={i}>
+              {thoughts.length === 0 && (
+                <div>
                   <ThoughtCard
-                    _user={thought._user}
-                    title={thought.title}
-                    content={thought.content}
-                    _id={thought._id}
+                    link={'/group-detail/' + groupId + '/create-thought'}
+                    background="rgba(171, 191, 163, 0.7)"
+                    title="Title"
+                    _user={{}}
+                    content={'<<  Create your first thought  >>'}
                   />
                 </div>
-              ))}
+              )}
+
+              {thoughts.length > 0 && (
+                <div>
+                  {thoughts.map((thought, i) => (
+                    <div key={i}>
+                      <ThoughtCard
+                        link={'/thought-detail/' + thought._id}
+                        _user={thought._user}
+                        title={thought.title}
+                        content={thought.content}
+                        _id={thought._id}
+                      />
+                    </div>
+                  ))}
+                  <div>
+                    <ThoughtCard
+                      link={'/group-detail/' + groupId + '/create-thought'}
+                      background="rgba(171, 191, 163, 0.3)"
+                      title="Title"
+                      _user={{}}
+                      content={
+                        'This is the content you want to share with the world'
+                      }
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}

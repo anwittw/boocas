@@ -12,7 +12,5 @@
   "engines": {
     "node": "8.9.4"
   },
-  "dependencies": {
-    "react-pose": "^4.0.8"
-  }
+  "dependencies": {}
 }
