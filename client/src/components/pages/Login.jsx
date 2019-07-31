@@ -40,7 +40,7 @@ export default function Login(props) {
         <br />
         <button
           style={{ width: '211px' }}
-          className="btn btn-lg btn-outline-success"
+          className="btn btn-sm btn-outline-success"
         >
           Login
         </button>

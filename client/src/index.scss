@@ -47,6 +47,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Letter Gothic', sans-serif;
+  overflow-x: hidden;
 }
 
 .App {
@@ -115,33 +116,54 @@ body {
   z-index: 10;
 }
 
-@media (max-width: 800px) {
+$breakpoint-mobile: 670px;
+
+@media (max-width: $breakpoint-mobile) {
+  .container-full-width {
+    width: 100%;
+    background-color: #eab860;
+    padding: 0;
+  }
+
+  html {
+    width: 100%;
+    border: 3px solid yellow;
+  }
 }
 
 .container-full-width {
-  // background-color: red;
   background-image: linear-gradient(
     to bottom right,
     $background,
     $background,
     $secondary
   );
-  // width: 100vw;
+
   height: 100vh;
   border: 0.1px solid white;
 }
 
 .first__box {
   //border: 2px solid green;
-  margin-top: 90px;
-  margin-left: 230px;
+  margin-top: 6%;
+  // margin-bottom: 1%;
+  margin-left: 16%;
   display: flex;
   flex-direction: row-reverse;
-  width: 600px;
-  height: 650px;
+  width: 41%;
+  height: 81%;
   background: white;
   border-radius: 10px;
-  box-shadow: 2px 0.1px 10px slategrey;
+  box-shadow: 2px 10px 20px grey;
+  @media (max-width: $breakpoint-mobile) {
+    //border: 2px solid green;
+    margin-top: 2%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+  }
 }
 
 .Green__card {
@@ -155,56 +177,21 @@ body {
   height: 310px;
   z-index: 1;
   border-radius: 10px;
+  @media (max-width: $breakpoint-mobile) {
+    margin: auto;
+  }
 }
-
-// .second__box {
-//   display: flex;
-//   width: 420px;
-//   height: 70vh;
-//   background: white;
-//   position: absolute;
-//   right: 140px;
-//   border-radius: 5px;
-//   box-shadow: 6px 5px 20px slategrey;
-// }
-
-// .Green__strip {
-//   position: absolute;
-//   left: -0.5px;
-//   display: block;
-//   background: $green70;
-//   width: 103px;
-//   height: 70vh;
-//   z-index: 1;
-//   border-radius: 5px;
-// }
-
-// .Green__strip__2 {
-//   position: absolute;
-//   right: 550px;
-//   display: inline-block;
-//   background: $green70;
-//   width: 340px;
-//   height: 650px;
-//   top: 45px;
-//   border-radius: 5px;
-// }
-
-// .Books {
-//   positiion: absolute;
-//   width: 514px;
-//   top: 395px;
-//   right: 46px;
-// }
 
 .Landing__circle {
   display: block;
-  position: relative;
-  top: 80px;
+  position: absolute;
+  top: 250px;
   left: 500px;
+  display: flex;
+  flex-direction: column;
   z-index: 1;
-  width: 450px;
-  height: 450px;
+  width: 750px;
+  height: 750px;
   background-color: #eab860;
   opacity: 0.5;
   border-radius: 50%;
@@ -357,8 +344,8 @@ body {
   border: 16px;
   border-top: 40px solid rgba(255, 199, 87, 0.8);
   border-radius: 50%;
-  width: 180px;
-  height: 180px;
+  width: 480px;
+  height: 480px;
   animation: spin 10s linear infinite;
   z-index: 10;
   //box-shadow: 5px 10px 10px grey;
@@ -385,4 +372,12 @@ body {
     opacity: 0.7;
     font-weight: bold;
   }
+}
+
+.scroll--aware {
+  transition: all 0.5s ease-in-out;
+}
+
+.scroll--hidden {
+  transform: translateY(-100%);
 }

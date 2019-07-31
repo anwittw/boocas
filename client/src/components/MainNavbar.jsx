@@ -3,7 +3,7 @@ import api from '../api'
 import { Link, NavLink } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import Circle from './Circle'
-import { callbackify } from 'util'
+//import HideOnScroll from './HideOnScroll'
 
 function MainNavbar(props) {
   const [stateOptions, setstateOptions] = useState(false)
@@ -12,6 +12,7 @@ function MainNavbar(props) {
     api.logout()
   }
   return (
+    // <HideOnScroll>
     <nav>
       <h1>{props.title}</h1>
       {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
@@ -44,6 +45,7 @@ function MainNavbar(props) {
         )}
       </div>
     </nav>
+    //</HideOnScroll>
   )
 }
 
