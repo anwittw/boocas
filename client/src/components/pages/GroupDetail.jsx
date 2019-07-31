@@ -42,6 +42,7 @@ function GroupDetail(props) {
   let thoughts = groupDetails.thoughts
 
   console.log('DEBUG', api.getLocalStorageUser())
+  console.log('DEBUUUUUUUUU', thoughts)
 
   function getIdOfCreator(memberships) {
     for (let i = 0; i < memberships.length; i++) {
@@ -114,9 +115,22 @@ function GroupDetail(props) {
             {/* ------------------------------------------------------------- */}
             <h2>Thoughts</h2>
             <div className=" card-columns" style={{ padding: '30px' }}>
+              {thoughts.length === 0 && (
+                <div>
+                  <ThoughtCard
+                    link={'/group-detail/' + groupId + '/create-thought'}
+                    background="rgba(171, 191, 163, 0.7)"
+                    title="Create a thought"
+                    _user={{}}
+                    content={'Here will be your content'}
+                  />
+                </div>
+              )}
+
               {thoughts.map((thought, i) => (
                 <div key={i}>
                   <ThoughtCard
+                    link={'/thought-detail/' + thought._id}
                     _user={thought._user}
                     title={thought.title}
                     content={thought.content}
