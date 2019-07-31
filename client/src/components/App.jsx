@@ -38,9 +38,13 @@ function App(props) {
 
   return (
     <div>
-      <button className="toggle-sidebar" onClick={toggleSidebar}>
-        x
-      </button>
+      <img
+        className="toggle-sidebar"
+        style={{ width: '40px', marginTop: '45px' }}
+        onClick={toggleSidebar}
+        src={process.env.PUBLIC_URL + '/left.png'}
+      />
+
       {api.isLoggedIn() && (
         <div className="App">
           <Sidebar isDisplayed={isDisplayed} />
