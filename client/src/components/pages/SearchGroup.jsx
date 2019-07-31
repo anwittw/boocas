@@ -6,15 +6,20 @@ import {
   CardBody,
   Card,
   Collapse,
+  Container,
+  Row,
+  Col,
 } from 'reactstrap'
 import api from '../../api'
 
 import { Link, NavLink } from 'react-router-dom'
 import MainNavbar from '../MainNavbar'
+import Circle from '../Circle'
 
 export default function SearchGroups(props) {
   const [stateSearch, setStateSearch] = useState([])
   const [idBookDisplayed, setIdBookDisplayed] = useState(null)
+  const [idGroupDisplayed, setIdGroupDisplayed] = useState(null)
 
   const [stateInput, setStateInput] = useState({
     searchString: '',
@@ -79,6 +84,8 @@ export default function SearchGroups(props) {
       ...stateInput,
       type: stateInput.type === 'group' ? 'book' : 'group',
     })
+    setIdBookDisplayed(null)
+    setIdGroupDisplayed(null)
   }
 
   function handleOnChange(e) {
@@ -131,8 +138,6 @@ export default function SearchGroups(props) {
     return GroupIds.includes(groupId)
   }
 
-  const [stateCollapse, setStateCollapse] = useState([])
-
   useEffect(() => {
     let array = stateSearch.map(book => {
       return { [book._id]: true }
@@ -152,95 +157,164 @@ export default function SearchGroups(props) {
   return (
     <div>
       <div className="App__right__header" style={{ padding: '15px 30px' }}>
-        <MainNavbar title="Search a Group" />
-      </div>
-      <div className="App__right__body container ">
-        {
-          //<div>
-          // <pre>{JSON.stringify(stateInput, null, 2)}</pre>
-          // <pre>{JSON.stringify(stateSearch, null, 2)}</pre>
-          //   <pre>{JSON.stringify(stateMember, null, 2)}</pre>
-          //</div>
-        }
-        <Button
-          disabled={stateInput.type === 'book' ? true : false}
-          onClick={onButtonClick}
-          className={stateInput.type === 'book' ? 'my__active' : ''}
-        >
-          Book
-        </Button>
-        <Button
-          disabled={stateInput.type === 'group' ? true : false}
-          onClick={onButtonClick}
-          className={stateInput.type === 'group' ? 'my__active' : ''}
-        >
-          Group
-        </Button>
-        <Input
-          value={stateInput.searchString}
-          name="searchString"
-          onChange={handleOnChange}
+        <MainNavbar
+          title={
+            stateInput.type === 'group'
+              ? 'Join a Group'
+              : 'Join a Group by book'
+          }
         />
-        <span className="App__right__circle" />
-        {stateInput.type == 'group' && (
-          <div>
-            {stateSearch.length > 0 && <h1>Groups found</h1>}
-            {stateSearch.length === 0 && <h1>No Groups found</h1>}
-            {stateSearch.map((group, i) => (
-              <div key={i}>
-                <hr />
-                <Link to="" id={'id' + i.toString()} style={{}}>
-                  {group.name}
-                </Link>
-                <UncontrolledCollapse toggler={'#id' + i}>
-                  <Card>
-                    <CardBody>{group.description}</CardBody>
-                    <CardBody>
-                      {!isMember(group._id, stateMember) && (
-                        <Button onClick={() => createMembership(group._id)}>
-                          Join Group
-                        </Button>
-                      )}
-                      {isMember(group._id, stateMember) && (
-                        <span>You are a member of this group</span>
-                      )}
-                    </CardBody>
-                  </Card>
-                </UncontrolledCollapse>
-              </div>
-            ))}
-          </div>
-        )}
-        {stateInput.type == 'book' && (
-          <div>
-            {stateSearch.length > 0 && <h1>Books found</h1>}
-            {stateSearch.length === 0 && <h1>No Books found</h1>}
-            {stateSearch.map((book, i) => (
-              <div
-                key={i}
-                onClick={() =>
-                  setGroupsToRender(
-                    idBookDisplayed === book._id ? null : book._id
-                  )
-                }
+      </div>
+      <div className="App__right__body">
+        <Circle size="small" color="$orange" text="AF" />
+        <Container className="mt-5">
+          {
+            //<div>
+            // <pre>{JSON.stringify(stateInput, null, 2)}</pre>
+            // <pre>{JSON.stringify(stateSearch, null, 2)}</pre>
+            //   <pre>{JSON.stringify(stateMember, null, 2)}</pre>
+            //</div>
+          }
+          <Row>
+            <Col xs="12" md={{ size: 3, offset: 3 }}>
+              <Button
+                block
+                disabled={stateInput.type === 'book' ? true : false}
+                onClick={onButtonClick}
+                className={stateInput.type === 'book' ? 'my__active' : ''}
               >
-                <hr />
-                {book.title}
-                <Collapse name={book._id} isOpen={idBookDisplayed === book._id}>
-                  <Card>
-                    <CardBody>
-                      {stateGroup.groupsToRender.map(group => (
-                        <div onClick={() => changeToGroupSearch(group)}>
-                          {group.name}
-                        </div>
-                      ))}
-                    </CardBody>
-                  </Card>
-                </Collapse>
-              </div>
-            ))}
-          </div>
-        )}
+                Book
+              </Button>
+            </Col>
+            <Col xs="12" md="3">
+              <Button
+                block
+                disabled={stateInput.type === 'group' ? true : false}
+                onClick={onButtonClick}
+                className={stateInput.type === 'group' ? 'my__active' : ''}
+              >
+                Group
+              </Button>
+            </Col>
+          </Row>
+          <Row className="mt-3">
+            <Col xs="12" md={{ size: 6, offset: 3 }}>
+              <Input
+                value={stateInput.searchString}
+                name="searchString"
+                onChange={handleOnChange}
+              />
+            </Col>
+          </Row>
+          {stateInput.type == 'group' && (
+            <div className="mb-5">
+              <Row className="mt-4">
+                <Col
+                  className="text-center"
+                  xs="12"
+                  md={{ size: 6, offset: 3 }}
+                >
+                  {stateSearch.length === 0 && <h1>No Groups found</h1>}
+                </Col>
+              </Row>
+              <Row>
+                <Col
+                  className="text-center"
+                  xs="12"
+                  md={{ size: 6, offset: 3 }}
+                >
+                  {stateSearch.map((group, i) => (
+                    <div
+                      className="hover"
+                      key={i}
+                      onClick={() =>
+                        setIdGroupDisplayed(
+                          idGroupDisplayed === group._id ? null : group._id
+                        )
+                      }
+                    >
+                      <hr />
+                      {group.name}
+                      <Collapse
+                        name={group._id}
+                        isOpen={idGroupDisplayed === group._id}
+                      >
+                        <Card>
+                          <CardBody>{group.description}</CardBody>
+                          <CardBody>
+                            {!isMember(group._id, stateMember) && (
+                              <Button
+                                onClick={() => createMembership(group._id)}
+                              >
+                                Join Group
+                              </Button>
+                            )}
+                            {isMember(group._id, stateMember) && (
+                              <span className="font-weight-bold">
+                                You are a member of this group
+                              </span>
+                            )}
+                          </CardBody>
+                        </Card>
+                      </Collapse>
+                    </div>
+                  ))}
+                </Col>
+              </Row>
+            </div>
+          )}
+          {stateInput.type == 'book' && (
+            <div className="mb-5">
+              <Row className="mt-4">
+                <Col
+                  className="text-center"
+                  xs="12"
+                  md={{ size: 6, offset: 3 }}
+                >
+                  {stateSearch.length === 0 && <h1>No Books found</h1>}
+                </Col>
+              </Row>
+              <Row>
+                <Col
+                  className="text-center"
+                  xs="12"
+                  md={{ size: 6, offset: 3 }}
+                >
+                  {stateSearch.map((book, i) => (
+                    <div
+                      key={i}
+                      onClick={() =>
+                        setGroupsToRender(
+                          idBookDisplayed === book._id ? null : book._id
+                        )
+                      }
+                    >
+                      <hr />
+                      {book.title}
+                      <Collapse
+                        name={book._id}
+                        isOpen={idBookDisplayed === book._id}
+                      >
+                        <Card>
+                          <CardBody>
+                            {stateGroup.groupsToRender.map(group => (
+                              <div
+                                className="hover"
+                                onClick={() => changeToGroupSearch(group)}
+                              >
+                                {group.name}
+                              </div>
+                            ))}
+                          </CardBody>
+                        </Card>
+                      </Collapse>
+                    </div>
+                  ))}
+                </Col>
+              </Row>
+            </div>
+          )}
+        </Container>
       </div>
     </div>
   )
