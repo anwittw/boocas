@@ -15,6 +15,7 @@ import AddUser from './pages/AddUser'
 import api from '../api'
 import { withRouter } from 'react-router'
 import MainNavbar from './MainNavbar'
+import EditProfil from './pages/EditProfil'
 
 const LandingPageWrapper = () => {
   return (
@@ -38,9 +39,14 @@ function App(props) {
 
   return (
     <div>
-      <button className="toggle-sidebar" onClick={toggleSidebar}>
-        x
-      </button>
+      {api.isLoggedIn() && (
+        <img
+          className="toggle-sidebar"
+          style={{ width: '55px', marginTop: '32px', opacity: 0.5 }}
+          onClick={toggleSidebar}
+          src={process.env.PUBLIC_URL + '/greyonoff.png'}
+        />
+      )}
       {api.isLoggedIn() && (
         <div className="App">
           <Sidebar isDisplayed={isDisplayed} />
@@ -57,6 +63,7 @@ function App(props) {
                 component={CreateThought}
               />
               <Route path="/search-group" component={SearchGroup} />
+              <Route path="/edit-profil" component={EditProfil} />
               <Route path="/group-detail/:groupId" component={GroupDetail} />
               <Route
                 path="/thought-detail/:thoughtId"
