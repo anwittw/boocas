@@ -17,79 +17,81 @@ function LandingPage(props) {
 
   return (
     <div className="container-full-width ">
-      <div className="row">
-        <div className="col-md first__box">
-          <div
-            className="Green__card"
-            style={{ fontSize: '82px', lineHeight: '110px' }}
-          >
-            <div style={{ zIndex: '10', textAlign: 'center' }}>
-              Bo / <br />
-              _ ca <br /> / as
-            </div>
-          </div>
-          <div
-            className="AuthMethod"
-            style={{ marginTop: '55px', marginLeft: '40px' }}
-          >
-            {!isLoggedIn && <NavLink to="/login">login</NavLink>}
-            {!isLoggedIn && (
-              <NavLink style={{ marginLeft: '60px' }} to="/signup">
-                signup
-              </NavLink>
-            )}
-            {props.children}
-          </div>
-          {api.isLoggedIn() && (
-            <Link to="/" onClick={handleLogoutClick}>
-              Logout
-            </Link>
-          )}
-          <div className=" Landing__circle Spin__Circle" />
-
-          {/* <img className="Books" src={process.env.PUBLIC_URL + '/Books.png'} /> */}
-        </div>
-        <div className="Landing__circle" />
-        {/* <div className="col-md second__box">
+      <div className="col-md first__box">
+        <div
+          className="Green__card"
+          style={{ fontSize: '82px', lineHeight: '100px' }}
+        >
           <div
             style={{
-              position: 'absolute',
-              top: '320px',
-              left: '155px',
-
-              textAlign: 'right',
+              zIndex: '10',
+              textAlign: 'center',
+              fontWeight: 'bold',
+              color: 'dark',
+              opacity: 0.85,
             }}
           >
-            <span>
-              {' '}
-              <strong style={{ fontSize: '17px' }}>
-                What are your friends
-                <br />
-                reading?
-              </strong>
-            </span>
-            <br />
-            <span style={{ fontSize: '13px', lineHeight: '0.1' }}>
-              Chances are your friends
-              <br /> are discussing their
-              <br /> favorite books on “Boocas”.
-            </span>
+            Bo / <br />
+            \ ca <br /> / as
           </div>
-
-          {!api.isLoggedIn() && (
-            <NavLink
-              className=" Button__Shelf"
-              to="/how-it-works"
-              style={{
-                fontSize: 20,
-                position: 'absolute',
-                right: '90px',
-                bottom: '35px',
-              }}
-            >
-              How it works
+        </div>
+        <div
+          style={{ marginTop: '50px', marginLeft: '1px' }}
+          className="AuthMethod"
+        >
+          {!isLoggedIn && <NavLink to="/login">login</NavLink>}
+          {!isLoggedIn && (
+            <NavLink style={{ marginLeft: '60px' }} to="/signup">
+              signup
             </NavLink>
           )}
+          {props.children}
+        </div>
+        {api.isLoggedIn() && (
+          <Link to="/" onClick={handleLogoutClick}>
+            Logout
+          </Link>
+        )}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '155px',
+            left: '45px',
+          }}
+        >
+          <span>
+            {' '}
+            <strong style={{ fontSize: '17px' }}>
+              What are your friends reading?
+            </strong>
+          </span>
+          <br />
+          <br />
+
+          <span style={{ fontSize: '15px', lineHeight: '0.1' }}>
+            Chances are your friends are discussing their
+            <br /> favorite books ('or not') on “Boocas”.
+          </span>
+        </div>
+
+        {!api.isLoggedIn() && (
+          <NavLink
+            className=" Button__Shelf"
+            to="/how-it-works"
+            style={{
+              fontSize: 24,
+              position: 'absolute',
+              right: '70px',
+              bottom: '50px',
+            }}
+          >
+            How it works
+          </NavLink>
+        )}
+      </div>
+      {/* <div className=" Landing__circle Spin__Circle" />
+        <div className="Landing__circle" /> */}
+      {/* <div className="col-md second__box">
           <div className="Green__strip" />
           <h1
             style={{
@@ -102,7 +104,6 @@ function LandingPage(props) {
             <em>'Boocas'</em>
           </h1>
         </div>*/}
-      </div>
     </div>
   )
 }

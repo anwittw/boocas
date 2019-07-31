@@ -6,10 +6,13 @@ function ThoughtCard(props) {
   console.log(props)
   return (
     <div>
-      <Link to={'/thought-detail/' + props._id}>
+      <Link to={props.link}>
         <div
-          className="card bg-white border-secondary mb-3 hover"
-          style={{ maxWidth: '500px' }}
+          className="card border-secondary mb-3 hover"
+          style={{
+            maxWidth: '500px',
+            backgroundColor: props.background,
+          }}
         >
           <div className="card-body">
             <h5

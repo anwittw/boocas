@@ -115,81 +115,87 @@ body {
   z-index: 10;
 }
 
+@media (max-width: 800px) {
+}
+
 .container-full-width {
-  display: flex;
-  position: relative;
+  // background-color: red;
   background-image: linear-gradient(
     to bottom right,
     $background,
     $background,
     $secondary
   );
-  //background-color: $background;
+  // width: 100vw;
   height: 100vh;
+  border: 0.1px solid white;
 }
 
 .first__box {
-  width: 610px;
-  height: 670px;
+  //border: 2px solid green;
+  margin-top: 90px;
+  margin-left: 230px;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 600px;
+  height: 650px;
   background: white;
-  position: absolute;
-  left: 140px;
-  bottom: 0px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 2px 0.1px 10px slategrey;
 }
 
 .Green__card {
-  position: absolute;
-  right: 48px;
-  top: 44px;
-  display: block;
+  // position: absolute;
+  // right: 48px;
+  // top: 44px;
+  margin: 30px;
+  //margin-top:
   background: $green70;
   width: 240px;
-  height: 325px;
+  height: 310px;
   z-index: 1;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
-.second__box {
-  display: flex;
-  width: 420px;
-  height: 70vh;
-  background: white;
-  position: absolute;
-  right: 140px;
-  border-radius: 5px;
-  box-shadow: 6px 5px 20px slategrey;
-}
+// .second__box {
+//   display: flex;
+//   width: 420px;
+//   height: 70vh;
+//   background: white;
+//   position: absolute;
+//   right: 140px;
+//   border-radius: 5px;
+//   box-shadow: 6px 5px 20px slategrey;
+// }
 
-.Green__strip {
-  position: absolute;
-  left: -0.5px;
-  display: block;
-  background: $green70;
-  width: 103px;
-  height: 70vh;
-  z-index: 1;
-  border-radius: 5px;
-}
+// .Green__strip {
+//   position: absolute;
+//   left: -0.5px;
+//   display: block;
+//   background: $green70;
+//   width: 103px;
+//   height: 70vh;
+//   z-index: 1;
+//   border-radius: 5px;
+// }
 
-.Green__strip__2 {
-  position: absolute;
-  right: 550px;
-  display: inline-block;
-  background: $green70;
-  width: 340px;
-  height: 650px;
-  top: 45px;
-  border-radius: 5px;
-}
+// .Green__strip__2 {
+//   position: absolute;
+//   right: 550px;
+//   display: inline-block;
+//   background: $green70;
+//   width: 340px;
+//   height: 650px;
+//   top: 45px;
+//   border-radius: 5px;
+// }
 
-.Books {
-  positiion: absolute;
-  width: 514px;
-  top: 395px;
-  right: 46px;
-}
+// .Books {
+//   positiion: absolute;
+//   width: 514px;
+//   top: 395px;
+//   right: 46px;
+// }
 
 .Landing__circle {
   display: block;
@@ -302,7 +308,13 @@ body {
   }
 }
 
+// * {
+//   border: 1px solid yellow;
+// }
+
 .AuthMethod {
+  min-width: 230px;
+
   a {
     position: relative;
 
