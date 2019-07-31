@@ -6,7 +6,8 @@ export default function backButton(props) {
   return (
     <div>
       <Button
-        className="col-12 col-md-2 offset-md-5 text-center"
+        block
+        className="text-center"
         onClick={() => props.history.goBack()}
       >
         Back
