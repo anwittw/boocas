@@ -175,7 +175,7 @@ export default function SearchGroups(props) {
             //</div>
           }
           <Row>
-            <Col xs="12" md={{ size: 3, offset: 3 }}>
+            <Col xs="12" md={{ size: 4, offset: 2 }}>
               <Button
                 block
                 disabled={stateInput.type === 'book' ? true : false}
@@ -185,7 +185,7 @@ export default function SearchGroups(props) {
                 Book
               </Button>
             </Col>
-            <Col xs="12" md="3">
+            <Col xs="12" md="4">
               <Button
                 block
                 disabled={stateInput.type === 'group' ? true : false}
@@ -197,7 +197,7 @@ export default function SearchGroups(props) {
             </Col>
           </Row>
           <Row className="mt-3">
-            <Col xs="12" md={{ size: 6, offset: 3 }}>
+            <Col xs="12" md={{ size: '8', offset: 2 }}>
               <Input
                 value={stateInput.searchString}
                 name="searchString"
@@ -211,7 +211,7 @@ export default function SearchGroups(props) {
                 <Col
                   className="text-center"
                   xs="12"
-                  md={{ size: 6, offset: 3 }}
+                  md={{ size: '8', offset: 2 }}
                 >
                   {stateSearch.length === 0 && <h1>No Groups found</h1>}
                 </Col>
@@ -220,7 +220,7 @@ export default function SearchGroups(props) {
                 <Col
                   className="text-center"
                   xs="12"
-                  md={{ size: 6, offset: 3 }}
+                  md={{ size: '8', offset: 2 }}
                 >
                   {stateSearch.map((group, i) => (
                     <div
@@ -268,7 +268,7 @@ export default function SearchGroups(props) {
                 <Col
                   className="text-center"
                   xs="12"
-                  md={{ size: 6, offset: 3 }}
+                  md={{ size: '8', offset: 2 }}
                 >
                   {stateSearch.length === 0 && <h1>No Books found</h1>}
                 </Col>
@@ -277,7 +277,7 @@ export default function SearchGroups(props) {
                 <Col
                   className="text-center"
                   xs="12"
-                  md={{ size: 6, offset: 3 }}
+                  md={{ size: '8', offset: 2 }}
                 >
                   {stateSearch.map((book, i) => (
                     <div
