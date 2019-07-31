@@ -166,7 +166,6 @@ export default function SearchGroups(props) {
         />
       </div>
       <div className="App__right__body">
-        <Circle size="small" color="$orange" text="AF" />
         <Container className="mt-5">
           {
             //<div>
