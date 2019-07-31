@@ -18,12 +18,12 @@ function LandingPage(props) {
   return (
     <div>
       <div className="container-full-width ">
-        {/* <div className=" Landing__circle Spin__Circle" /> */}
         <div className="col-md first__box">
           <div
             className="Green__card"
             style={{ fontSize: '82px', lineHeight: '100px' }}
           >
+            <div className=" Landing__circle Spin__Circle NotMobile" />
             <div
               style={{
                 zIndex: '10',
@@ -39,7 +39,7 @@ function LandingPage(props) {
           </div>
           <div
             style={{ marginTop: '50px', marginLeft: '1px' }}
-            className="AuthMethod"
+            className="AuthMethod YesMobile"
           >
             {!isLoggedIn && <NavLink to="/login">login</NavLink>}
             {!isLoggedIn && (
@@ -55,10 +55,10 @@ function LandingPage(props) {
             </Link>
           )}
           <div
-            className="intro"
+            className="YesMobile2"
             style={{
               position: 'absolute',
-              bottom: '130px',
+              bottom: '140px',
               left: '45px',
             }}
           >
@@ -73,20 +73,20 @@ function LandingPage(props) {
 
             <span style={{ fontSize: '15px', lineHeight: '0.1' }}>
               Chances are your friends are discussing their
-              <br /> favorite books ('or not') on “Boocas”.
+              <br /> favorite books \ and least favorite \ on 'Boocas'.
             </span>
           </div>
 
           {!api.isLoggedIn() && (
             <NavLink
-              className=" Button__Shelf"
+              className=" Button__Shelf NotMobile"
               to="/how-it-works"
               style={{
                 fontSize: 20,
                 fontWeight: 'bold',
                 position: 'absolute',
                 right: '90px',
-                bottom: '50px',
+                bottom: '55px',
               }}
             >
               How it works

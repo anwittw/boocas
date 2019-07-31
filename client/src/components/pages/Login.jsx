@@ -18,7 +18,7 @@ export default function Login(props) {
   }
 
   return (
-    <div className="Login">
+    <div className="Login YesMobile1">
       {/* <h2>Login</h2> */}
       <br />
       <br />
