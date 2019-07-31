@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import Home from './pages/Home'
@@ -26,12 +26,25 @@ const LandingPageWrapper = () => {
 }
 
 function App(props) {
+  const [isDisplayed, setIsDisplayed] = useState(window.innerWidth >= 1000)
+  function toggleSidebar() {
+    setIsDisplayed(!isDisplayed)
+  }
+
+  let appRightStyle = {}
+  if (isDisplayed) {
+    appRightStyle.marginLeft = 227
+  }
+
   return (
     <div>
+      <button className="toggle-sidebar" onClick={toggleSidebar}>
+        x
+      </button>
       {api.isLoggedIn() && (
         <div className="App">
-          <Sidebar />
-          <div className="App__right">
+          <Sidebar isDisplayed={isDisplayed} />
+          <div className="App__right" style={appRightStyle}>
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/create-group" component={CreateGroup} />

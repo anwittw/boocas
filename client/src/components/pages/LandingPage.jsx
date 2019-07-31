@@ -45,10 +45,12 @@ function LandingPage(props) {
               Logout
             </Link>
           )}
-          <img className="Books" src={process.env.PUBLIC_URL + '/Books.png'} />
+          <div className=" Landing__circle Spin__Circle" />
+
+          {/* <img className="Books" src={process.env.PUBLIC_URL + '/Books.png'} /> */}
         </div>
         <div className="Landing__circle" />
-        <div className="col-md second__box">
+        {/* <div className="col-md second__box">
           <div
             style={{
               position: 'absolute',
@@ -99,7 +101,7 @@ function LandingPage(props) {
           >
             <em>'Boocas'</em>
           </h1>
-        </div>
+        </div>*/}
       </div>
     </div>
   )
