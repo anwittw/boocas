@@ -53,7 +53,6 @@ export default function Shelf() {
                   />
                 </div>
               ))}
-
             <GroupCard
               link={'/create-group'}
               background="rgba(171, 191, 163, 0.3)"
