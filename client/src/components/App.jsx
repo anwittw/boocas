@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Sidebar from './Sidebar'
-import Home from './pages/Home'
+import Shelf from './pages/Shelf'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import GroupDetail from './pages/GroupDetail'
@@ -38,15 +38,19 @@ function App(props) {
 
   return (
     <div>
-      <button className="toggle-sidebar" onClick={toggleSidebar}>
-        x
-      </button>
+      <img
+        className="toggle-sidebar"
+        style={{ width: '40px', marginTop: '45px' }}
+        onClick={toggleSidebar}
+        src={process.env.PUBLIC_URL + '/left.png'}
+      />
+
       {api.isLoggedIn() && (
         <div className="App">
           <Sidebar isDisplayed={isDisplayed} />
           <div className="App__right" style={appRightStyle}>
             <Switch>
-              <Route path="/" exact component={Home} />
+              <Route path="/" exact component={Shelf} />
               <Route path="/create-group" component={CreateGroup} />
               <Route
                 path="/group-detail/:groupId/add-user"
