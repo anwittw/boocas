@@ -26,7 +26,12 @@ function ThoughtCard(props) {
               {props.title}
               <hr />
             </h5>
-            <p className="card-text bg-white" style={{ fontSize: '14px' }}>
+            <p
+              className="card-text"
+              style={{
+                fontSize: '14px',
+              }}
+            >
               {props.content}
               <br />
               <hr />

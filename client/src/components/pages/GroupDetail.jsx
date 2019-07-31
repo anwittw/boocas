@@ -113,31 +113,45 @@ function GroupDetail(props) {
               ))}
             </ul>
             {/* ------------------------------------------------------------- */}
-            <h2>Thoughts</h2>
             <div className=" card-columns" style={{ padding: '30px' }}>
               {thoughts.length === 0 && (
                 <div>
                   <ThoughtCard
                     link={'/group-detail/' + groupId + '/create-thought'}
                     background="rgba(171, 191, 163, 0.7)"
-                    title="Create a thought"
+                    title="Title"
                     _user={{}}
-                    content={'Here will be your content'}
+                    content={'<<  Create your first thought  >>'}
                   />
                 </div>
               )}
 
-              {thoughts.map((thought, i) => (
-                <div key={i}>
-                  <ThoughtCard
-                    link={'/thought-detail/' + thought._id}
-                    _user={thought._user}
-                    title={thought.title}
-                    content={thought.content}
-                    _id={thought._id}
-                  />
+              {thoughts.length > 0 && (
+                <div>
+                  {thoughts.map((thought, i) => (
+                    <div key={i}>
+                      <ThoughtCard
+                        link={'/thought-detail/' + thought._id}
+                        _user={thought._user}
+                        title={thought.title}
+                        content={thought.content}
+                        _id={thought._id}
+                      />
+                    </div>
+                  ))}
+                  <div>
+                    <ThoughtCard
+                      link={'/group-detail/' + groupId + '/create-thought'}
+                      background="rgba(171, 191, 163, 0.3)"
+                      title="Title"
+                      _user={{}}
+                      content={
+                        'This is the content you want to share with the world'
+                      }
+                    />
+                  </div>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         )}
