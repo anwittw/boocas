@@ -38,13 +38,14 @@ function App(props) {
 
   return (
     <div>
-      <img
-        className="toggle-sidebar"
-        style={{ width: '40px', marginTop: '45px' }}
-        onClick={toggleSidebar}
-        src={process.env.PUBLIC_URL + '/left.png'}
-      />
-
+      {api.isLoggedIn() && (
+        <img
+          className="toggle-sidebar"
+          style={{ width: '55px', marginTop: '32px', opacity: 0.5 }}
+          onClick={toggleSidebar}
+          src={process.env.PUBLIC_URL + '/greyonoff.png'}
+        />
+      )}
       {api.isLoggedIn() && (
         <div className="App">
           <Sidebar isDisplayed={isDisplayed} />
