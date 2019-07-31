@@ -36,10 +36,7 @@ export default function Home() {
             if (Date1 < Date2) return -1
           })
           .map(group => (
-            <Link
-              to={'/group-detail/' + group._group._id}
-              key={group._group._id}
-            >
+            <Link to={'/group-detail/' + group._group._id} key={group._group}>
               <div
                 className="hover card mb-3 bg-white border-secondary"
                 style={{
