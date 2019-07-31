@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Sidebar from './Sidebar'
-import Home from './pages/Home'
+import Shelf from './pages/Shelf'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import GroupDetail from './pages/GroupDetail'
@@ -33,7 +33,7 @@ function App(props) {
           <Sidebar />
           <div className="App__right">
             <Switch>
-              <Route path="/" exact component={Home} />
+              <Route path="/" exact component={Shelf} />
               <Route path="/create-group" component={CreateGroup} />
               <Route
                 path="/group-detail/:groupId/add-user"
