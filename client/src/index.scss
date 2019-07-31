@@ -55,9 +55,9 @@ body {
 
 .App__right {
   margin-top: 100px;
-  width: 84%;
-  margin-left: auto;
+  width: 100%;
   position: relative;
+  transition: margin-left 1s;
 }
 
 .App__right__header {
@@ -94,16 +94,37 @@ body {
 .Sidebar {
   z-index: 2;
   position: fixed;
+  box-shadow: 2px 3px 5px lightgrey;
   background-color: $background;
-  max-width: 16vw;
+  width: 227px;
+  //max-width: 16vw;
   //max-width: 20vw;
   height: 100vh;
+  transition: 1s;
+}
+.Sidebar__groups {
+  height: calc(100vh - 250px);
+  box-shadow: 2px 3px 5px lightgrey;
+  &:hover {
+    overflow-y: scroll;
+  }
+}
+
+.toggle-sidebar {
+  position: fixed;
+  z-index: 10;
 }
 
 .container-full-width {
   display: flex;
   position: relative;
-  background-color: $background;
+  background-image: linear-gradient(
+    to bottom right,
+    $background,
+    $background,
+    $secondary
+  );
+  //background-color: $background;
   height: 100vh;
 }
 
@@ -164,7 +185,7 @@ body {
 }
 
 .Books {
-  position: absolute;
+  positiion: absolute;
   width: 514px;
   top: 395px;
   right: 46px;
@@ -176,8 +197,8 @@ body {
   top: 80px;
   left: 500px;
   z-index: 1;
-  width: 497px;
-  height: 497px;
+  width: 450px;
+  height: 450px;
   background-color: #eab860;
   opacity: 0.5;
   border-radius: 50%;
@@ -318,4 +339,38 @@ body {
 .hover:hover {
   // border: 3px solid $secondary;
   box-shadow: 3px 3px 3px $secondary;
+}
+
+.Spin__Circle {
+  border: 16px;
+  border-top: 40px solid rgba(255, 199, 87, 0.8);
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  animation: spin 10s linear infinite;
+  z-index: 10;
+  //box-shadow: 5px 10px 10px grey;
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.Active__sidebar {
+  font-size: 16px;
+  padding: 0px 20px;
+
+  &.active,
+  &:hover {
+    color: white;
+    background-color: $secondary;
+    opacity: 0.7;
+    font-weight: bold;
+  }
 }
