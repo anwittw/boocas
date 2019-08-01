@@ -96,9 +96,23 @@ function ThoughtDetail(props) {
           <Row className="mt-5 mb-5">
             <Col md="3" style={{ fontSize: '14px' }}>
               {thought.comments_left.length > 0 &&
-                thought.comments_left.map(comment => (
-                  <CommentCard comment={comment} />
-                ))}
+                thought.comments_left
+                  .sort(function(a, b) {
+                    var date1 = new Date(a.created_at)
+                    var date2 = new Date(b.created_at)
+
+                    if (date2 > date1) {
+                      return 1
+                    } else if (date2 < date1) {
+                      return -1
+                    }
+                  })
+                  .map(comment => (
+                    <CommentCard
+                      background="rgba(171, 191, 163, 0.1)"
+                      comment={comment}
+                    />
+                  ))}
             </Col>
             <Col md="6">
               <div>
@@ -109,6 +123,7 @@ function ThoughtDetail(props) {
                   onChange={handleChangeComment}
                   placeholder="Comment"
                 />
+                <br />
                 <Link
                   style={{
                     fontSize: '15px',
@@ -121,6 +136,7 @@ function ThoughtDetail(props) {
                 >
                   <strong>Add your Comment</strong>
                 </Link>
+                <br />
               </div>
               <div>
                 <ThoughtCardDetail
@@ -134,9 +150,23 @@ function ThoughtDetail(props) {
             </Col>
             <Col md="3" style={{ fontSize: '14px' }}>
               {thought.comments_right.length > 0 &&
-                thought.comments_right.map(comment => (
-                  <CommentCard comment={comment} />
-                ))}
+                thought.comments_right
+                  .sort(function(a, b) {
+                    var date1 = new Date(a.created_at)
+                    var date2 = new Date(b.created_at)
+
+                    if (date2 > date1) {
+                      return 1
+                    } else if (date2 < date1) {
+                      return -1
+                    }
+                  })
+                  .map(comment => (
+                    <CommentCard
+                      background="rgba(171, 191, 163, 0.1)"
+                      comment={comment}
+                    />
+                  ))}
             </Col>
           </Row>
         </Container>

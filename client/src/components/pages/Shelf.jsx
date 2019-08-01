@@ -39,8 +39,19 @@ export default function Shelf() {
                 var date1 = new Date(a._group.updated_at)
                 var date2 = new Date(b._group.updated_at)
 
-                if (date2 > date1) return 1
-                else return -1
+                if (date2 > date1) {
+                  return 1
+                } else if (date2 < date1) {
+                  return -1
+                }
+
+                if (a._group.name < b._group.name) {
+                  return -1
+                } else if (a._group.name > b._group.name) {
+                  return 1
+                } else {
+                  return 0
+                }
               })
               .map((group, i) => (
                 <div key={i}>

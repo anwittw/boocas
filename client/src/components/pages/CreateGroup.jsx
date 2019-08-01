@@ -27,8 +27,7 @@ export default function CreateGroup(props) {
     translator: '',
     pages: 0,
     year: '',
-    coverPictureUrl:
-      'https://res.cloudinary.com/djbsd3soa/image/upload/c_thumb,w_200,g_face/v1564658294/book-book-pictures/baeolgko3so7jpndagvg.jpg',
+    coverPictureUrl: '../../../BookCover.jpg',
     picture: null,
   })
 
@@ -71,7 +70,7 @@ export default function CreateGroup(props) {
       )
       .then(response => {
         setStateBook({
-          isbn_13: response.data.items[0].volumeInfo.industryIdentifiers
+          isbn_10: response.data.items[0].volumeInfo.industryIdentifiers
             ? response.data.items[0].volumeInfo.industryIdentifiers[1]
                 .identifier
             : '',
@@ -205,7 +204,7 @@ export default function CreateGroup(props) {
                     <img
                       src={stateBook.coverPictureUrl}
                       alt="coverPictureUrl"
-                      className="h-200"
+                      style={{ height: '200px' }}
                     />
                   </div>
                 </Row>
