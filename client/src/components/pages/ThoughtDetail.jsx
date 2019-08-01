@@ -140,8 +140,6 @@ function ThoughtDetail(props) {
             </Col>
           </Row>
         </Container>
-
-        <span className="App__right__circle" />
       </div>
     </div>
   )

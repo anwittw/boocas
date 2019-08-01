@@ -6,14 +6,14 @@ import { Button } from 'reactstrap'
 
 function setSize(size) {
   if (size === 'small') return 25
-  if (size === 'medium') return 35
-  if (size === 'large') return 40
+  if (size === 'medium') return 30
+  if (size === 'large') return 35
 }
 
 function setFontSize(size) {
-  if (size === 'small') return 12
-  if (size === 'medium') return 14
-  if (size === 'large') return 16
+  if (size === 'small') return 10
+  if (size === 'medium') return 12
+  if (size === 'large') return 14
 }
 
 //Component allows two colors
