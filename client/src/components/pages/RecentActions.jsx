@@ -5,7 +5,7 @@ import api from '../../api'
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'
 
-export default function EditProfil(props) {
+export default function RecentActions(props) {
   return (
     <div>
       <div className="App__right__header" style={{ padding: '15px 30px' }}>

@@ -16,6 +16,7 @@ import api from '../api'
 import { withRouter } from 'react-router'
 import MainNavbar from './MainNavbar'
 import EditProfil from './pages/EditProfil'
+import RecentActions from './pages/RecentActions'
 
 const LandingPageWrapper = () => {
   return (
