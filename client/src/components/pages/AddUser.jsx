@@ -99,6 +99,7 @@ export default function AddUser(props) {
                 <Col xs={{ size: 4, offset: 3 }}>{user.username}</Col>
                 <Col xs={{ size: 2 }}>
                   <Button
+                    className="btn btn-sm btn-outline-secondary "
                     block
                     tag={NavLink}
                     id={user._id}
