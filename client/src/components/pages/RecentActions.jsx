@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { Container } from 'reactstrap'
+import { Container, Col, Row, Table } from 'reactstrap'
 import { Link, NavLink } from 'react-router-dom'
 import api from '../../api'
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'
 
 export default function RecentActions(props) {
+  const [stateResult, setstateResult] = useState({
+    today: [],
+    yesterday: [],
+    oneBeforeYesterday: [],
+  })
+
   function setRelevantGroups(memberships) {
     return memberships.map(membership => membership._group._id.toString())
   }
@@ -29,10 +35,6 @@ export default function RecentActions(props) {
       }
     )
   }, [])
-
-  const [stateResult, setstateResult] = useState([
-    { display: '', link: '', date: '' },
-  ])
 
   useEffect(() => {
     setstateResult(setAll(stateFetch.actions))
@@ -74,16 +76,23 @@ export default function RecentActions(props) {
     toFilter.push(...setThoughts(actions))
     toFilter.push(...setComments(actions))
 
-    let toReturn = {
-      today: toFilter.filter(element => isToday(new Date(element.date))),
-      yesterday: toFilter.filter(element =>
-        isYesterday(new Date(element.date))
-      ),
-      oneBeforeYesterday: toFilter.filter(element =>
-        isOneBeforeYesterday(new Date(element.date))
-      ),
+    if (toFilter.length > 0) {
+      let toReturn = {
+        today: toFilter.filter(element => isToday(new Date(element.date))),
+        yesterday: toFilter.filter(element =>
+          isYesterday(new Date(element.date))
+        ),
+        oneBeforeYesterday: toFilter.filter(element =>
+          isOneBeforeYesterday(new Date(element.date))
+        ),
+      }
+      return toReturn
     }
-    return toReturn
+    return {
+      today: [],
+      yesterday: [],
+      oneBeforeYesterday: [],
+    }
   }
 
   function setCreatedBooks(actions) {
@@ -112,6 +121,7 @@ export default function RecentActions(props) {
               ' joined ' +
               filteredAction._group.name,
         date: filteredAction.created_at,
+        link: filteredAction.link,
       }
     })
   }
@@ -131,6 +141,7 @@ export default function RecentActions(props) {
               ' created a new thought: ' +
               filteredAction.teaser,
         date: filteredAction.created_at,
+        link: filteredAction.link,
       }
     })
   }
@@ -150,6 +161,7 @@ export default function RecentActions(props) {
               ' created a new comment: ' +
               filteredAction.teaser,
         date: filteredAction.created_at,
+        link: filteredAction.link,
       }
     })
   }
@@ -160,13 +172,50 @@ export default function RecentActions(props) {
         <MainNavbar title="Recent Actions" />
       </div>
       <div className="App__right__body">
-        <Container className="mt-5">
-          <h1>Fetch</h1>
-          <pre>{JSON.stringify(stateFetch, null, 2)}</pre>
-          <h1>Result</h1>
+        {
+          // <pre>{JSON.stringify(stateFetch, null, 2)}</pre>
+          // <h1>Result</h1>
           <pre>{JSON.stringify(stateResult, null, 2)}</pre>
-
-          <BackButton history={props.history} />
+        }
+        <Container className="mt-5">
+          {stateResult.today.length > 0 && (
+            <Row>
+              <Col
+                className="text-center"
+                xs="12"
+                md={{ size: '8', offset: 2 }}
+              >
+                <h1>Today's Action's</h1>
+              </Col>
+            </Row>
+          )}
+          {stateResult.yesterday.length > 0 && (
+            <Row>
+              <Col
+                className="text-center"
+                xs="12"
+                md={{ size: '8', offset: 2 }}
+              >
+                <h1>Yesterday's Action's</h1>
+              </Col>
+            </Row>
+          )}
+          {stateResult.oneBeforeYesterday.length > 0 && (
+            <Row>
+              <Col
+                className="text-center"
+                xs="12"
+                md={{ size: '8', offset: 2 }}
+              >
+                <h1>The Day's before Yesterday's Action's</h1>
+              </Col>
+            </Row>
+          )}
+          <Row>
+            <Col className="my-3" xs="12" md={{ size: '2', offset: 5 }}>
+              <BackButton history={props.history} />
+            </Col>
+          </Row>
         </Container>
       </div>
     </div>
