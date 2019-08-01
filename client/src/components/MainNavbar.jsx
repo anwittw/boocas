@@ -17,7 +17,7 @@ function MainNavbar(props) {
       <h1>{props.title}</h1>
       {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
       {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-      <div className="d-flex flex-col ">
+      <div className="d-flex flex-row justify-content-start">
         <span className="Circle__button__profile">
           <Circle
             size="medium"
@@ -38,7 +38,7 @@ function MainNavbar(props) {
             <div className="ml-3">
               {api.isLoggedIn() && (
                 <Link to="/edit-profil">
-                  <span>Edit profil</span>
+                  <span>Edit profile</span>
                 </Link>
               )}
             </div>

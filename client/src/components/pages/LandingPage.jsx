@@ -58,7 +58,7 @@ function LandingPage(props) {
             className="YesMobile2"
             style={{
               position: 'absolute',
-              bottom: '140px',
+              bottom: '21%',
               left: '45px',
             }}
           >
@@ -71,7 +71,7 @@ function LandingPage(props) {
             <br />
             <br />
 
-            <span style={{ fontSize: '15px', lineHeight: '0.1' }}>
+            <span style={{ fontSize: '90%', lineHeight: '0.1' }}>
               Chances are your friends are discussing their
               <br /> favorite books \ and least favorite \ on 'Boocas'.
             </span>
@@ -86,7 +86,7 @@ function LandingPage(props) {
                 fontWeight: 'bold',
                 position: 'absolute',
                 right: '90px',
-                bottom: '55px',
+                bottom: '7%',
               }}
             >
               How it works

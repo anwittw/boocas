@@ -16,8 +16,8 @@ export default function Shelf() {
 
   return (
     <div>
-      <div className="App__right__header" style={{ padding: '15px 30px' }}>
-        <MainNavbar title={'Welcome to Boocas ' + username} />
+      <div className="App__right__header">
+        <MainNavbar title={'Welcome to your shelf, ' + username + '!'} />
       </div>
 
       <div className=" card-columns" style={{ padding: '30px' }}>

@@ -63,13 +63,20 @@ function GroupDetail(props) {
   return (
     //<HideOnScroll>
     <div>
-      <div className="App__right__header" style={{ padding: '15px 30px' }}>
+      <div className="App__right__header">
         <MainNavbar title={group.name} />
       </div>
 
       <div className="App__right__body">
         {/* <pre>{JSON.stringify(groupDetails, null, 2)}</pre> */}
         <div style={{ padding: '15px 30px' }}>
+          <Button
+            tag={Link}
+            to={groupId + '/create-thought'}
+            className=" btn-sm btn-outline-secondary "
+          >
+            Create a thought
+          </Button>
           {userIsCreator() && (
             <Button
               tag={Link}
