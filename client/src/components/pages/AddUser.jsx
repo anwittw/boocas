@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Input, Button, Table, Label } from 'reactstrap'
+import { Input, Button, Table, Label, Container, Col, Row } from 'reactstrap'
 import api from '../../api'
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'
-import HideOnScroll from '../HideOnScroll'
 
 export default function AddUser(props) {
   let groupId = props.match.params.groupId
@@ -73,57 +72,53 @@ export default function AddUser(props) {
   }
 
   return (
-    <HideOnScroll>
-      <div>
-        <div>
-          <div className="App__right__header">
-            <MainNavbar title="Add a User a Group" />
-          </div>
+    <div>
+      <div className="App__right__header">
+        <MainNavbar title="Add a User a Group" />
+      </div>
+      <div className="App__right__body">
+        <Container className="mt-5">
           {/* <pre>{JSON.stringify(state, null, 2)}</pre>
         <pre>{JSON.stringify(allUser, null, 2)}</pre>
         <pre>{JSON.stringify(allMembership, null, 2)}</pre> */}
+          <Row className="mt-3 mb-5">
+            <Col xs="12" md={{ size: 8, offset: 2 }}>
+              <Input
+                type="text"
+                name="search"
+                placeholder="Search"
+                value={state.search}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
+          {filterByMembership(allUser)
+            .filter(user => filterBySearchBar(user))
+            .map((user, i) => (
+              <Row className="my-3">
+                <Col xs={{ size: 4, offset: 3 }}>{user.username}</Col>
+                <Col xs={{ size: 2 }}>
+                  <Button
+                    block
+                    tag={NavLink}
+                    id={user._id}
+                    to={'/group-detail/' + groupId + '/add-user'}
+                    onClick={handleSubmitMembership}
+                  >
+                    Add
+                  </Button>
+                </Col>
+              </Row>
+            ))}
           <div>
-            <Label for="Searchbar">Search by username</Label>
-            <Input
-              type="text"
-              name="search"
-              placeholder="Search"
-              value={state.search}
-              onChange={handleChange}
-            />
+            <Row className="my-5">
+              <Col xs="12" md={{ size: 2, offset: 5 }}>
+                <BackButton history={props.history} />
+              </Col>
+            </Row>
           </div>
-          <div>
-            <Table hover>
-              {/* <thead>
-              <tr>
-                <th>username</th>
-                <th>A</th>
-              </tr>
-            </thead> */}
-              <tbody>
-                {filterByMembership(allUser)
-                  .filter(user => filterBySearchBar(user))
-                  .map((user, i) => (
-                    <tr key={i}>
-                      <td className="align-middle">{user.username}</td>
-                      <td className="align-middle">
-                        <Button
-                          tag={NavLink}
-                          id={user._id}
-                          to={'/group-detail/' + groupId + '/add-user'}
-                          onClick={handleSubmitMembership}
-                        >
-                          Add
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </Table>
-            <BackButton history={props.history} />
-          </div>
-        </div>
+        </Container>
       </div>
-    </HideOnScroll>
+    </div>
   )
 }
