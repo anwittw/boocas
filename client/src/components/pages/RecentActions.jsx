@@ -5,6 +5,15 @@ import api from '../../api'
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'
 
+import Moment from 'react-moment'
+
+const calendarStrings = {
+  lastDay: '[Yesterday at] LT',
+  sameDay: '[Today at] LT',
+  lastWeek: '[last] dddd [at] LT',
+  sameElse: 'L',
+}
+
 export default function RecentActions(props) {
   const [stateResult, setstateResult] = useState({
     today: [],
@@ -175,7 +184,7 @@ export default function RecentActions(props) {
         {
           // <pre>{JSON.stringify(stateFetch, null, 2)}</pre>
           // <h1>Result</h1>
-          <pre>{JSON.stringify(stateResult, null, 2)}</pre>
+          // <pre>{JSON.stringify(stateResult, null, 2)}</pre>
         }
         <Container className="mt-5">
           {stateResult.today.length > 0 && (
@@ -185,33 +194,71 @@ export default function RecentActions(props) {
                 xs="12"
                 md={{ size: '8', offset: 2 }}
               >
-                <h1>Today's Action's</h1>
+                <h1 className="mb-3">Today's Action's</h1>
+                {stateResult.today.map(action => (
+                  <div className="my-3">
+                    <Link to={action.link}>
+                      {action.display},{' '}
+                      <span className="small text-muted">
+                        <Moment calendar={calendarStrings}>
+                          {action.date}
+                        </Moment>
+                      </span>
+                    </Link>
+                  </div>
+                ))}
               </Col>
             </Row>
           )}
           {stateResult.yesterday.length > 0 && (
-            <Row>
+            <Row className="mt-5 mb-3">
               <Col
                 className="text-center"
                 xs="12"
                 md={{ size: '8', offset: 2 }}
               >
-                <h1>Yesterday's Action's</h1>
+                <hr />
+                <h1 className="mb-3">Yesterday's Action's</h1>
+                {stateResult.yesterday.map(action => (
+                  <div>
+                    <Link to={action.link}>
+                      {action.display},{' '}
+                      <span className="small text-muted">
+                        <Moment calendar={calendarStrings}>
+                          {action.date}
+                        </Moment>
+                      </span>
+                    </Link>
+                  </div>
+                ))}
               </Col>
             </Row>
           )}
           {stateResult.oneBeforeYesterday.length > 0 && (
-            <Row>
+            <Row className="mt-5">
               <Col
                 className="text-center"
                 xs="12"
                 md={{ size: '8', offset: 2 }}
               >
-                <h1>The Day's before Yesterday's Action's</h1>
+                <hr />
+                <h1 className="mb-3"> The Day's before Yesterday's Action's</h1>
+                {stateResult.oneBeforeYesterday.map(action => (
+                  <div>
+                    <Link to={action.link}>
+                      {action.display},{' '}
+                      <span className="small text-muted">
+                        <Moment calendar={calendarStrings}>
+                          {action.date}
+                        </Moment>
+                      </span>
+                    </Link>
+                  </div>
+                ))}
               </Col>
             </Row>
           )}
-          <Row>
+          <Row className="my-5">
             <Col className="my-3" xs="12" md={{ size: '2', offset: 5 }}>
               <BackButton history={props.history} />
             </Col>

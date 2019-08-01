@@ -7,6 +7,8 @@ import MainNavbar from '../MainNavbar'
 import ThoughtCard from '../ThoughtCard'
 //import HideOnScroll from '../HideOnScroll'
 
+import Circle from '../Circle'
+
 function GroupDetail(props) {
   //console.log('props: ', props.match)
 
@@ -102,17 +104,18 @@ function GroupDetail(props) {
             </ul>
             <img src={book.coverPictureUrl} width="100" alt="book-cover" /> */}
             <h2>Members</h2>
-            <ul>
+            <div className="d-flex">
               {memberships.map((membership, i) => (
-                <li
-                  key={i}
-                  className={memberships[i].isCreator ? 'font-weight-bold' : ''}
-                >
-                  {memberships[i]._user.username}
-                </li>
+                <div key={i} className="ml-2">
+                  <Circle
+                    size="medium"
+                    color={membership.isCreator ? 'success' : 'background'}
+                    onClick={() => {}}
+                    text={membership._user.username.substr(0, 2)}
+                  />
+                </div>
               ))}
-            </ul>
-            {/* ------------------------------------------------------------- */}
+            </div>
             <div className=" card-columns" style={{ padding: '30px' }}>
               {thoughts.length === 0 && (
                 <div>
