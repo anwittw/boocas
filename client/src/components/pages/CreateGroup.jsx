@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Input, Button, Container, Col, Row } from 'reactstrap'
 import api from '../../api'
 
 import Autosuggest from 'react-autosuggest'
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'
+import AppContext from '../../contexts/AppContext'
 
 export default function CreateGroup(props) {
+  const [myGroups, setMyGroups] = useContext(AppContext)
   const [stateGroup, setStateGroup] = useState({
     _book: '',
     name: '',
@@ -68,6 +70,7 @@ export default function CreateGroup(props) {
           isPrivate: '',
         })
         //console.log('Group', response)
+        setMyGroups([...myGroups, response])
         api
           .createMembership({ _group: response._id, isCreator: true })
           .then(response => {

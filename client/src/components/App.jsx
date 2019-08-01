@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import Shelf from './pages/Shelf'
@@ -18,6 +18,8 @@ import MainNavbar from './MainNavbar'
 import EditProfil from './pages/EditProfil'
 import RecentActions from './pages/RecentActions'
 
+import AppContext from '../contexts/AppContext'
+
 const LandingPageWrapper = () => {
   return (
     <LandingPage>
@@ -33,75 +35,79 @@ function App(props) {
     setIsDisplayed(!isDisplayed)
   }
 
+  const [myGroups, setMyGroups] = useState([])
+
   let appRightStyle = {}
   if (isDisplayed) {
     appRightStyle.marginLeft = 227
   }
 
   return (
-    <div>
-      {api.isLoggedIn() && (
-        <img
-          className="toggle-sidebar"
-          style={{ height: '82px', marginTop: '18px', opacity: 0.5 }}
-          onClick={toggleSidebar}
-          src={process.env.PUBLIC_URL + '/pushBar.png'}
-        />
-      )}
-      {api.isLoggedIn() && (
-        <div className="App">
-          <Sidebar isDisplayed={isDisplayed} />
-          <div className="App__right" style={appRightStyle}>
+    <AppContext.Provider value={[myGroups, setMyGroups]}>
+      <div>
+        {api.isLoggedIn() && (
+          <img
+            className="toggle-sidebar"
+            style={{ height: '82px', marginTop: '18px', opacity: 0.5 }}
+            onClick={toggleSidebar}
+            src={process.env.PUBLIC_URL + '/pushBar.png'}
+          />
+        )}
+        {api.isLoggedIn() && (
+          <div className="App">
+            <Sidebar isDisplayed={isDisplayed} />
+            <div className="App__right" style={appRightStyle}>
+              <Switch>
+                <Route path="/" exact component={Shelf} />
+                <Route exact path="/create-group" component={CreateGroup} />
+                <Route
+                  exact
+                  path="/group-detail/:groupId/add-user"
+                  component={AddUser}
+                />
+                <Route
+                  exact
+                  path="/group-detail/:groupId/create-thought"
+                  component={CreateThought}
+                />
+                <Route exact path="/search-group" component={SearchGroup} />
+                <Route exact path="/edit-profil" component={EditProfil} />
+                <Route exact path="/recent-actions" component={RecentActions} />
+                <Route
+                  exact
+                  path="/group-detail/:groupId"
+                  component={GroupDetail}
+                />
+                <Route
+                  exact
+                  path="/group-detail/:groupId/thought-detail/:thoughtId"
+                  component={ThoughtDetail}
+                />
+                <Route render={() => <h2>404</h2>} />
+              </Switch>
+            </div>
+          </div>
+        )}
+        {!api.isLoggedIn() && (
+          <div className="App__Logout">
+            {/* <MainNavbar /> */}
             <Switch>
-              <Route path="/" exact component={Shelf} />
-              <Route exact path="/create-group" component={CreateGroup} />
+              <Route path="/how-it-works" component={HowItWorks} />
+              <Route path="/" component={LandingPageWrapper} />
+              <Route path="/create-group" component={CreateGroup} />
               <Route
-                exact
-                path="/group-detail/:groupId/add-user"
-                component={AddUser}
-              />
-              <Route
-                exact
                 path="/group-detail/:groupId/create-thought"
                 component={CreateThought}
               />
-              <Route exact path="/search-group" component={SearchGroup} />
-              <Route exact path="/edit-profil" component={EditProfil} />
-              <Route exact path="/recent-actions" component={RecentActions} />
-              <Route
-                exact
-                path="/group-detail/:groupId"
-                component={GroupDetail}
-              />
-              <Route
-                exact
-                path="/group-detail/:groupId/thought-detail/:thoughtId"
-                component={ThoughtDetail}
-              />
+              <Route path="/search-group" component={SearchGroup} />
+              <Route path="/group-detail/:groupId" component={GroupDetail} />
+              {/* <Route path="/" exact component={Home} /> */}
               <Route render={() => <h2>404</h2>} />
             </Switch>
           </div>
-        </div>
-      )}
-      {!api.isLoggedIn() && (
-        <div className="App__Logout">
-          {/* <MainNavbar /> */}
-          <Switch>
-            <Route path="/how-it-works" component={HowItWorks} />
-            <Route path="/" component={LandingPageWrapper} />
-            <Route path="/create-group" component={CreateGroup} />
-            <Route
-              path="/group-detail/:groupId/create-thought"
-              component={CreateThought}
-            />
-            <Route path="/search-group" component={SearchGroup} />
-            <Route path="/group-detail/:groupId" component={GroupDetail} />
-            {/* <Route path="/" exact component={Home} /> */}
-            <Route render={() => <h2>404</h2>} />
-          </Switch>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </AppContext.Provider>
   )
 }
 
