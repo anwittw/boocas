@@ -53,20 +53,27 @@ function App(props) {
           <div className="App__right" style={appRightStyle}>
             <Switch>
               <Route path="/" exact component={Shelf} />
-              <Route path="/create-group" component={CreateGroup} />
+              <Route exact path="/create-group" component={CreateGroup} />
               <Route
+                exact
                 path="/group-detail/:groupId/add-user"
                 component={AddUser}
               />
               <Route
+                exact
                 path="/group-detail/:groupId/create-thought"
                 component={CreateThought}
               />
-              <Route path="/search-group" component={SearchGroup} />
-              <Route path="/edit-profil" component={EditProfil} />
-              <Route path="/group-detail/:groupId" component={GroupDetail} />
+              <Route exact path="/search-group" component={SearchGroup} />
+              <Route exact path="/edit-profil" component={EditProfil} />
               <Route
-                path="/thought-detail/:thoughtId"
+                exact
+                path="/group-detail/:groupId"
+                component={GroupDetail}
+              />
+              <Route
+                exact
+                path="/group-detail/:groupId/thought-detail/:thoughtId"
                 component={ThoughtDetail}
               />
               <Route render={() => <h2>404</h2>} />

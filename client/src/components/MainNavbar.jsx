@@ -17,8 +17,8 @@ function MainNavbar(props) {
       <h1>{props.title}</h1>
       {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
       {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-      <div className="d-flex flex-row justify-content-end">
-        <span className="Circle__button">
+      <div className="d-flex flex-col ">
+        <span className="Circle__button__profile">
           <Circle
             size="medium"
             color="success"
