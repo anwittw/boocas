@@ -73,6 +73,8 @@ function ThoughtDetail(props) {
     })
   }
 
+  // window.scrollTo(0, 0)
+
   return (
     <div>
       <div className="App__right__header" style={{ padding: '15px 30px' }}>

@@ -5,6 +5,7 @@ import { Button } from 'reactstrap'
 import { withRouter } from 'react-router'
 import MainNavbar from '../MainNavbar'
 import ThoughtCard from '../ThoughtCard'
+//import HideOnScroll from '../HideOnScroll'
 
 function GroupDetail(props) {
   //console.log('props: ', props.match)
@@ -60,6 +61,7 @@ function GroupDetail(props) {
   }
 
   return (
+    //<HideOnScroll>
     <div>
       <div className="App__right__header" style={{ padding: '15px 30px' }}>
         <MainNavbar title={group.name} />
@@ -67,7 +69,6 @@ function GroupDetail(props) {
 
       <div className="App__right__body">
         {/* <pre>{JSON.stringify(groupDetails, null, 2)}</pre> */}
-        <span className="App__right__circle" />
         <div>
           <Button
             tag={Link}
@@ -157,6 +158,7 @@ function GroupDetail(props) {
         )}
       </div>
     </div>
+    // </HideOnScroll>
   )
 }
 

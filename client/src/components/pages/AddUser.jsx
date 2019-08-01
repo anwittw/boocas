@@ -111,29 +111,6 @@ export default function AddUser(props) {
               </Row>
             ))}
           <div>
-            {
-              // <Table hover>
-              //   <tbody>
-              //     {filterByMembership(allUser)
-              //       .filter(user => filterBySearchBar(user))
-              //       .map((user, i) => (
-              //         <tr key={i}>
-              //           <td className="align-middle">{user.username}</td>
-              //           <td className="align-middle">
-              //             <Button
-              //               tag={NavLink}
-              //               id={user._id}
-              //               to={'/group-detail/' + groupId + '/add-user'}
-              //               onClick={handleSubmitMembership}
-              //             >
-              //               Add
-              //             </Button>
-              //           </td>
-              //         </tr>
-              //       ))}
-              //   </tbody>
-              // </Table>
-            }
             <Row className="my-5">
               <Col xs="12" md={{ size: 2, offset: 5 }}>
                 <BackButton history={props.history} />

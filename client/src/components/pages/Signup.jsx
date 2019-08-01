@@ -32,7 +32,7 @@ export default function Signup(props) {
       .catch(err => setState({ message: err.toString() }))
   }
   return (
-    <div className="Signup ">
+    <div className="Signup YesMobile1 ">
       <br />
       {/* <h2 style={{ color: 'rgb(234, 184, 96)' }}>Signup</h2> */}
       <form>
@@ -67,7 +67,7 @@ export default function Signup(props) {
         <br />
         <button
           style={{ width: '211px' }}
-          className="btn btn-lg btn-outline-success"
+          className="btn btn-sm btn-outline-success"
           onClick={e => handleClick(e)}
         >
           Signup

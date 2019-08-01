@@ -30,6 +30,18 @@ $background: rgba(244, 237, 222, 1);
 textarea.form-control {
   font-size: 14px;
 }
+input.form-control {
+  background: rgba(244, 237, 222, 0.3);
+  box-shadow: 8px 8px rgba(217, 214, 208, 0.5);
+}
+textarea.form-control {
+  background: rgba(244, 237, 222, 0.8);
+  box-shadow: 8px 8px rgba(217, 214, 208, 0.8);
+}
+select.text-center.form-control {
+  background: $orange50;
+  box-shadow: 8px 8px rgba(217, 214, 208, 0.8);
+}
 
 h1 {
   font-size: 2rem;
@@ -47,6 +59,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Letter Gothic', sans-serif;
+  overflow-x: hidden;
 }
 
 .App {
@@ -103,45 +116,48 @@ body {
   transition: 1s;
 }
 .Sidebar__groups {
-  height: calc(100vh - 250px);
+  height: calc(100vh - 300px);
   box-shadow: 2px 3px 5px lightgrey;
   &:hover {
     overflow-y: scroll;
   }
 }
 
-.toggle-sidebar {
-  position: fixed;
-  z-index: 10;
-}
-
-@media (max-width: 800px) {
-}
+$breakpoint-mobile: 670px;
 
 .container-full-width {
-  // background-color: red;
   background-image: linear-gradient(
     to bottom right,
     $background,
     $background,
     $secondary
   );
-  // width: 100vw;
+
   height: 100vh;
   border: 0.1px solid white;
 }
 
 .first__box {
   //border: 2px solid green;
-  margin-top: 90px;
-  margin-left: 230px;
+  margin-top: 6%;
+  // margin-bottom: 1%;
+  margin-left: 16%;
   display: flex;
   flex-direction: row-reverse;
-  width: 600px;
-  height: 650px;
+  width: 41%;
+  height: 81%;
   background: white;
   border-radius: 10px;
-  box-shadow: 2px 0.1px 10px slategrey;
+  box-shadow: 2px 10px 20px grey;
+  @media (max-width: $breakpoint-mobile) {
+    //border: 2px solid green;
+    margin-top: 2%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 900px;
+  }
 }
 
 .Green__card {
@@ -155,59 +171,10 @@ body {
   height: 310px;
   z-index: 1;
   border-radius: 10px;
-}
-
-// .second__box {
-//   display: flex;
-//   width: 420px;
-//   height: 70vh;
-//   background: white;
-//   position: absolute;
-//   right: 140px;
-//   border-radius: 5px;
-//   box-shadow: 6px 5px 20px slategrey;
-// }
-
-// .Green__strip {
-//   position: absolute;
-//   left: -0.5px;
-//   display: block;
-//   background: $green70;
-//   width: 103px;
-//   height: 70vh;
-//   z-index: 1;
-//   border-radius: 5px;
-// }
-
-// .Green__strip__2 {
-//   position: absolute;
-//   right: 550px;
-//   display: inline-block;
-//   background: $green70;
-//   width: 340px;
-//   height: 650px;
-//   top: 45px;
-//   border-radius: 5px;
-// }
-
-// .Books {
-//   positiion: absolute;
-//   width: 514px;
-//   top: 395px;
-//   right: 46px;
-// }
-
-.Landing__circle {
-  display: block;
-  position: relative;
-  top: 80px;
-  left: 500px;
-  z-index: 1;
-  width: 450px;
-  height: 450px;
-  background-color: #eab860;
-  opacity: 0.5;
-  border-radius: 50%;
+  @media (max-width: $breakpoint-mobile) {
+    margin: auto;
+    margin-top: 40px;
+  }
 }
 
 .Landing__circle__other {
@@ -218,7 +185,12 @@ body {
   //z-index: 1;
   width: 497px;
   height: 497px;
-  background-color: #eab860;
+  background-image: linear-gradient(
+    to bottom right,
+    $success,
+    $success,
+    $secondary
+  );
   opacity: 0.5;
   border-radius: 50%;
 }
@@ -353,14 +325,27 @@ body {
   box-shadow: 3px 3px 3px $secondary;
 }
 
+.Landing__circle {
+  position: absolute;
+  top: -45px;
+  left: 350px;
+  //background-color: $secondary;
+  background-image: linear-gradient(
+    to bottom right,
+    $success,
+    $success,
+    $secondary
+  );
+}
+
 .Spin__Circle {
   border: 16px;
-  border-top: 40px solid rgba(255, 199, 87, 0.8);
-  border-radius: 50%;
-  width: 180px;
-  height: 180px;
+  border-top: 40px solid $background;
+  border-radius: 40%;
+  width: 390px;
+  height: 390px;
   animation: spin 10s linear infinite;
-  z-index: 10;
+  //z-index: 10;
   //box-shadow: 5px 10px 10px grey;
   opacity: 0.5;
 }
@@ -374,6 +359,38 @@ body {
   }
 }
 
+.NotMobile {
+  @media (max-width: $breakpoint-mobile) {
+    display: none;
+  }
+}
+
+.YesMobile {
+  @media (max-width: $breakpoint-mobile) {
+    position: absolute;
+    left: 85px;
+    top: 325px;
+    z-index: 2;
+  }
+}
+
+.YesMobile1 {
+  @media (max-width: $breakpoint-mobile) {
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    z-index: 1;
+  }
+}
+.YesMobile2 {
+  @media (max-width: $breakpoint-mobile) {
+    //display: none;
+    position: absolute;
+    left: -25px;
+    top: 700px;
+  }
+}
+
 .Active__sidebar {
   font-size: 16px;
   padding: 0px 20px;
@@ -384,5 +401,26 @@ body {
     background-color: $secondary;
     opacity: 0.7;
     font-weight: bold;
+  }
+}
+
+.scroll--aware {
+  transition: all 0.5s ease-in-out;
+}
+
+.scroll--hidden {
+  transform: translateY(-100%);
+}
+
+.card {
+  border-radius: 15px !important;
+}
+
+img.toggle-sidebar {
+  position: fixed;
+  z-index: 10;
+  &:hover {
+    opacity: 1;
+    box-shadow: 16px 3px 6px -10px grey;
   }
 }

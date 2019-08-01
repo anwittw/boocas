@@ -42,9 +42,9 @@ function App(props) {
       {api.isLoggedIn() && (
         <img
           className="toggle-sidebar"
-          style={{ width: '55px', marginTop: '32px', opacity: 0.5 }}
+          style={{ height: '82px', marginTop: '18px', opacity: 0.5 }}
           onClick={toggleSidebar}
-          src={process.env.PUBLIC_URL + '/greyonoff.png'}
+          src={process.env.PUBLIC_URL + '/pushBar.png'}
         />
       )}
       {api.isLoggedIn() && (
