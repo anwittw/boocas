@@ -34,7 +34,7 @@ function LandingPage(props) {
               }}
             >
               Bo / <br />
-              \ ca <br /> / as
+              \ oc <br /> / as
             </div>
           </div>
           <div
