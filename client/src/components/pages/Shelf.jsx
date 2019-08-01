@@ -25,6 +25,7 @@ export default function Shelf() {
           <GroupCard
             link={'/create-group'}
             background="rgba(171, 191, 163, 0.7)"
+            bookCover="../../../BookCover.jpg"
             name="Create your first group"
             description="Here is the description of the group - f.e if you want to discuss specific or general topics - feel free!"
             group={{}}
@@ -38,8 +39,19 @@ export default function Shelf() {
                 var date1 = new Date(a._group.updated_at)
                 var date2 = new Date(b._group.updated_at)
 
-                if (date2 > date1) return 1
-                else return -1
+                if (date2 > date1) {
+                  return 1
+                } else if (date2 < date1) {
+                  return -1
+                }
+
+                if (a._group.name < b._group.name) {
+                  return -1
+                } else if (a._group.name > b._group.name) {
+                  return 1
+                } else {
+                  return 0
+                }
               })
               .map((group, i) => (
                 <div key={i}>
@@ -55,8 +67,9 @@ export default function Shelf() {
               ))}
             <GroupCard
               link={'/create-group'}
-              background="rgba(171, 191, 163, 0.3)"
+              background="rgba(171, 191, 163, 0.2)"
               name="Title of your group"
+              bookCover="../../../BookCover.jpg"
               description="Here is the description of the group - f.e if you want to discuss specific or general topics - feel free!"
               group={{}}
             />

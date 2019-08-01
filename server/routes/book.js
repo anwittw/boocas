@@ -51,9 +51,10 @@ router.post('/', isLoggedIn, (req, res, next) => {
     coverPictureUrl: req.body.coverPictureUrl,
   })
     .then(book => {
+      console.log(book)
       Action.create({
         type: 'book',
-        teaser: book.title,
+        teaser: 'A new Book was created: ' + book.title,
         _user: req.user,
         _document: book._id,
       }).then(action => {

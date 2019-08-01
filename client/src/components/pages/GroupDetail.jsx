@@ -42,8 +42,7 @@ function GroupDetail(props) {
   let memberships = groupDetails.memberships
   let thoughts = groupDetails.thoughts
 
-  console.log('DEBUG', api.getLocalStorageUser())
-  console.log('DEBUUUUUUUUU', thoughts)
+  console.log('DEBUUUUUUUUU', groupDetails.thoughts)
 
   function getIdOfCreator(memberships) {
     for (let i = 0; i < memberships.length; i++) {
@@ -129,23 +128,6 @@ function GroupDetail(props) {
 
               {thoughts.length > 0 && (
                 <div>
-                  {thoughts.map((thought, i) => (
-                    <div key={i}>
-                      <ThoughtCard
-                        link={
-                          '/group-detail/' +
-                          groupId +
-                          '/thought-detail/' +
-                          thought._id
-                        }
-                        _user={thought._user}
-                        title={thought.title}
-                        content={thought.content}
-                        _id={thought._id}
-                        group={groupId}
-                      />
-                    </div>
-                  ))}
                   <div>
                     <ThoughtCard
                       link={'/group-detail/' + groupId + '/create-thought'}
@@ -153,10 +135,46 @@ function GroupDetail(props) {
                       title="Title"
                       _user={{}}
                       content={
-                        'This is the content you want to share with the world'
+                        'Here is the content you want to share about the Book with your group'
                       }
                     />
                   </div>
+                  {thoughts
+                    .sort(function(a, b) {
+                      var date1 = new Date(a.created_at)
+                      var date2 = new Date(b.created_at)
+
+                      if (date2 > date1) {
+                        return 1
+                      } else if (date2 < date1) {
+                        return -1
+                      }
+
+                      if (a.name < b.name) {
+                        return -1
+                      } else if (a.name > b.name) {
+                        return 1
+                      } else {
+                        return 0
+                      }
+                    })
+                    .map((thought, i) => (
+                      <div key={i}>
+                        <ThoughtCard
+                          link={
+                            '/group-detail/' +
+                            groupId +
+                            '/thought-detail/' +
+                            thought._id
+                          }
+                          _user={thought._user}
+                          title={thought.title}
+                          content={thought.content}
+                          _id={thought._id}
+                          group={groupId}
+                        />
+                      </div>
+                    ))}
                 </div>
               )}
             </div>

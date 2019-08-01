@@ -62,12 +62,9 @@ router.post('/', isLoggedIn, uploader.single('picture'), (req, res, next) => {
     .then(thought => {
       Action.create({
         type: 'thought',
-        link: '/thought-detail/' + thought._id,
-        teaser:
-          req.user.username +
-          ' created a new thought: ' +
-          thought.content.substr(0, 50) +
-          '...',
+        link:
+          '/group-detail/' + req.body._group + '/thought-detail/' + thought._id,
+        teaser: thought.content.substr(0, 50) + '...',
         _user: req.user,
         _document: thought._id,
         _group: thought._group,

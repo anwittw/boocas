@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Input, Button, Container, Col, Row } from 'reactstrap'
 import api from '../../api'
 
-import Autosuggest from 'react-autosuggest'
+// import Autosuggest from 'react-autosuggest'
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'
+import axios from 'axios'
 import AppContext from '../../contexts/AppContext'
 
 export default function CreateGroup(props) {
@@ -25,8 +26,10 @@ export default function CreateGroup(props) {
     author: '',
     translator: '',
     pages: 0,
-    year: 0,
-    coverPictureUrl: '',
+    year: '',
+    coverPictureUrl: '../../../BookCover.jpg',
+    changeURL: '',
+    picture: null,
   })
 
   const [books, setBooks] = useState([])
@@ -58,6 +61,32 @@ export default function CreateGroup(props) {
     })
   }
 
+  function getInformationForBook(e) {
+    e.preventDefault()
+    axios
+      .get(
+        `https://www.googleapis.com/books/v1/volumes?q=isbn:${
+          stateBook.isbn_10
+        }`
+      )
+      .then(response => {
+        setStateBook({
+          isbn_10: response.data.items[0].volumeInfo.industryIdentifiers
+            ? response.data.items[0].volumeInfo.industryIdentifiers[1]
+                .identifier
+            : '',
+          title: response.data.items[0].volumeInfo.title,
+          author: response.data.items[0].volumeInfo.authors[0],
+          pages: response.data.items[0].volumeInfo.pageCount,
+          year: response.data.items[0].volumeInfo.publishedDate.substring(0, 4),
+          coverPictureUrl: response.data.items[0].volumeInfo.imageLinks
+            ? response.data.items[0].volumeInfo.imageLinks.smallThumbnail
+            : 'https://res.cloudinary.com/djbsd3soa/image/upload/c_thumb,w_200,g_face/v1564667917/book-book-pictures/hdgcqlueqvpbkicpbol6.jpg',
+        })
+      })
+      .catch(err => console.log(err))
+  }
+
   function handleSubmitGroup(e) {
     e.preventDefault()
     api
@@ -81,9 +110,18 @@ export default function CreateGroup(props) {
       .catch(err => console.log(err))
   }
 
+  function cleanCreateBook(state) {
+    if (state.changeURL !== '') {
+      return {
+        ...state,
+        coverPictureUrl: state.changeURL,
+      }
+    }
+  }
+
   function handleSubmitBook(e) {
     e.preventDefault()
-    api.createBook(stateBook).then(response => {
+    api.createBook(cleanCreateBook(stateBook)).then(response => {
       setStateBook({
         isbn_10: '',
         isbn_13: '',
@@ -93,6 +131,7 @@ export default function CreateGroup(props) {
         pages: '',
         year: '',
         coverPictureUrl: '',
+        changeURL: '',
       })
       let id = response._id
       api
@@ -113,6 +152,10 @@ export default function CreateGroup(props) {
     })
   }
 
+  function createGroupVisible(book) {
+    if (book !== '' && book !== 'create') return true
+  }
+
   return (
     <div>
       <div className="App__right__header" style={{ padding: '15px 30px' }}>
@@ -123,7 +166,7 @@ export default function CreateGroup(props) {
           {
             // <pre>{JSON.stringify(stateGroup, null, 2)}</pre>
             // <pre>{JSON.stringify(stateBook, null, 2)}</pre>
-            // <pre>{JSON.stringify(books, null, 2)}</pre>}
+            // <pre>{JSON.stringify(books, null, 2)}</pre>
           }
           <Row className="mb-5">
             <Col xs="12" md={{ size: 8, offset: 2 }}>
@@ -135,7 +178,7 @@ export default function CreateGroup(props) {
                 value={stateGroup._book}
               >
                 <option value="">Pick a book!</option>
-                <option value="create"> Create a new book</option>
+                <option value="create"> Add a new book</option>
                 {books.length !== 0 &&
                   books.map((book, i) => (
                     <option key={i} value={book.id}>
@@ -149,6 +192,40 @@ export default function CreateGroup(props) {
           {stateGroup._book === 'create' && (
             <div>
               <Row className="my-3">
+                <Col className="mt-3 mt-md-0" md={{ size: 6, offset: 2 }}>
+                  <Input
+                    className="text-center"
+                    type="text"
+                    name="isbn_10"
+                    value={stateBook.isbn_10}
+                    onChange={handleChangeBook}
+                    placeholder="search by isbn: 9.../ 3..."
+                  />
+                </Col>
+                <Col className="mt-3 mt-md-0" xs="12" md={{ size: '2' }}>
+                  <Button
+                    block
+                    className=" text-center"
+                    onClick={getInformationForBook}
+                  >
+                    Search
+                  </Button>
+                </Col>
+              </Row>
+              <Row className="my-3 text-center">
+                <Col xs="12" md={{ size: '2', offset: 5 }}>
+                  <img
+                    src={
+                      stateBook.changeURL !== ''
+                        ? stateBook.changeURL
+                        : stateBook.coverPictureUrl
+                    }
+                    alt="coverPictureUrl"
+                    style={{ height: '200px' }}
+                  />
+                </Col>
+              </Row>
+              <Row className="my-3">
                 <Col xs="12" md={{ size: 8, offset: 2 }}>
                   <Input
                     className="text-center"
@@ -161,29 +238,7 @@ export default function CreateGroup(props) {
                 </Col>
               </Row>
               <Row className="my-3">
-                <Col xs="12" md={{ size: 4, offset: 2 }}>
-                  <Input
-                    className="text-center"
-                    type="text"
-                    name="isbn_10"
-                    value={stateBook.isbn_10}
-                    onChange={handleChangeBook}
-                    placeholder="isbn_10"
-                  />
-                </Col>
-                <Col xs="12" md={{ size: 4 }}>
-                  <Input
-                    className="text-center"
-                    type="text"
-                    name="isbn_13"
-                    value={stateBook.isbn_13}
-                    onChange={handleChangeBook}
-                    placeholder="isbn_13"
-                  />
-                </Col>
-              </Row>
-              <Row className="my-3">
-                <Col xs="12" md={{ size: 4, offset: 2 }}>
+                <Col xs="12" md={{ size: 8, offset: 2 }}>
                   <Input
                     className="text-center"
                     type="text"
@@ -193,53 +248,45 @@ export default function CreateGroup(props) {
                     placeholder="Name of Author"
                   />
                 </Col>
-                <Col xs="12" md={{ size: 4 }}>
+              </Row>
+              <Row className="my-3">
+                <Col xs="12" md={{ size: 8, offset: 2 }}>
+                  <Input
+                    hidden
+                    className="text-center"
+                    type="text"
+                    name="coverPictureUrl"
+                    value={stateBook.coverPictureUrl}
+                    onChange={handleChangeBook}
+                    placeholder="URL of Image"
+                  />
+                </Col>
+                <Col xs="12" md={{ size: 8, offset: 2 }}>
                   <Input
                     className="text-center"
                     type="text"
-                    name="translator"
-                    value={stateBook.name}
+                    name="changeURL"
+                    value={stateBook.changeUrl}
                     onChange={handleChangeBook}
-                    placeholder="Name of Translator"
+                    placeholder="Provide an alternative picture url"
                   />
                 </Col>
               </Row>
-              <Row className="my-3">
-                <Col xs="12" md={{ size: 4, offset: 2 }}>
-                  <Input
-                    className="text-center"
-                    type="number"
-                    name="pages"
-                    value={stateBook.pages}
-                    onChange={handleChangeBook}
-                    placeholder="number of pages"
-                  />
-                </Col>
-                <Col xs="12" md={{ size: 4 }}>
-                  <Input
-                    className="text-center"
-                    type="number"
-                    name="year"
-                    value={stateGroup.year}
-                    onChange={handleChangeBook}
-                    placeholder="Year of book"
-                  />
-                </Col>
-              </Row>
-              <Row className="my-5">
+              {
+                // Code if you want to add later a possibility to upload a CoverPicture
+                /* <Row className="my-5">
                 <Col xs="12" md={{ size: '4', offset: 4 }}>
-                  <div>
-                    <Input
-                      className="text-center"
-                      type="file"
-                      name="coverPictureUrl"
-                      value={stateBook.coverPictureUrl}
-                      onChange={handleChangeBook}
-                      placeholder="upload a picture"
-                    />
-                  </div>
+                  <Input
+                    className="text-center"
+                    type="file"
+                    name="coverPictureUrl"
+                    value={stateBook.coverPictureUrl}
+                    onChange={handleChangeBook}
+                    placeholder="upload a picture"
+                  />
                 </Col>
-              </Row>
+              </Row> */
+              }
               <Row className="my-3">
                 <Col xs="12" md={{ size: '6', offset: 3 }}>
                   <Button
@@ -247,62 +294,73 @@ export default function CreateGroup(props) {
                     className=" text-center"
                     onClick={handleSubmitBook}
                   >
-                    Create Book
+                    Add Book
                   </Button>
                 </Col>
               </Row>
             </div>
           )}
-          <Row className="mt-5">
-            <Col xs="12" md={{ size: 4, offset: 2 }}>
-              <Input
-                className="text-center"
-                required
-                type="text"
-                name="name"
-                value={stateGroup.name}
-                onChange={handleChangeGroup}
-                placeholder="Give a name to your group"
-              />
-            </Col>
-          </Row>
-          <Row className="my-3">
-            <Col xs="12" md={{ size: 8, offset: 2 }}>
-              <Input
-                className="text-center"
-                required
-                type="textarea"
-                name="description"
-                value={stateGroup.description}
-                onChange={handleChangeGroup}
-                placeholder="Describe your new group"
-              />
-            </Col>
-          </Row>
-          <Row className="my-3">
-            <Col xs="12" md={{ size: '4', offset: 4 }}>
-              <div className="my-3">
-                <Input
-                  className="text-center block"
-                  type="checkbox"
-                  name="isPrivate"
-                  value={stateGroup.isPrivate}
-                  onChange={handleChangeGroup}
-                />
-                <span>Make it a private Group</span>
-              </div>
-            </Col>
-          </Row>
-          <Row className="my-3 ">
-            <Col xs="12" md={{ size: '3', offset: 3 }}>
-              <Button block className="text-center" onClick={handleSubmitGroup}>
-                Create Group
-              </Button>
-            </Col>
-            <Col className="mt-3 mt-md-0" xs="12" md={{ size: '3' }}>
-              <BackButton history={props.history} />
-            </Col>
-          </Row>
+
+          {// {stateGroup._book ||
+          //   (stateGroup._book === 'create'
+          createGroupVisible(stateGroup._book) && (
+            <div>
+              <Row className="mt-5">
+                <Col xs="12" md={{ size: 4, offset: 2 }}>
+                  <Input
+                    className="text-center"
+                    required
+                    type="text"
+                    name="name"
+                    value={stateGroup.name}
+                    onChange={handleChangeGroup}
+                    placeholder="Give a name to your group"
+                  />
+                </Col>
+              </Row>
+              <Row className="my-3">
+                <Col xs="12" md={{ size: 8, offset: 2 }}>
+                  <Input
+                    className="text-center"
+                    required
+                    type="textarea"
+                    name="description"
+                    value={stateGroup.description}
+                    onChange={handleChangeGroup}
+                    placeholder="Describe your new group"
+                  />
+                </Col>
+              </Row>
+              <Row className="my-3">
+                <Col xs="12" md={{ size: '4', offset: 4 }}>
+                  <div className="my-3">
+                    <Input
+                      className="text-center block"
+                      type="checkbox"
+                      name="isPrivate"
+                      value={stateGroup.isPrivate}
+                      onChange={handleChangeGroup}
+                    />
+                    <span>Make it a private Group</span>
+                  </div>
+                </Col>
+              </Row>
+              <Row className="my-3 ">
+                <Col xs="12" md={{ size: '3', offset: 3 }}>
+                  <Button
+                    block
+                    className="text-center"
+                    onClick={handleSubmitGroup}
+                  >
+                    Create Group
+                  </Button>
+                </Col>
+                <Col className="mt-3 mt-md-0" xs="12" md={{ size: '3' }}>
+                  <BackButton history={props.history} />
+                </Col>
+              </Row>
+            </div>
+          )}
         </Container>
       </div>
     </div>

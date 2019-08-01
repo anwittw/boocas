@@ -15,7 +15,7 @@ function CommentCard(props) {
   console.log(props)
   return (
     <div>
-      <div class="card mb-3">
+      <div class="card mb-3" style={{ backgroundColor: props.background }}>
         <div class="card-body pb-2">
           <p class="card-text">{props.comment.content}</p>
           <p class="card-text">
