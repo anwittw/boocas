@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container } from 'reactstrap'
 import { Link, NavLink } from 'react-router-dom'
 import api from '../../api'
@@ -6,14 +6,166 @@ import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'
 
 export default function RecentActions(props) {
+  function setRelevantGroups(memberships) {
+    return memberships.map(membership => membership._group._id.toString())
+  }
+
+  const [stateFetch, setstateFetch] = useState({
+    memberships: [],
+    relevant_groups: [],
+    actions: [],
+    myId: api.getUserId(),
+  })
+
+  useEffect(() => {
+    Promise.all([api.getMyMemberships(), api.getActions()]).then(
+      ([memberships, actions]) => {
+        setstateFetch({
+          ...stateFetch,
+          memberships: memberships,
+          relevant_groups: setRelevantGroups(memberships),
+          actions: actions,
+        })
+      }
+    )
+  }, [])
+
+  const [stateResult, setstateResult] = useState([
+    { display: '', link: '', date: '' },
+  ])
+
+  useEffect(() => {
+    setstateResult(setAll(stateFetch.actions))
+  }, [stateFetch])
+
+  function isToday(someDate) {
+    const today = new Date()
+    return (
+      someDate.getDate() == today.getDate() &&
+      someDate.getMonth() == today.getMonth() &&
+      someDate.getFullYear() == today.getFullYear()
+    )
+  }
+
+  function isOneBeforeYesterday(someDate) {
+    const today = new Date()
+    const oneBeforeYesterday = new Date(today.setDate(today.getDate() - 2))
+    return (
+      someDate.getDate() == oneBeforeYesterday.getDate() &&
+      someDate.getMonth() == oneBeforeYesterday.getMonth() &&
+      someDate.getFullYear() == oneBeforeYesterday.getFullYear()
+    )
+  }
+
+  function isYesterday(someDate) {
+    const today = new Date()
+    const yesterday = new Date(today.setDate(today.getDate() - 1))
+    return (
+      someDate.getDate() == yesterday.getDate() &&
+      someDate.getMonth() == yesterday.getMonth() &&
+      someDate.getFullYear() == yesterday.getFullYear()
+    )
+  }
+
+  function setAll(actions) {
+    let toFilter = []
+    toFilter.push(...setCreatedBooks(actions))
+    toFilter.push(...setMemberships(actions))
+    toFilter.push(...setThoughts(actions))
+    toFilter.push(...setComments(actions))
+
+    let toReturn = {
+      today: toFilter.filter(element => isToday(new Date(element.date))),
+      yesterday: toFilter.filter(element =>
+        isYesterday(new Date(element.date))
+      ),
+      oneBeforeYesterday: toFilter.filter(element =>
+        isOneBeforeYesterday(new Date(element.date))
+      ),
+    }
+    return toReturn
+  }
+
+  function setCreatedBooks(actions) {
+    return actions
+      .filter(action => action.type === 'book')
+      .map(filteredAction => {
+        return {
+          display: filteredAction.teaser,
+          date: filteredAction.created_at,
+        }
+      })
+  }
+
+  function setMemberships(actions) {
+    let filteredActions = actions.filter(
+      action =>
+        action.type === 'membership' &&
+        stateFetch.relevant_groups.includes(action._group._id)
+    )
+    return filteredActions.map(filteredAction => {
+      return {
+        display:
+          filteredAction._user._id === stateFetch.myId
+            ? 'You are now member of: ' + filteredAction._group.name
+            : filteredAction._user.username +
+              ' joined ' +
+              filteredAction._group.name,
+        date: filteredAction.created_at,
+      }
+    })
+  }
+
+  function setThoughts(actions) {
+    let filteredActions = actions.filter(
+      action =>
+        action.type === 'thought' &&
+        stateFetch.relevant_groups.includes(action._group._id)
+    )
+    return filteredActions.map(filteredAction => {
+      return {
+        display:
+          filteredAction._user._id === stateFetch.myId
+            ? 'You created a new thought: ' + filteredAction.teaser
+            : filteredAction._user.username +
+              ' created a new thought: ' +
+              filteredAction.teaser,
+        date: filteredAction.created_at,
+      }
+    })
+  }
+
+  function setComments(actions) {
+    let filteredActions = actions.filter(
+      action =>
+        action.type === 'comment' &&
+        stateFetch.relevant_groups.includes(action._group._id)
+    )
+    return filteredActions.map(filteredAction => {
+      return {
+        display:
+          filteredAction._user._id === stateFetch.myId
+            ? 'You created a new comment: ' + filteredAction.teaser
+            : filteredAction._user.username +
+              ' created a new comment: ' +
+              filteredAction.teaser,
+        date: filteredAction.created_at,
+      }
+    })
+  }
+
   return (
     <div>
       <div className="App__right__header" style={{ padding: '15px 30px' }}>
-        <MainNavbar title="Edit Profil" />
+        <MainNavbar title="Recent Actions" />
       </div>
       <div className="App__right__body">
         <Container className="mt-5">
-          edit profil
+          <h1>Fetch</h1>
+          <pre>{JSON.stringify(stateFetch, null, 2)}</pre>
+          <h1>Result</h1>
+          <pre>{JSON.stringify(stateResult, null, 2)}</pre>
+
           <BackButton history={props.history} />
         </Container>
       </div>

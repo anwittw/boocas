@@ -179,6 +179,12 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
+  getActions() {
+    return service
+      .get('/actions/')
+      .then(res => res.data)
+      .catch(errHandler)
+  },
 }
 
 // This is an example on how to use this method in a different file
