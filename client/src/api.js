@@ -161,6 +161,12 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
+  deleteThought(thoughtId) {
+    return service
+      .delete('/thoughts/' + thoughtId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
   createComment(comment) {
     return service
       .post('/comments', comment)

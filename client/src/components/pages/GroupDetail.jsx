@@ -23,6 +23,11 @@ function GroupDetail(props) {
     myThoughts: '',
   })
 
+  let book = (groupDetails.group || {})._book
+  let group = groupDetails.group
+  let memberships = groupDetails.memberships
+  let thoughts = groupDetails.thoughts
+
   useEffect(() => {
     Promise.all([
       api.getGroup(groupId),
@@ -38,11 +43,6 @@ function GroupDetail(props) {
       })
     })
   }, [groupId])
-
-  let book = (groupDetails.group || {})._book
-  let group = groupDetails.group
-  let memberships = groupDetails.memberships
-  let thoughts = groupDetails.thoughts
 
   console.log('DEBUUUUUUUUU', groupDetails.thoughts)
 
@@ -70,24 +70,6 @@ function GroupDetail(props) {
 
       <div className="App__right__body">
         {/* <pre>{JSON.stringify(groupDetails, null, 2)}</pre> */}
-        <div style={{ padding: '15px 30px' }}>
-          <Button
-            tag={Link}
-            to={groupId + '/create-thought'}
-            className=" btn-sm btn-outline-secondary "
-          >
-            Create a thought
-          </Button>
-          {userIsCreator() && (
-            <Button
-              tag={Link}
-              to={groupId + '/add-user'}
-              className="btn btn-primary"
-            >
-              Add a user
-            </Button>
-          )}
-        </div>
         {groupDetails.group && (
           <div>
             {/* <h2>Group</h2>
@@ -103,11 +85,21 @@ function GroupDetail(props) {
               <li> {book.year} </li>
             </ul>
             <img src={book.coverPictureUrl} width="100" alt="book-cover" /> */}
-            <h2>Members</h2>
-            <div className="d-flex">
+            <div className="d-flex mt-4 align-items-baseline">
+              {userIsCreator() && (
+                <Circle
+                  className="ml-3"
+                  size="large"
+                  color="success"
+                  link={groupId + '/add-user'}
+                  text="+"
+                />
+              )}
+
               {memberships.map((membership, i) => (
                 <div key={i} className="ml-2">
                   <Circle
+                    className="ml-2"
                     size="medium"
                     color={membership.isCreator ? 'success' : 'background'}
                     onClick={() => {}}

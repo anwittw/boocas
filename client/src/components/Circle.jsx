@@ -16,6 +16,12 @@ function setFontSize(size) {
   if (size === 'large') return 14
 }
 
+function setFontWeight(size) {
+  if (size === 'small') return 'normal'
+  if (size === 'medium') return 'normal'
+  if (size === 'large') return 'bold'
+}
+
 //Component allows two colors
 
 function setColor(color) {
@@ -27,8 +33,10 @@ function setColor(color) {
 export default function Circle(props) {
   let backgroundColor = setColor(props.color)
   let fontSize = setFontSize(props.size)
+  let fontWeight = setFontWeight(props.size)
   let size = setSize(props.size)
   let text = ''
+  let link = props.link ? props.link : ''
 
   let style = {
     fontSize: fontSize,
@@ -40,11 +48,23 @@ export default function Circle(props) {
     height: size,
     backgroundColor: backgroundColor,
     borderRadius: '50%',
+    fontWeight: fontWeight,
   }
 
   return (
-    <div onClick={props.onClick} style={style}>
-      <span>{props.text}</span>
+    <div className={props.className}>
+      {link && (
+        <Link className="text-decoration-none" to={link}>
+          <div onClick={props.onClick} style={style}>
+            <span>{props.text}</span>
+          </div>
+        </Link>
+      )}
+      {!link && (
+        <div onClick={props.onClick} style={style}>
+          <span>{props.text}</span>
+        </div>
+      )}
     </div>
   )
 }
