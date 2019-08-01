@@ -3,6 +3,7 @@ const { isLoggedIn } = require('../middlewares')
 const router = express.Router()
 
 const Membership = require('../models/Membership')
+const Action = require('../models/Action')
 
 // GET memberships or memberships by user
 
@@ -61,7 +62,17 @@ router.post('/', isLoggedIn, (req, res, next) => {
       isCreator: req.body.isCreator,
     })
       .then(membership => {
-        res.json(membership)
+        Action.create({
+          type: 'membership',
+          link: '/group-detail/' + membership._group,
+          teaser:
+            membership._user + ' joined the group ' + membership._group + '...',
+          _user: membership._user,
+          _document: membership._id,
+          _group: membership._group,
+        }).then(action => {
+          res.json(membership)
+        })
       })
       .catch(err => {
         next({ status: 400, message: err })
@@ -73,7 +84,17 @@ router.post('/', isLoggedIn, (req, res, next) => {
       isCreator: req.body.isCreator,
     })
       .then(membership => {
-        res.json(membership)
+        Action.create({
+          type: 'membership',
+          link: '/group-detail/' + membership._group,
+          teaser:
+            membership._user + ' joined the group ' + membership._group + '...',
+          _user: membership._user,
+          _document: membership._id,
+          _group: membership._group,
+        }).then(action => {
+          res.json(membership)
+        })
       })
       .catch(err => {
         next({ status: 400, message: err })

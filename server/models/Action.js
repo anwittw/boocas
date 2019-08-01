@@ -4,7 +4,10 @@ const Schema = mongoose.Schema
 const actionSchema = new Schema(
   {
     _group: { type: Schema.Types.ObjectId, ref: 'Group' },
-    type: { type: String, enum: ['comment', 'thought', 'group', 'book'] },
+    type: {
+      type: String,
+      enum: ['comment', 'thought', 'group', 'book', 'membership'],
+    },
     teaser: { type: String },
     link: { type: String },
     _user: { type: Schema.Types.ObjectId, ref: 'User' },

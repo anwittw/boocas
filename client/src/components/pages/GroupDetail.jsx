@@ -142,6 +142,7 @@ function GroupDetail(props) {
                         title={thought.title}
                         content={thought.content}
                         _id={thought._id}
+                        group={groupId}
                       />
                     </div>
                   ))}

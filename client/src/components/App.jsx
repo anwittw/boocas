@@ -16,6 +16,7 @@ import api from '../api'
 import { withRouter } from 'react-router'
 import MainNavbar from './MainNavbar'
 import EditProfil from './pages/EditProfil'
+import RecentActions from './pages/RecentActions'
 
 const LandingPageWrapper = () => {
   return (
@@ -66,6 +67,7 @@ function App(props) {
               />
               <Route exact path="/search-group" component={SearchGroup} />
               <Route exact path="/edit-profil" component={EditProfil} />
+              <Route exact path="/recent-actions" component={RecentActions} />
               <Route
                 exact
                 path="/group-detail/:groupId"
