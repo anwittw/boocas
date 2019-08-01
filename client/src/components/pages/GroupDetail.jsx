@@ -69,7 +69,6 @@ function GroupDetail(props) {
 
       <div className="App__right__body">
         {/* <pre>{JSON.stringify(groupDetails, null, 2)}</pre> */}
-        <span className="App__right__circle" />
         <div>
           <Button
             tag={Link}

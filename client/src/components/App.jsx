@@ -42,7 +42,7 @@ function App(props) {
       {api.isLoggedIn() && (
         <img
           className="toggle-sidebar"
-          style={{ height: '112px', marginTop: '6px', opacity: 0.5 }}
+          style={{ height: '82px', marginTop: '18px', opacity: 0.5 }}
           onClick={toggleSidebar}
           src={process.env.PUBLIC_URL + '/pushBar.png'}
         />

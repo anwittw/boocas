@@ -412,14 +412,15 @@ $breakpoint-mobile: 670px;
   transform: translateY(-100%);
 }
 
-.toggle-sidebar {
+.card {
+  border-radius: 15px !important;
+}
+
+img.toggle-sidebar {
   position: fixed;
   z-index: 10;
   &:hover {
-    box-shadow: 'dark';
+    opacity: 1;
+    box-shadow: 16px 3px 6px -10px grey;
   }
-}
-
-.card {
-  border-radius: 20px !important;
 }
