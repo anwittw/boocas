@@ -69,14 +69,7 @@ function GroupDetail(props) {
 
       <div className="App__right__body">
         {/* <pre>{JSON.stringify(groupDetails, null, 2)}</pre> */}
-        <div>
-          <Button
-            tag={Link}
-            to={groupId + '/create-thought'}
-            className="btn btn-primary"
-          >
-            Create a thought
-          </Button>
+        <div style={{ padding: '15px 30px' }}>
           {userIsCreator() && (
             <Button
               tag={Link}
@@ -119,10 +112,10 @@ function GroupDetail(props) {
                 <div>
                   <ThoughtCard
                     link={'/group-detail/' + groupId + '/create-thought'}
-                    background="rgba(171, 191, 163, 0.7)"
+                    background="rgba(171, 191, 163, 0.3)"
                     title="Title"
                     _user={{}}
-                    content={'<<  Create your first thought  >>'}
+                    content={' / Create your first thought /'}
                   />
                 </div>
               )}

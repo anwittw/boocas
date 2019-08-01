@@ -253,7 +253,10 @@ export default function SearchGroups(props) {
                               </Button>
                             )}
                             {isMember(group._id, stateMember) && (
-                              <span className="font-weight-bold">
+                              <span
+                                className="font-weight-bold"
+                                style={{ color: 'rgba(234, 184, 96, 0.8)' }}
+                              >
                                 You are a member of this group
                               </span>
                             )}

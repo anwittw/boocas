@@ -73,8 +73,8 @@ export default function AddUser(props) {
 
   return (
     <div>
-      <div className="App__right__header">
-        <MainNavbar title="Add a User a Group" />
+      <div className="App__right__header" style={{ padding: '15px 30px' }}>
+        <MainNavbar title="Add a User to this Group" />
       </div>
       <div className="App__right__body">
         <Container className="mt-5">
