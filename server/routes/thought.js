@@ -4,6 +4,7 @@ const router = express.Router()
 const uploader = require('../configs/cloudinary')
 
 const Thought = require('../models/Thought')
+const Action = require('../models/Action')
 
 // GET all Thoughts
 
@@ -59,7 +60,20 @@ router.post('/', isLoggedIn, uploader.single('picture'), (req, res, next) => {
     links: req.body.links,
   })
     .then(thought => {
-      res.json(thought)
+      Action.create({
+        type: 'thought',
+        link: '/thought-detail/' + thought._id,
+        teaser:
+          req.user.username +
+          ' created a new thought: ' +
+          thought.content.substr(0, 50) +
+          '...',
+        _user: req.user,
+        _document: thought._id,
+        _group: thought._group,
+      }).then(action => {
+        res.json(thought)
+      })
     })
     .catch(err => {
       next({ status: 400, message: err })
