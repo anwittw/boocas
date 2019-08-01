@@ -74,7 +74,7 @@ body {
 }
 
 .App__right__header {
-  width: 100%;
+  width: 100vw;
   height: 100px;
   background-color: white;
   opacity: 0.95;
@@ -412,7 +412,11 @@ img.toggle-sidebar {
   }
 }
 
-.Circle__button {
+.Circle__button__profile {
+  // position: absolute;
+  // left: calc(100vw- 300px);
+  display: flex;
+  justify-content: flex-end;
   &.active,
   &:hover {
     opacity: 0.6;
