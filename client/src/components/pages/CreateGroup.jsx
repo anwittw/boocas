@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Input, Button, Container, Col, Row } from 'reactstrap'
 import api from '../../api'
 
-import Autosuggest from 'react-autosuggest'
+// import Autosuggest from 'react-autosuggest'
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'
 import axios from 'axios'
