@@ -23,6 +23,7 @@ function MainNavbar(props) {
             size="medium"
             color="success"
             onClick={() => setstateOptions(!stateOptions)}
+            title="..."
           />
         </span>
         {stateOptions && (
