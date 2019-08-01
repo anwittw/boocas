@@ -100,10 +100,10 @@ function GroupDetail(props) {
                 <div key={i} className="ml-2">
                   <Circle
                     className="ml-2"
-                    size="medium"
+                    size={membership.isCreator ? 'large' : 'medium'}
                     color={membership.isCreator ? 'success' : 'background'}
                     onClick={() => {}}
-                    text={membership._user.username.substr(0, 2)}
+                    text={membership._user.username.substr(0, 3)}
                   />
                 </div>
               ))}
