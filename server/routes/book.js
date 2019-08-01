@@ -3,6 +3,7 @@ const { isLoggedIn } = require('../middlewares')
 const router = express.Router()
 
 const Book = require('../models/Book')
+const Action = require('../models/Action')
 
 // GET all Books
 
@@ -50,7 +51,14 @@ router.post('/', isLoggedIn, (req, res, next) => {
     coverPictureUrl: req.body.coverPictureUrl,
   })
     .then(book => {
-      res.json(book)
+      Action.create({
+        type: 'book',
+        teaser: book.title,
+        _user: req.user,
+        _document: book._id,
+      }).then(action => {
+        res.json(book)
+      })
     })
     .catch(err => {
       next({ status: 400, message: err })

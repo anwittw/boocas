@@ -10,6 +10,9 @@ import ThoughtCardDetail from '../ThoughtCardDetail'
 
 function ThoughtDetail(props) {
   let thoughtId = props.match.params.thoughtId
+  let groupId = props.match.params.groupId
+
+  console.log(props.location)
 
   const [thought, setThought] = useState({
     comments_left: [],
@@ -19,6 +22,7 @@ function ThoughtDetail(props) {
   const [comment, setComment] = useState({
     content: '',
     _thought: thoughtId,
+    _group: groupId,
   })
 
   function handleChangeComment(e) {
@@ -136,8 +140,6 @@ function ThoughtDetail(props) {
             </Col>
           </Row>
         </Container>
-
-        <span className="App__right__circle" />
       </div>
     </div>
   )

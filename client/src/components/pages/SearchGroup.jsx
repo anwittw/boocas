@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {
   Input,
   UncontrolledCollapse,
@@ -15,8 +15,10 @@ import api from '../../api'
 import { Link, NavLink } from 'react-router-dom'
 import MainNavbar from '../MainNavbar'
 import Circle from '../Circle'
+import AppContext from '../../contexts/AppContext'
 
 export default function SearchGroups(props) {
+  const [myGroups, setMyGroups] = useContext(AppContext)
   const [stateSearch, setStateSearch] = useState([])
   const [idBookDisplayed, setIdBookDisplayed] = useState(null)
   const [idGroupDisplayed, setIdGroupDisplayed] = useState(null)
@@ -114,6 +116,8 @@ export default function SearchGroups(props) {
 
   function createMembership(id) {
     let groupId = id
+    let selectedGroup = stateSearch.find(group => group._id === groupId)
+    setMyGroups([...myGroups, selectedGroup])
     api
       .createMembership({
         _user: myId,
@@ -249,7 +253,10 @@ export default function SearchGroups(props) {
                               </Button>
                             )}
                             {isMember(group._id, stateMember) && (
-                              <span className="font-weight-bold">
+                              <span
+                                className="font-weight-bold"
+                                style={{ color: 'rgba(234, 184, 96, 0.8)' }}
+                              >
                                 You are a member of this group
                               </span>
                             )}

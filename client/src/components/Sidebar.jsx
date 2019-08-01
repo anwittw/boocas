@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { NavLink as NLink } from 'react-router-dom'
 import api from '../api'
 import { NavLink } from 'reactstrap'
+import AppContext from '../contexts/AppContext'
 
 export default function Sidebar(props) {
-  const [myGroups, setMyGroups] = useState([])
+  const [myGroups, setMyGroups] = useContext(AppContext)
+
   useEffect(() => {
     api.getMyMemberships().then(memberships => {
       setMyGroups(memberships.map(membership => membership._group))
@@ -81,6 +83,9 @@ export default function Sidebar(props) {
                 <hr />
               </div>
             ))}
+          {/* <button onClick={() => setCounter(counter + 1)}>
+            counter = {counter}
+          </button> */}
         </div>
       </div>
     </div>

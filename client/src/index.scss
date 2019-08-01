@@ -74,7 +74,7 @@ body {
 }
 
 .App__right__header {
-  width: 100%;
+  width: 100vw;
   height: 100px;
   background-color: white;
   opacity: 0.95;
@@ -391,19 +391,6 @@ $breakpoint-mobile: 670px;
   }
 }
 
-.Active__sidebar {
-  font-size: 16px;
-  padding: 0px 20px;
-
-  &.active,
-  &:hover {
-    color: white;
-    background-color: $secondary;
-    opacity: 0.7;
-    font-weight: bold;
-  }
-}
-
 .scroll--aware {
   transition: all 0.5s ease-in-out;
 }
@@ -422,5 +409,42 @@ img.toggle-sidebar {
   &:hover {
     opacity: 1;
     box-shadow: 16px 3px 6px -10px grey;
+  }
+}
+
+.Circle__button__profile {
+  // position: absolute;
+  // left: calc(100vw- 300px);
+  display: flex;
+  justify-content: flex-end;
+  &.active,
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.Active__sidebar {
+  font-size: 16px;
+  padding: 0px 20px;
+
+  &.active,
+  &:hover {
+    color: white;
+    background-color: $secondary;
+    opacity: 0.7;
+    font-weight: bold;
+  }
+}
+
+.Active__sidebar.nav-link.active {
+  font-size: 16px;
+  padding: 0px 20px;
+
+  &.active,
+  &:hover {
+    color: white;
+    background-color: $secondary;
+    opacity: 0.7;
+    font-weight: bold;
   }
 }
