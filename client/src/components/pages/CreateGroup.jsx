@@ -28,6 +28,7 @@ export default function CreateGroup(props) {
     pages: 0,
     year: '',
     coverPictureUrl: '../../../BookCover.jpg',
+    changeURL: '',
     picture: null,
   })
 
@@ -109,9 +110,18 @@ export default function CreateGroup(props) {
       .catch(err => console.log(err))
   }
 
+  function cleanCreateBook(state) {
+    if (state.changeURL !== '') {
+      return {
+        ...state,
+        coverPictureUrl: state.changeURL,
+      }
+    }
+  }
+
   function handleSubmitBook(e) {
     e.preventDefault()
-    api.createBook(stateBook).then(response => {
+    api.createBook(cleanCreateBook(stateBook)).then(response => {
       setStateBook({
         isbn_10: '',
         isbn_13: '',
@@ -121,6 +131,7 @@ export default function CreateGroup(props) {
         pages: '',
         year: '',
         coverPictureUrl: '',
+        changeURL: '',
       })
       let id = response._id
       api
@@ -139,6 +150,10 @@ export default function CreateGroup(props) {
           })
         })
     })
+  }
+
+  function createGroupVisible(book) {
+    if (book !== '' && book !== 'create') return true
   }
 
   return (
@@ -187,7 +202,7 @@ export default function CreateGroup(props) {
                     placeholder="search by isbn: 9.../ 3..."
                   />
                 </Col>
-                <Col xs="12" md={{ size: '2', offset: 8 }}>
+                <Col className="mt-3 mt-md-0" xs="12" md={{ size: '2' }}>
                   <Button
                     block
                     className=" text-center"
@@ -197,19 +212,19 @@ export default function CreateGroup(props) {
                   </Button>
                 </Col>
               </Row>
-
-              <div>
-                <Row className="my-3">
-                  <div>
-                    <img
-                      src={stateBook.coverPictureUrl}
-                      alt="coverPictureUrl"
-                      style={{ height: '200px' }}
-                    />
-                  </div>
-                </Row>
-              </div>
-
+              <Row className="my-3 text-center">
+                <Col xs="12" md={{ size: '2', offset: 5 }}>
+                  <img
+                    src={
+                      stateBook.changeURL !== ''
+                        ? stateBook.changeURL
+                        : stateBook.coverPictureUrl
+                    }
+                    alt="coverPictureUrl"
+                    style={{ height: '200px' }}
+                  />
+                </Col>
+              </Row>
               <Row className="my-3">
                 <Col xs="12" md={{ size: 8, offset: 2 }}>
                   <Input
@@ -237,12 +252,23 @@ export default function CreateGroup(props) {
               <Row className="my-3">
                 <Col xs="12" md={{ size: 8, offset: 2 }}>
                   <Input
+                    hidden
                     className="text-center"
                     type="text"
                     name="coverPictureUrl"
                     value={stateBook.coverPictureUrl}
                     onChange={handleChangeBook}
                     placeholder="URL of Image"
+                  />
+                </Col>
+                <Col xs="12" md={{ size: 8, offset: 2 }}>
+                  <Input
+                    className="text-center"
+                    type="text"
+                    name="changeURL"
+                    value={stateBook.changeUrl}
+                    onChange={handleChangeBook}
+                    placeholder="Provide an alternative picture url"
                   />
                 </Col>
               </Row>
@@ -277,7 +303,7 @@ export default function CreateGroup(props) {
 
           {// {stateGroup._book ||
           //   (stateGroup._book === 'create'
-          true && (
+          createGroupVisible(stateGroup._book) && (
             <div>
               <Row className="mt-5">
                 <Col xs="12" md={{ size: 4, offset: 2 }}>
