@@ -3,6 +3,7 @@ const { isLoggedIn } = require('../middlewares')
 const router = express.Router()
 
 const Comment = require('../models/Comment')
+const Action = require('../models/Action')
 
 // Get all Comments
 
@@ -45,10 +46,24 @@ router.post('/', isLoggedIn, (req, res, next) => {
   Comment.create({
     _user: req.user._id,
     _thought: req.body._thought,
+    _group: req.body._group,
     content: req.body.content,
   })
     .then(comment => {
-      res.json(comment)
+      Action.create({
+        type: 'comment',
+        link: '/thought-detail/' + comment._thought + '/' + comment._group,
+        teaser:
+          req.user.username +
+          ' created a new comment: ' +
+          comment.content.substr(0, 50) +
+          '...',
+        _user: req.user,
+        _document: comment._id,
+        _group: comment._group,
+      }).then(action => {
+        res.json(comment)
+      })
     })
     .catch(err => {
       next({ status: 400, message: err })

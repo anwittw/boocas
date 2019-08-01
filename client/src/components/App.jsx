@@ -64,9 +64,10 @@ function App(props) {
               />
               <Route path="/search-group" component={SearchGroup} />
               <Route path="/edit-profil" component={EditProfil} />
+              <Route path="/recent-actions" component={RecentActions} />
               <Route path="/group-detail/:groupId" component={GroupDetail} />
               <Route
-                path="/thought-detail/:thoughtId"
+                path="/thought-detail/:thoughtId/:groupId"
                 component={ThoughtDetail}
               />
               <Route render={() => <h2>404</h2>} />

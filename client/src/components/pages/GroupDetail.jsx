@@ -132,11 +132,12 @@ function GroupDetail(props) {
                   {thoughts.map((thought, i) => (
                     <div key={i}>
                       <ThoughtCard
-                        link={'/thought-detail/' + thought._id}
+                        link={'/thought-detail/' + thought._id + '/' + groupId}
                         _user={thought._user}
                         title={thought.title}
                         content={thought.content}
                         _id={thought._id}
+                        group={groupId}
                       />
                     </div>
                   ))}
