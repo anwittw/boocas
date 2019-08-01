@@ -53,11 +53,7 @@ router.post('/', isLoggedIn, (req, res, next) => {
       Action.create({
         type: 'comment',
         link: '/thought-detail/' + comment._thought + '/' + comment._group,
-        teaser:
-          req.user.username +
-          ' created a new comment: ' +
-          comment.content.substr(0, 50) +
-          '...',
+        teaser: comment.content.substr(0, 50) + '...',
         _user: req.user,
         _document: comment._id,
         _group: comment._group,

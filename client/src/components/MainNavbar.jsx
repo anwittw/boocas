@@ -42,6 +42,13 @@ function MainNavbar(props) {
                 </Link>
               )}
             </div>
+            <div className="ml-3">
+              {api.isLoggedIn() && (
+                <Link to="/recent-actions">
+                  <span>Recent Actions</span>
+                </Link>
+              )}
+            </div>
           </div>
         )}
       </div>

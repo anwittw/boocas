@@ -275,65 +275,66 @@ export default function CreateGroup(props) {
             </div>
           )}
 
-          {stateGroup._book ||
-            (stateGroup._book === 'create' && (
-              <div>
-                <Row className="mt-5">
-                  <Col xs="12" md={{ size: 4, offset: 2 }}>
+          {// {stateGroup._book ||
+          //   (stateGroup._book === 'create'
+          true && (
+            <div>
+              <Row className="mt-5">
+                <Col xs="12" md={{ size: 4, offset: 2 }}>
+                  <Input
+                    className="text-center"
+                    required
+                    type="text"
+                    name="name"
+                    value={stateGroup.name}
+                    onChange={handleChangeGroup}
+                    placeholder="Give a name to your group"
+                  />
+                </Col>
+              </Row>
+              <Row className="my-3">
+                <Col xs="12" md={{ size: 8, offset: 2 }}>
+                  <Input
+                    className="text-center"
+                    required
+                    type="textarea"
+                    name="description"
+                    value={stateGroup.description}
+                    onChange={handleChangeGroup}
+                    placeholder="Describe your new group"
+                  />
+                </Col>
+              </Row>
+              <Row className="my-3">
+                <Col xs="12" md={{ size: '4', offset: 4 }}>
+                  <div className="my-3">
                     <Input
-                      className="text-center"
-                      required
-                      type="text"
-                      name="name"
-                      value={stateGroup.name}
+                      className="text-center block"
+                      type="checkbox"
+                      name="isPrivate"
+                      value={stateGroup.isPrivate}
                       onChange={handleChangeGroup}
-                      placeholder="Give a name to your group"
                     />
-                  </Col>
-                </Row>
-                <Row className="my-3">
-                  <Col xs="12" md={{ size: 8, offset: 2 }}>
-                    <Input
-                      className="text-center"
-                      required
-                      type="textarea"
-                      name="description"
-                      value={stateGroup.description}
-                      onChange={handleChangeGroup}
-                      placeholder="Describe your new group"
-                    />
-                  </Col>
-                </Row>
-                <Row className="my-3">
-                  <Col xs="12" md={{ size: '4', offset: 4 }}>
-                    <div className="my-3">
-                      <Input
-                        className="text-center block"
-                        type="checkbox"
-                        name="isPrivate"
-                        value={stateGroup.isPrivate}
-                        onChange={handleChangeGroup}
-                      />
-                      <span>Make it a private Group</span>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="my-3 ">
-                  <Col xs="12" md={{ size: '3', offset: 3 }}>
-                    <Button
-                      block
-                      className="text-center"
-                      onClick={handleSubmitGroup}
-                    >
-                      Create Group
-                    </Button>
-                  </Col>
-                  <Col className="mt-3 mt-md-0" xs="12" md={{ size: '3' }}>
-                    <BackButton history={props.history} />
-                  </Col>
-                </Row>
-              </div>
-            ))}
+                    <span>Make it a private Group</span>
+                  </div>
+                </Col>
+              </Row>
+              <Row className="my-3 ">
+                <Col xs="12" md={{ size: '3', offset: 3 }}>
+                  <Button
+                    block
+                    className="text-center"
+                    onClick={handleSubmitGroup}
+                  >
+                    Create Group
+                  </Button>
+                </Col>
+                <Col className="mt-3 mt-md-0" xs="12" md={{ size: '3' }}>
+                  <BackButton history={props.history} />
+                </Col>
+              </Row>
+            </div>
+          )}
         </Container>
       </div>
     </div>
