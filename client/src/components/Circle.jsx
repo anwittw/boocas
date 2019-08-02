@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { NavLink, Link } from 'react-router-dom'
-import { Button } from 'reactstrap'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 // Component allows three different sizes
 
@@ -35,7 +34,6 @@ export default function Circle(props) {
   let fontSize = setFontSize(props.size)
   let fontWeight = setFontWeight(props.size)
   let size = setSize(props.size)
-  let text = ''
   let link = props.link ? props.link : ''
 
   let style = {

@@ -11,7 +11,6 @@ const calendarStrings = {
 }
 
 export default function GroupCard(props) {
-  console.log(props)
   return (
     <div>
       <Link to={props.link} className="text-decoration-none">
@@ -41,7 +40,7 @@ export default function GroupCard(props) {
                   {props.description}
                 </p>
                 <hr />
-                <small class="text-muted" style={{ fontSize: '10px' }}>
+                <small className="text-muted" style={{ fontSize: '10px' }}>
                   <Moment calendar={calendarStrings}>
                     {props.group.created_at}
                   </Moment>

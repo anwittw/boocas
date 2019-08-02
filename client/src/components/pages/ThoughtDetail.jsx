@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../api'
-import { Input, Button, Container, Row, Col } from 'reactstrap'
+import { Input, Container, Row, Col } from 'reactstrap'
 import { withRouter } from 'react-router'
-import { promises } from 'fs'
 import MainNavbar from '../MainNavbar'
 import CommentCard from '../CommentCard'
 import ThoughtCardDetail from '../ThoughtCardDetail'
@@ -107,8 +106,9 @@ function ThoughtDetail(props) {
                       return -1
                     }
                   })
-                  .map(comment => (
+                  .map(comment, i => (
                     <CommentCard
+                      key={i}
                       background="rgba(171, 191, 163, 0.1)"
                       comment={comment}
                     />

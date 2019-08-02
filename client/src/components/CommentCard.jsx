@@ -1,6 +1,5 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { Link } from 'react-router-dom'
 
 import Moment from 'react-moment'
 

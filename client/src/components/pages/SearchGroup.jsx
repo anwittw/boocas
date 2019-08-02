@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import {
   Input,
-  UncontrolledCollapse,
   Button,
   CardBody,
   Card,
@@ -12,9 +11,7 @@ import {
 } from 'reactstrap'
 import api from '../../api'
 
-import { Link, NavLink } from 'react-router-dom'
 import MainNavbar from '../MainNavbar'
-import Circle from '../Circle'
 import AppContext from '../../contexts/AppContext'
 
 export default function SearchGroups(props) {

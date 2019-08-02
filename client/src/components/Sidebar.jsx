@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { NavLink as NLink } from 'react-router-dom'
 import api from '../api'
 import { NavLink } from 'reactstrap'
@@ -28,6 +28,7 @@ export default function Sidebar(props) {
           <div>
             <NavLink tag={NLink} to="/" exact>
               <img
+                alt="boocas-logo"
                 style={{
                   marginTop: '35px',
                   maxWidth: '45%',
