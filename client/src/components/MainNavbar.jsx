@@ -11,6 +11,7 @@ function MainNavbar(props) {
   function handleLogoutClick(e) {
     api.logout()
   }
+
   return (
     // <HideOnScroll>
     <nav>
@@ -26,31 +27,33 @@ function MainNavbar(props) {
             text="..."
           />
         </span>
-        {stateOptions && (
-          <div className="d-flex">
-            <div className="ml-3">
-              {api.isLoggedIn() && (
-                <Link to="/" onClick={handleLogoutClick}>
-                  <span>Logout</span>
-                </Link>
-              )}
+        <div style={{ fontSize: '15px', marginTop: '4px', transition: '20s' }}>
+          {stateOptions && (
+            <div className="d-flex">
+              <div className="ml-3">
+                {api.isLoggedIn() && (
+                  <Link to="/" onClick={handleLogoutClick}>
+                    <span>Logout</span>
+                  </Link>
+                )}
+              </div>
+              <div className="ml-3">
+                {api.isLoggedIn() && (
+                  <Link to="/edit-profil">
+                    <span>Edit profile</span>
+                  </Link>
+                )}
+              </div>
+              <div className="ml-3">
+                {api.isLoggedIn() && (
+                  <Link to="/recent-actions">
+                    <span>Recent Actions</span>
+                  </Link>
+                )}
+              </div>
             </div>
-            <div className="ml-3">
-              {api.isLoggedIn() && (
-                <Link to="/edit-profil">
-                  <span>Edit profile</span>
-                </Link>
-              )}
-            </div>
-            <div className="ml-3">
-              {api.isLoggedIn() && (
-                <Link to="/recent-actions">
-                  <span>Recent Actions</span>
-                </Link>
-              )}
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </nav>
     //</HideOnScroll>

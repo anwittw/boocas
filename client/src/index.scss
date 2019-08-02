@@ -113,6 +113,21 @@ body {
   z-index: 5;
   background: rgba(255, 255, 255, 0);
 }
+.toggleCircle {
+  z-index: 2;
+  position: fixed;
+  box-shadow: 2px 3px 5px lightgrey;
+  background-color: $background;
+  height: 100vh;
+  transition: 1s;
+}
+.Sidebar__groups {
+  height: calc(100vh - 300px);
+  box-shadow: 2px 3px 5px lightgrey;
+  &:hover {
+    overflow-y: scroll;
+  }
+}
 
 .Sidebar {
   z-index: 2;

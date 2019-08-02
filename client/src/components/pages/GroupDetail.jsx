@@ -85,7 +85,10 @@ function GroupDetail(props) {
               <li> {book.year} </li>
             </ul>
             <img src={book.coverPictureUrl} width="100" alt="book-cover" /> */}
-            <div className="d-flex mt-4 align-items-baseline">
+            <div
+              style={{ marginLeft: '12px' }}
+              className="d-flex mt-4 align-items-baseline"
+            >
               {userIsCreator() && (
                 <Circle
                   className="ml-3"
