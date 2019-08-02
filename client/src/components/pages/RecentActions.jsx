@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Col, Row, Table } from 'reactstrap'
-import { Link, NavLink } from 'react-router-dom'
+import { Container, Col, Row } from 'reactstrap'
+import { Link } from 'react-router-dom'
 import api from '../../api'
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'
@@ -52,9 +52,9 @@ export default function RecentActions(props) {
   function isToday(someDate) {
     const today = new Date()
     return (
-      someDate.getDate() == today.getDate() &&
-      someDate.getMonth() == today.getMonth() &&
-      someDate.getFullYear() == today.getFullYear()
+      someDate.getDate() === today.getDate() &&
+      someDate.getMonth() === today.getMonth() &&
+      someDate.getFullYear() === today.getFullYear()
     )
   }
 
@@ -62,9 +62,9 @@ export default function RecentActions(props) {
     const today = new Date()
     const oneBeforeYesterday = new Date(today.setDate(today.getDate() - 2))
     return (
-      someDate.getDate() == oneBeforeYesterday.getDate() &&
-      someDate.getMonth() == oneBeforeYesterday.getMonth() &&
-      someDate.getFullYear() == oneBeforeYesterday.getFullYear()
+      someDate.getDate() === oneBeforeYesterday.getDate() &&
+      someDate.getMonth() === oneBeforeYesterday.getMonth() &&
+      someDate.getFullYear() === oneBeforeYesterday.getFullYear()
     )
   }
 
@@ -72,9 +72,9 @@ export default function RecentActions(props) {
     const today = new Date()
     const yesterday = new Date(today.setDate(today.getDate() - 1))
     return (
-      someDate.getDate() == yesterday.getDate() &&
-      someDate.getMonth() == yesterday.getMonth() &&
-      someDate.getFullYear() == yesterday.getFullYear()
+      someDate.getDate() === yesterday.getDate() &&
+      someDate.getMonth() === yesterday.getMonth() &&
+      someDate.getFullYear() === yesterday.getFullYear()
     )
   }
 
@@ -195,8 +195,8 @@ export default function RecentActions(props) {
                 md={{ size: '8', offset: 2 }}
               >
                 <h1 className="mb-3">Today's Action's</h1>
-                {stateResult.today.map(action => (
-                  <div className="my-3">
+                {stateResult.today.map((action, i) => (
+                  <div key={`T${i}`} className="my-3">
                     <Link to={action.link}>
                       {action.display},{' '}
                       <span className="small text-muted">
@@ -219,8 +219,8 @@ export default function RecentActions(props) {
               >
                 <hr />
                 <h1 className="mb-3">Yesterday's Action's</h1>
-                {stateResult.yesterday.map(action => (
-                  <div>
+                {stateResult.yesterday.map((action, i) => (
+                  <div key={`Y${i}`} className="my-3">
                     <Link to={action.link}>
                       {action.display},{' '}
                       <span className="small text-muted">
@@ -243,8 +243,8 @@ export default function RecentActions(props) {
               >
                 <hr />
                 <h1 className="mb-3"> The Day's before Yesterday's Action's</h1>
-                {stateResult.oneBeforeYesterday.map(action => (
-                  <div>
+                {stateResult.oneBeforeYesterday.map((action, i) => (
+                  <div key={`BY${i}`} className="my-3">
                     <Link to={action.link}>
                       {action.display},{' '}
                       <span className="small text-muted">

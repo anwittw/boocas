@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import api from '../../api'
+import { NavLink } from 'react-router-dom'
 
 export default function HowItWorks() {
   return (

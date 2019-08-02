@@ -5,7 +5,11 @@ function ThoughtCardDetail(props) {
   return (
     <div>
       <div className="card">
-        <img src={props.titlePictureUrl} className="card-img-top" alt="..." />
+        <img
+          src={props.titlePictureUrl}
+          className="card-img-top"
+          alt="Thought_img"
+        />
         <div className="card-body">
           <h5 className="card-title" style={{ fontWeight: 'bold' }}>
             {props.title}

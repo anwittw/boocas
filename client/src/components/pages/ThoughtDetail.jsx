@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../api'
-import { Input, Button, Container, Row, Col } from 'reactstrap'
+import { Input, Container, Row, Col } from 'reactstrap'
 import { withRouter } from 'react-router'
-import { promises } from 'fs'
 import MainNavbar from '../MainNavbar'
 import CommentCard from '../CommentCard'
 import ThoughtCardDetail from '../ThoughtCardDetail'
@@ -11,8 +10,6 @@ import ThoughtCardDetail from '../ThoughtCardDetail'
 function ThoughtDetail(props) {
   let thoughtId = props.match.params.thoughtId
   let groupId = props.match.params.groupId
-
-  console.log(props.location)
 
   const [thought, setThought] = useState({
     comments_left: [],
@@ -31,6 +28,20 @@ function ThoughtDetail(props) {
       ...comment,
       [e.target.name]: value,
     })
+  }
+
+  function submitContentbyEnter(e) {
+    if (e.keyCode === 13 && comment.content !== '') {
+      api
+        .createComment(comment)
+        .then(response => {
+          setComment({
+            ...comment,
+            content: '',
+          })
+        })
+        .catch(err => console.log(err))
+    }
   }
 
   function handleSubmitComment(e) {
@@ -60,7 +71,6 @@ function ThoughtDetail(props) {
   }, [comment])
 
   function indexIsEven(array) {
-    console.log('EVEN')
     return array.filter((element, i) => {
       if (i % 2 === 0) {
         return element
@@ -69,11 +79,23 @@ function ThoughtDetail(props) {
   }
 
   function indexIsOdd(array) {
-    console.log('ODD')
     return array.filter((element, i) => {
       if (i % 2 !== 0) {
         return element
       }
+    })
+  }
+
+  function refresh() {
+    Promise.all([
+      api.getCommentsByThought(thoughtId),
+      api.getThought(thoughtId),
+    ]).then(([comments, thought]) => {
+      setThought({
+        comments_left: indexIsOdd(comments),
+        comments_right: indexIsEven(comments),
+        thought: thought,
+      })
     })
   }
 
@@ -107,10 +129,12 @@ function ThoughtDetail(props) {
                       return -1
                     }
                   })
-                  .map(comment => (
+                  .map((comment, i) => (
                     <CommentCard
+                      key={i}
                       background="rgba(171, 191, 163, 0.1)"
                       comment={comment}
+                      refresh={() => refresh()}
                     />
                   ))}
             </Col>
@@ -122,9 +146,11 @@ function ThoughtDetail(props) {
                   value={comment.content}
                   onChange={handleChangeComment}
                   placeholder="Comment"
+                  onKeyDown={submitContentbyEnter}
                 />
                 <br />
                 <Link
+                  to=""
                   style={{
                     fontSize: '15px',
                     textAlign: 'center',
@@ -142,7 +168,10 @@ function ThoughtDetail(props) {
                 <ThoughtCardDetail
                   title={thought.thought.title}
                   content={thought.thought.content}
-                  titlePictureUrl={thought.thought.titlePictureUrl}
+                  titlePictureUrl={
+                    thought.thought.titlePictureUrl ||
+                    '/ThoughtDetailDefault.jpg'
+                  }
                   book_chapter={thought.thought.book_chapter}
                   book_page={thought.thought.book_page}
                 />
@@ -161,10 +190,12 @@ function ThoughtDetail(props) {
                       return -1
                     }
                   })
-                  .map(comment => (
+                  .map((comment, i) => (
                     <CommentCard
+                      key={`R${i}`}
                       background="rgba(171, 191, 163, 0.1)"
                       comment={comment}
+                      refresh={() => refresh()}
                     />
                   ))}
             </Col>

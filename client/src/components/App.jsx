@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import Shelf from './pages/Shelf'
@@ -14,9 +14,9 @@ import HowItWorks from './pages/HowItWorks'
 import AddUser from './pages/AddUser'
 import api from '../api'
 import { withRouter } from 'react-router'
-import MainNavbar from './MainNavbar'
 import EditProfil from './pages/EditProfil'
 import RecentActions from './pages/RecentActions'
+import UserDetail from './pages/UserDetail'
 
 import AppContext from '../contexts/AppContext'
 
@@ -47,8 +47,9 @@ function App(props) {
       <div>
         {api.isLoggedIn() && (
           <img
+            alt="toogle-btn"
             className="toggle-sidebar"
-            style={{ height: '82px', marginTop: '18px', opacity: 0.5 }}
+            style={{ height: '65px', marginTop: '18px', opacity: 0.5 }}
             onClick={toggleSidebar}
             src={process.env.PUBLIC_URL + '/pushBar.png'}
           />
@@ -82,6 +83,11 @@ function App(props) {
                   exact
                   path="/group-detail/:groupId/thought-detail/:thoughtId"
                   component={ThoughtDetail}
+                />
+                <Route
+                  exact
+                  path="/group-detail/:groupId/user-detail/:userId"
+                  component={UserDetail}
                 />
                 <Route render={() => <h2>404</h2>} />
               </Switch>
