@@ -25,7 +25,7 @@ The UI was created using **Reactstrap** to apply **Bootstrap** in Form of React 
 ## The people behind Boocas
 
 Boocas was created as contribution to the final projects for the 
-**IRONHACK Web Dev Bootcamp #144** by
+**[IRONHACK](https://www.ironhack.com/en) Web Dev Bootcamp #144** by
 
 - Carlos Botto  [#carlosbotto](https://www.github.com/carlosbotto)
 - Ingo Großmann [#igrossma](https://www.github.com/igrossma)
