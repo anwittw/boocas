@@ -20,15 +20,15 @@ All the Data is stored in a no-sql **MongoDB** configured with **mongoose**.
 
 Among others **bCrypt**, **axios** and **passport** have been used in the backend.
 
-The UI was created using **Reactstrap** to apply **Bootstrap** in Form of React Components. In addition to that **React's Effects and States** where used. Also, individual styling was applied to smoothen up the to improve user experience.
+The UI was created using **Reactstrap** to apply **Bootstrap** in Form of React Components. In addition to that **React's Effects and States** where used. Also, individual styling was applied to smoothen up the user experience.
 
 ## The people behind Boocas
 
 Boocas was created as contribution to the final projects for the 
-**IRONHACK Web Dev Bootcamp #144** by
+**[IRONHACK](https://www.ironhack.com/en) Web Dev Bootcamp #144** by
 
-- Carlos Botto (#carlosbotto)
-- Ingo Großmann (#igrossma)
-- Andre Witter  (#anwittw)
+- Carlos Botto  [#carlosbotto](https://www.github.com/carlosbotto)
+- Ingo Großmann [#igrossma](https://www.github.com/igrossma)
+- Andre Wittwer  [#anwittw](https://www.github.com/anwittw)
 
 in Lisbon, July 2019 - in roughly 9 days.

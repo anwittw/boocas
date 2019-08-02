@@ -11,6 +11,7 @@ import SearchGroup from './pages/SearchGroup'
 import LandingPage from './pages/LandingPage'
 import ThoughtDetail from './pages/ThoughtDetail'
 import HowItWorks from './pages/HowItWorks'
+import About from './pages/About'
 import AddUser from './pages/AddUser'
 import api from '../api'
 import { withRouter } from 'react-router'
@@ -98,6 +99,7 @@ function App(props) {
           <div className="App__Logout">
             {/* <MainNavbar /> */}
             <Switch>
+              <Route path="/about" component={About} />
               <Route path="/how-it-works" component={HowItWorks} />
               <Route path="/" component={LandingPageWrapper} />
               <Route path="/create-group" component={CreateGroup} />
