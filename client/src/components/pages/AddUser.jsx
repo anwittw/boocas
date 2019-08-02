@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Input, Button, Table, Label, Container, Col, Row } from 'reactstrap'
+import { Input, Button, Container, Col, Row } from 'reactstrap'
 import api from '../../api'
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'

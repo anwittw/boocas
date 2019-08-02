@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import api from '../../api'
-import { Button } from 'reactstrap'
 import { withRouter } from 'react-router'
 import MainNavbar from '../MainNavbar'
 import ThoughtCard from '../ThoughtCard'
-//import HideOnScroll from '../HideOnScroll'
 
 import Circle from '../Circle'
 
@@ -23,7 +20,6 @@ function GroupDetail(props) {
     myThoughts: '',
   })
 
-  let book = (groupDetails.group || {})._book
   let group = groupDetails.group
   let memberships = groupDetails.memberships
   let thoughts = groupDetails.thoughts
@@ -44,6 +40,22 @@ function GroupDetail(props) {
     })
   }, [groupId])
 
+  function refresh() {
+    Promise.all([
+      api.getGroup(groupId),
+      api.getMembershipsByGroup(groupId),
+      api.getThoughtsByGroup(groupId),
+      api.getMyThoughtsByGroup(groupId),
+    ]).then(([group, memberships, thoughts, myThoughts]) => {
+      setGroupDetails({
+        group: group,
+        memberships: memberships,
+        thoughts: thoughts,
+        myThoughts: myThoughts,
+      })
+    })
+  }
+
   function getIdOfCreator(memberships) {
     for (let i = 0; i < memberships.length; i++) {
       if (memberships[i].isCreator === true)
@@ -60,7 +72,6 @@ function GroupDetail(props) {
   }
 
   return (
-    //<HideOnScroll>
     <div>
       <div className="App__right__header">
         <MainNavbar title={group.name} />
@@ -165,6 +176,7 @@ function GroupDetail(props) {
                           content={thought.content}
                           _id={thought._id}
                           group={groupId}
+                          onDelete={() => refresh()}
                         />
                       </div>
                     ))}

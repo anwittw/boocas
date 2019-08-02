@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import Shelf from './pages/Shelf'
@@ -14,7 +14,6 @@ import HowItWorks from './pages/HowItWorks'
 import AddUser from './pages/AddUser'
 import api from '../api'
 import { withRouter } from 'react-router'
-import MainNavbar from './MainNavbar'
 import EditProfil from './pages/EditProfil'
 import RecentActions from './pages/RecentActions'
 
@@ -47,6 +46,7 @@ function App(props) {
       <div>
         {api.isLoggedIn() && (
           <img
+            alt="toogle-btn"
             className="toggle-sidebar"
             style={{ height: '82px', marginTop: '18px', opacity: 0.5 }}
             onClick={toggleSidebar}

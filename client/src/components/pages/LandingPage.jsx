@@ -1,11 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 import { withRouter } from 'react-router'
-import { Route } from 'react-router-dom'
 
-import Login from './Login'
-import Signup from './Signup'
-
-import React, { useState } from 'react'
+import React from 'react'
 import api from '../../api'
 
 function LandingPage(props) {

@@ -1,15 +1,6 @@
 import React, { useState } from 'react'
 import api from '../../api'
-import {
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button,
-  Container,
-  Row,
-  Col,
-} from 'reactstrap'
+import { Form, FormGroup, Input, Button, Container, Row, Col } from 'reactstrap'
 
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'

@@ -1,17 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { NavLink as NLink } from 'react-router-dom'
 import api from '../api'
 import { NavLink } from 'reactstrap'
 import AppContext from '../contexts/AppContext'
 
 export default function Sidebar(props) {
+  console.log('RENDER Sidebar')
   const [myGroups, setMyGroups] = useContext(AppContext)
 
   useEffect(() => {
     api.getMyMemberships().then(memberships => {
       setMyGroups(memberships.map(membership => membership._group))
     })
-  }, [])
+  }, [setMyGroups])
 
   let sidebarStyle = {}
   if (!props.isDisplayed) {
@@ -28,6 +29,7 @@ export default function Sidebar(props) {
           <div>
             <NavLink tag={NLink} to="/" exact>
               <img
+                alt="boocas-logo"
                 style={{
                   marginTop: '35px',
                   maxWidth: '45%',

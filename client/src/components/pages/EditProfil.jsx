@@ -1,7 +1,5 @@
 import React from 'react'
 import { Container } from 'reactstrap'
-import { Link, NavLink } from 'react-router-dom'
-import api from '../../api'
 import MainNavbar from '../MainNavbar'
 import BackButton from '../BackButton'
 
