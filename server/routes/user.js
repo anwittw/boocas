@@ -15,4 +15,15 @@ router.get('/', isLoggedIn, (req, res, next) => {
     })
 })
 
+router.get('/:id', isLoggedIn, (req, res, next) => {
+  let id = req.params.id
+  User.find({ _id: id })
+    .then(user => {
+      res.json(user)
+    })
+    .catch(err => {
+      next({ status: 400, message: err })
+    })
+})
+
 module.exports = router

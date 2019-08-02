@@ -111,7 +111,7 @@ function GroupDetail(props) {
                     className="ml-2"
                     size={membership.isCreator ? 'large' : 'medium'}
                     color={membership.isCreator ? 'success' : 'background'}
-                    onClick={() => {}}
+                    link={`${groupId}/user-detail/${membership._user._id}`}
                     text={membership._user.username.substr(0, 3)}
                   />
                 </div>

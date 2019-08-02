@@ -16,6 +16,7 @@ import api from '../api'
 import { withRouter } from 'react-router'
 import EditProfil from './pages/EditProfil'
 import RecentActions from './pages/RecentActions'
+import UserDetail from './pages/UserDetail'
 
 import AppContext from '../contexts/AppContext'
 
@@ -82,6 +83,11 @@ function App(props) {
                   exact
                   path="/group-detail/:groupId/thought-detail/:thoughtId"
                   component={ThoughtDetail}
+                />
+                <Route
+                  exact
+                  path="/group-detail/:groupId/user-detail/:userId"
+                  component={UserDetail}
                 />
                 <Route render={() => <h2>404</h2>} />
               </Switch>
