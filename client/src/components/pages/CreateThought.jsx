@@ -160,7 +160,10 @@ export default function CreateThought(props) {
               </Row>
               <Row className="my-3 ">
                 <Col xs="12" md={{ size: '3', offset: 3 }}>
-                  <Button className="text-center"> Create Thought</Button>
+                  <Button block className="text-center">
+                    {' '}
+                    Create Thought
+                  </Button>
                 </Col>
                 <Col className="mt-3 mt-md-0" xs="12" md={{ size: '3' }}>
                   <BackButton history={props.history} />
