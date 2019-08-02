@@ -32,14 +32,17 @@ $breakpoint-mobile: 670px;
 textarea.form-control {
   font-size: 14px;
 }
+
 input.form-control {
   background: rgba(244, 237, 222, 0.3);
   box-shadow: 8px 8px rgba(217, 214, 208, 0.5);
 }
+
 textarea.form-control {
   background: rgba(244, 237, 222, 0.8);
   box-shadow: 8px 8px rgba(217, 214, 208, 0.8);
 }
+
 select.text-center.form-control {
   background: $orange50;
   box-shadow: 8px 8px rgba(217, 214, 208, 0.8);
@@ -47,6 +50,7 @@ select.text-center.form-control {
 
 h1 {
   font-size: 2rem;
+
   @media (max-width: $breakpoint-mobile) {
     font-size: 1.4rem;
   }
@@ -90,6 +94,7 @@ body {
   box-shadow: 1px 1px 10px 2px rgba(204, 204, 204, 0.3);
   transition: top 0.3s;
   padding: 15px 30px;
+
   @media (max-width: $breakpoint-mobile) {
     padding: 5px 30px;
   }
@@ -125,21 +130,21 @@ body {
   height: 100vh;
   transition: 1s;
 }
+
 .Sidebar__groups {
   height: calc(100vh - 300px);
   box-shadow: 2px 3px 5px lightgrey;
+
   &:hover {
     overflow-y: scroll;
   }
 }
 
 .container-full-width {
-  background-image: linear-gradient(
-    to bottom right,
-    $background,
-    $background,
-    $secondary
-  );
+  background-image: linear-gradient(to bottom right,
+      $background,
+      $background,
+      $secondary);
 
   height: 100vh;
   border: 0.1px solid white;
@@ -157,6 +162,7 @@ body {
   background: white;
   border-radius: 10px;
   box-shadow: 2px 10px 20px grey;
+
   @media (max-width: $breakpoint-mobile) {
     //border: 2px solid green;
     margin-top: 2%;
@@ -179,6 +185,7 @@ body {
   height: 310px;
   z-index: 1;
   border-radius: 10px;
+
   @media (max-width: $breakpoint-mobile) {
     margin: auto;
     margin-top: 40px;
@@ -193,12 +200,10 @@ body {
   //z-index: 1;
   width: 497px;
   height: 497px;
-  background-image: linear-gradient(
-    to bottom right,
-    $success,
-    $success,
-    $secondary
-  );
+  background-image: linear-gradient(to bottom right,
+      $success,
+      $success,
+      $secondary);
   opacity: 0.5;
   border-radius: 50%;
 }
@@ -338,12 +343,10 @@ body {
   top: -45px;
   left: 350px;
   //background-color: $secondary;
-  background-image: linear-gradient(
-    to bottom right,
-    $success,
-    $success,
-    $secondary
-  );
+  background-image: linear-gradient(to bottom right,
+      $success,
+      $success,
+      $secondary);
 }
 
 .Spin__Circle {
@@ -362,6 +365,7 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -390,6 +394,7 @@ body {
     z-index: 1;
   }
 }
+
 .YesMobile2 {
   @media (max-width: $breakpoint-mobile) {
     //display: none;
@@ -414,13 +419,15 @@ body {
 img.toggle-sidebar {
   position: fixed;
   z-index: 10;
+
   &:hover {
     opacity: 1;
-    box-shadow: 16px 3px 6px -10px grey;
+    box-shadow: 9px 5px 6px -7px grey;
   }
 }
 
 .Circle__button__profile {
+
   // position: relative;
   // right: 20%;
   &.active,
