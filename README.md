@@ -20,7 +20,7 @@ All the Data is stored in a no-sql **MongoDB** configured with **mongoose**.
 
 Among others **bCrypt**, **axios** and **passport** have been used in the backend.
 
-The UI was created using **Reactstrap** to apply **Bootstrap** in Form of React Components. In addition to that **React's Effects and States** where used. Also, individual styling was applied to smoothen up the to improve user experience.
+The UI was created using **Reactstrap** to apply **Bootstrap** in Form of React Components. In addition to that **React's Effects and States** where used. Also, individual styling was applied to smoothen up the user experience.
 
 ## The people behind Boocas
 
