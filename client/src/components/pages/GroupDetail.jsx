@@ -125,10 +125,12 @@ function GroupDetail(props) {
                 <div>
                   <ThoughtCard
                     link={'/group-detail/' + groupId + '/create-thought'}
-                    background="rgba(171, 191, 163, 0.3)"
-                    title="Title"
+                    background="rgba(171, 191, 163, 0.7)"
+                    title="Click to create your first Thought"
                     _user={{}}
-                    content={' / Create your first thought /'}
+                    content={
+                      'Here is the content you want to share about the Book with your grou'
+                    }
                   />
                 </div>
               )}
@@ -139,7 +141,7 @@ function GroupDetail(props) {
                     <ThoughtCard
                       link={'/group-detail/' + groupId + '/create-thought'}
                       background="rgba(171, 191, 163, 0.3)"
-                      title="Title"
+                      title="Click to create a Thought"
                       _user={{}}
                       content={
                         'Here is the content you want to share about the Book with your group'
