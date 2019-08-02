@@ -112,13 +112,15 @@ export default function CreateGroup(props) {
   }
 
   function cleanCreateBook(state) {
-    if (state.changeURL !== '') {
+    if (state.changeURL) {
       return {
         ...state,
         coverPictureUrl: state.changeURL,
       }
-    }
+    } else return state
   }
+
+  console.log(stateBook.coverPictureUrl)
 
   function handleSubmitBook(e) {
     e.preventDefault()

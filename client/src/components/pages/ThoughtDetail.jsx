@@ -169,8 +169,7 @@ function ThoughtDetail(props) {
                   title={thought.thought.title}
                   content={thought.thought.content}
                   titlePictureUrl={
-                    thought.thought.titlePictureUrl ||
-                    '/ThoughtDetailDefault.jpg'
+                    thought.thought.titlePictureUrl || '/ThoughtDetailImg.jpg'
                   }
                   book_chapter={thought.thought.book_chapter}
                   book_page={thought.thought.book_page}
