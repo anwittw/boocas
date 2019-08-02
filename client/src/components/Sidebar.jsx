@@ -5,13 +5,14 @@ import { NavLink } from 'reactstrap'
 import AppContext from '../contexts/AppContext'
 
 export default function Sidebar(props) {
+  console.log('RENDER Sidebar')
   const [myGroups, setMyGroups] = useContext(AppContext)
 
   useEffect(() => {
     api.getMyMemberships().then(memberships => {
       setMyGroups(memberships.map(membership => membership._group))
     })
-  }, [])
+  }, [setMyGroups])
 
   let sidebarStyle = {}
   if (!props.isDisplayed) {

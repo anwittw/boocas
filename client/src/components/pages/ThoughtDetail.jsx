@@ -11,8 +11,6 @@ function ThoughtDetail(props) {
   let thoughtId = props.match.params.thoughtId
   let groupId = props.match.params.groupId
 
-  console.log(props.location)
-
   const [thought, setThought] = useState({
     comments_left: [],
     comments_right: [],
@@ -59,7 +57,6 @@ function ThoughtDetail(props) {
   }, [comment])
 
   function indexIsEven(array) {
-    console.log('EVEN')
     return array.filter((element, i) => {
       if (i % 2 === 0) {
         return element
@@ -68,11 +65,23 @@ function ThoughtDetail(props) {
   }
 
   function indexIsOdd(array) {
-    console.log('ODD')
     return array.filter((element, i) => {
       if (i % 2 !== 0) {
         return element
       }
+    })
+  }
+
+  function refresh() {
+    Promise.all([
+      api.getCommentsByThought(thoughtId),
+      api.getThought(thoughtId),
+    ]).then(([comments, thought]) => {
+      setThought({
+        comments_left: indexIsOdd(comments),
+        comments_right: indexIsEven(comments),
+        thought: thought,
+      })
     })
   }
 
@@ -111,6 +120,7 @@ function ThoughtDetail(props) {
                       key={i}
                       background="rgba(171, 191, 163, 0.1)"
                       comment={comment}
+                      refresh={() => refresh()}
                     />
                   ))}
             </Col>
@@ -125,6 +135,7 @@ function ThoughtDetail(props) {
                 />
                 <br />
                 <Link
+                  to=""
                   style={{
                     fontSize: '15px',
                     textAlign: 'center',
@@ -166,6 +177,7 @@ function ThoughtDetail(props) {
                       key={`R${i}`}
                       background="rgba(171, 191, 163, 0.1)"
                       comment={comment}
+                      refresh={() => refresh()}
                     />
                   ))}
             </Col>

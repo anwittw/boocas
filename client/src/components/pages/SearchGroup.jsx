@@ -206,7 +206,7 @@ export default function SearchGroups(props) {
               />
             </Col>
           </Row>
-          {stateInput.type == 'group' && (
+          {stateInput.type === 'group' && (
             <div className="mb-5">
               <Row className="mt-4">
                 <Col
@@ -266,7 +266,7 @@ export default function SearchGroups(props) {
               </Row>
             </div>
           )}
-          {stateInput.type == 'book' && (
+          {stateInput.type === 'book' && (
             <div className="mb-5">
               <Row className="mt-4">
                 <Col

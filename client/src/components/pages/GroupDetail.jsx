@@ -176,7 +176,7 @@ function GroupDetail(props) {
                           content={thought.content}
                           _id={thought._id}
                           group={groupId}
-                          refresh={() => refresh()}
+                          onDelete={() => refresh()}
                         />
                       </div>
                     ))}

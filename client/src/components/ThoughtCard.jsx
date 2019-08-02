@@ -21,7 +21,7 @@ function ThoughtCard(props) {
     e.preventDefault()
     api.deleteThought(id).then(thought => {
       console.log(thought)
-      props.refresh()
+      props.onDelete()
     })
   }
 

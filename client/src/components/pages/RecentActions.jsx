@@ -220,7 +220,7 @@ export default function RecentActions(props) {
                 <hr />
                 <h1 className="mb-3">Yesterday's Action's</h1>
                 {stateResult.yesterday.map((action, i) => (
-                  <div key={`Y${i}`}>
+                  <div key={`Y${i}`} className="my-3">
                     <Link to={action.link}>
                       {action.display},{' '}
                       <span className="small text-muted">
@@ -244,7 +244,7 @@ export default function RecentActions(props) {
                 <hr />
                 <h1 className="mb-3"> The Day's before Yesterday's Action's</h1>
                 {stateResult.oneBeforeYesterday.map((action, i) => (
-                  <div key={`BY${i}`}>
+                  <div key={`BY${i}`} className="my-3">
                     <Link to={action.link}>
                       {action.display},{' '}
                       <span className="small text-muted">

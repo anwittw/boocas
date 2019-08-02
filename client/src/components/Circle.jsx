@@ -4,18 +4,21 @@ import { Link } from 'react-router-dom'
 // Component allows three different sizes
 
 function setSize(size) {
+  if (size === 'xsmall') return 20
   if (size === 'small') return 25
   if (size === 'medium') return 30
   if (size === 'large') return 35
 }
 
 function setFontSize(size) {
+  if (size === 'xsmall') return 9
   if (size === 'small') return 10
   if (size === 'medium') return 12
   if (size === 'large') return 14
 }
 
 function setFontWeight(size) {
+  if (size === 'xsmall') return 'normal'
   if (size === 'small') return 'normal'
   if (size === 'medium') return 'normal'
   if (size === 'large') return 'bold'

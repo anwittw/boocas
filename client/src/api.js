@@ -173,6 +173,14 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
+
+  deleteComment(commentId) {
+    return service
+      .delete('/comments/' + commentId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+
   getCommentsByThought(thoughtId) {
     return service
       .get('/comments/?thought=' + thoughtId)
