@@ -88,6 +88,21 @@ function LandingPage(props) {
               How it works
             </NavLink>
           )}
+          {!api.isLoggedIn() && (
+            <NavLink
+              className=" Button__Shelf NotMobile"
+              to="/about"
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                position: 'absolute',
+                left: '110px',
+                bottom: '7%',
+              }}
+            >
+              About
+            </NavLink>
+          )}
         </div>
       </div>
     </div>
