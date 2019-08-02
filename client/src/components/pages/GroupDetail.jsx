@@ -44,8 +44,6 @@ function GroupDetail(props) {
     })
   }, [groupId])
 
-  console.log('DEBUUUUUUUUU', groupDetails.thoughts)
-
   function getIdOfCreator(memberships) {
     for (let i = 0; i < memberships.length; i++) {
       if (memberships[i].isCreator === true)

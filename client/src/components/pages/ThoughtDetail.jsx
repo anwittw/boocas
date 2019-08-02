@@ -12,7 +12,7 @@ function ThoughtDetail(props) {
   let thoughtId = props.match.params.thoughtId
   let groupId = props.match.params.groupId
 
-  console.log(props.location)
+  // console.log(props.location)
 
   const [thought, setThought] = useState({
     comments_left: [],
@@ -142,7 +142,10 @@ function ThoughtDetail(props) {
                 <ThoughtCardDetail
                   title={thought.thought.title}
                   content={thought.thought.content}
-                  titlePictureUrl={thought.thought.titlePictureUrl}
+                  titlePictureUrl={
+                    thought.thought.titlePictureUrl ||
+                    '/ThoughtDetailDefault.jpg'
+                  }
                   book_chapter={thought.thought.book_chapter}
                   book_page={thought.thought.book_page}
                 />

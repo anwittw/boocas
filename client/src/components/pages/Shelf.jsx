@@ -25,7 +25,7 @@ export default function Shelf() {
           <GroupCard
             link={'/create-group'}
             background="rgba(171, 191, 163, 0.7)"
-            bookCover="../../../BookCover.jpg"
+            bookCover="/BookCover.jpg"
             name="Create your first group"
             description="Here is the description of the group - f.e if you want to discuss specific or general topics - feel free!"
             group={{}}
@@ -69,7 +69,7 @@ export default function Shelf() {
               link={'/create-group'}
               background="rgba(171, 191, 163, 0.2)"
               name="Title of your group"
-              bookCover="../../../BookCover.jpg"
+              bookCover="/BookCover.jpg"
               description="Here is the description of the group - f.e if you want to discuss specific or general topics - feel free!"
               group={{}}
             />
