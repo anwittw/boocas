@@ -469,3 +469,18 @@ img.toggle-sidebar {
     font-weight: bold;
   }
 }
+
+.navbar-links-visible {
+  // background-color: green;
+  transition: 2s;
+  width: 400px;
+  white-space: pre;
+  overflow: hidden;
+}
+.navbar-links-hidden {
+  // background-color: red;
+  transition: 1s;
+  width: 0;
+  white-space: pre;
+  overflow: hidden;
+}
