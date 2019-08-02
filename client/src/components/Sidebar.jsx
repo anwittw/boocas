@@ -68,7 +68,7 @@ export default function Sidebar(props) {
           </div>
         </div>
         <div className="Sidebar__groups">
-          {myGroups.length === 0 && <p>No groups</p>}
+          {myGroups.length === 0 && <p>Your groups...</p>}
           {myGroups.length !== 0 &&
             myGroups
               .sort(function(a, b) {

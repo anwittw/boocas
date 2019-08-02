@@ -119,6 +119,24 @@ body {
   background: rgba(255, 255, 255, 0);
 }
 
+.toggleCircle {
+  z-index: 2;
+  position: fixed;
+  box-shadow: 2px 3px 5px lightgrey;
+  background-color: $background;
+  height: 100vh;
+  transition: 1s;
+}
+
+.Sidebar__groups {
+  height: calc(100vh - 300px);
+  box-shadow: 2px 3px 5px lightgrey;
+
+  &:hover {
+    overflow-y: scroll;
+  }
+}
+
 .Sidebar {
   z-index: 2;
   position: fixed;
@@ -460,4 +478,20 @@ img.toggle-sidebar {
     opacity: 0.7;
     font-weight: bold;
   }
+}
+
+.navbar-links-visible {
+  // background-color: green;
+  transition: 2s;
+  width: 400px;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.navbar-links-hidden {
+  // background-color: red;
+  transition: 1s;
+  width: 0;
+  white-space: pre;
+  overflow: hidden;
 }

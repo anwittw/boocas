@@ -11,6 +11,7 @@ function MainNavbar(props) {
   function handleLogoutClick(e) {
     api.logout()
   }
+
   return (
     // <HideOnScroll>
     <nav>
@@ -26,8 +27,13 @@ function MainNavbar(props) {
             text="..."
           />
         </span>
-        {stateOptions && (
-          <div className="d-flex">
+        <div style={{ fontSize: '15px', marginTop: '4px' }}>
+          <div
+            className={
+              'd-flex' +
+              (stateOptions ? ' navbar-links-visible' : ' navbar-links-hidden')
+            }
+          >
             <div className="ml-3">
               {api.isLoggedIn() && (
                 <Link to="/" onClick={handleLogoutClick}>
@@ -50,7 +56,7 @@ function MainNavbar(props) {
               )}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
     //</HideOnScroll>

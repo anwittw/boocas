@@ -202,6 +202,7 @@ export default function SearchGroups(props) {
               <Input
                 value={stateInput.searchString}
                 name="searchString"
+                placeholder="search"
                 onChange={handleOnChange}
               />
             </Col>

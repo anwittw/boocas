@@ -193,6 +193,12 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
+  getUser(userId) {
+    return service
+      .get('/users/' + userId)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
   getActions() {
     return service
       .get('/actions/')

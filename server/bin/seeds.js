@@ -320,6 +320,13 @@ let groupDocs = [
       'Narrated in the first person by the protagonist, a salaryman named Jōji, the novel follows his attempt to groom a Eurasian-looking girl, the titular Naomi, to be a Westernized woman. Naomi is a significant work in its comic depiction of Japanese culture of the era and its fascination with the West.',
     isPrivate: true,
   }),
+  new Group({
+    _book: bookDocs[6]._id,
+    name: "Proust Swann's discussion",
+    description:
+      'The famous opening paragraphs of Swann’s Way, in which the narrator describes his habit of going to bed early as a child, typify Proust’s ability to mine insight from apparently insignificant events. As the narrator attempts to understand the workings of his own consciousness as he falls asleep reading, he makes comparisons and creates images that give body and force to his philosophizing.',
+    isPrivate: true,
+  }),
 ]
 
 let membershipDocs = [
@@ -378,12 +385,27 @@ let membershipDocs = [
     _group: groupDocs[3]._id,
     isCreator: false,
   }),
+  new Membership({
+    _user: userDocs[0]._id,
+    _group: groupDocs[4]._id,
+    isCreator: false,
+  }),
+  new Membership({
+    _user: userDocs[2]._id,
+    _group: groupDocs[4]._id,
+    isCreator: false,
+  }),
+  new Membership({
+    _user: userDocs[1]._id,
+    _group: groupDocs[4]._id,
+    isCreator: true,
+  }),
 ]
 
 let thoughtDocs = [
   new Thought({
     _user: userDocs[0]._id,
-    _group: groupDocs[1]._id,
+    _group: groupDocs[0]._id,
     title: 'Foggy florest',
     book_chapter: '12',
     book_page: 15,
@@ -397,7 +419,7 @@ let thoughtDocs = [
   }),
   new Thought({
     _user: userDocs[1]._id,
-    _group: groupDocs[1]._id,
+    _group: groupDocs[0]._id,
     title: 'Lake hoods',
     book_chapter: 'IV',
     book_page: 220,
@@ -409,7 +431,7 @@ let thoughtDocs = [
   }),
   new Thought({
     _user: userDocs[2]._id,
-    _group: groupDocs[1]._id,
+    _group: groupDocs[0]._id,
     title: 'Red walks',
     book_chapter: 'IV',
     book_page: 220,
@@ -421,7 +443,7 @@ let thoughtDocs = [
   }),
   new Thought({
     _user: userDocs[0]._id,
-    _group: groupDocs[1]._id,
+    _group: groupDocs[0]._id,
     title: 'Contrast thought',
     book_chapter: '2',
     book_page: 89,
@@ -432,7 +454,7 @@ let thoughtDocs = [
     links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
   }),
   new Thought({
-    _user: userDocs[2]._id,
+    _user: userDocs[1]._id,
     _group: groupDocs[1]._id,
     title: 'Desert clouds',
     book_chapter: '7',
@@ -455,6 +477,198 @@ let thoughtDocs = [
       'https://images.unsplash.com/photo-1550856015-de3a3956c67d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
     links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
   }),
+  new Thought({
+    _user: userDocs[2]._id,
+    _group: groupDocs[1]._id,
+    title: 'Curves',
+    book_chapter: '5',
+    book_page: 23,
+    content:
+      'Ye to misery wisdom plenty polite to as. Prepared interest proposal it he exercise. My wishing an in attempt ferrars. Visited eat you why service looking engaged. At place no walls hopes rooms fully in. Roof hope shy tore leaf joy paid boy.',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1564503868236-059dc49688b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[0]._id,
+    _group: groupDocs[1]._id,
+    title: 'Night shifts',
+    book_chapter: '7',
+    book_page: 223,
+    content:
+      'Offered say visited elderly and. Waited period are played family man formed. He ye body or made on pain part meet. You one delay nor begin our folly abode.',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1562263588-35193ae8ecbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[1]._id,
+    _group: groupDocs[2]._id,
+    title: 'Leaf them',
+    book_chapter: '9',
+    book_page: 523,
+    content:
+      'To shewing another demands to. Marianne property cheerful informed at striking at. Clothes parlors however by cottage on. In views it or meant drift to.',
+    titlePictureUrl:
+      'https://images.unsplash.com/uploads/1411040661312f50ec8e2/ded9d54e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[2]._id,
+    _group: groupDocs[2]._id,
+    title: 'Leaf them',
+    book_chapter: '2',
+    book_page: 35,
+    content:
+      'Extended kindness trifling remember he confined outlived if. Assistance sentiments yet unpleasing say. Open they an busy they my such high. An active dinner wishes at unable hardly no talked on. Immediate him her resolving his favourite.',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1449709861192-5fbaa595db43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[0]._id,
+    _group: groupDocs[2]._id,
+    title: 'Water flush',
+    book_chapter: '4',
+    book_page: 55,
+    content:
+      'Friendship contrasted solicitude insipidity in introduced literature it. He seemed denote except as oppose do spring my. Between any may mention evening age shortly can ability regular. ',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1449709861192-5fbaa595db43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[1]._id,
+    _group: groupDocs[2]._id,
+    title: 'Bubbles',
+    book_chapter: '5',
+    book_page: 65,
+    content:
+      'Friendship contrasted solicitude insipidity in introduced literature it. He seemed denote except as oppose do spring my. Between any may mention evening age shortly can ability regular. ',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1438986710423-1bf13038bc14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[2]._id,
+    _group: groupDocs[3]._id,
+    title: 'Bubbles',
+    book_chapter: '6',
+    book_page: 75,
+    content:
+      'Conveying or northward offending admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect. ',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1486252904492-db70957113f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[0]._id,
+    _group: groupDocs[3]._id,
+    title: 'Circular',
+    book_chapter: '7',
+    book_page: 87,
+    content:
+      'Am cottage calling my is mistake cousins talking up. Interested especially do impression he unpleasant travelling excellence. All few our knew time done draw ask. ',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1559762759-d4dddb38c2a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[1]._id,
+    _group: groupDocs[3]._id,
+    title: 'Dunes',
+    book_chapter: 'V',
+    book_page: 342,
+    content:
+      'But why smiling man her imagine married. Chiefly can man her out believe manners cottage colonel unknown.',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1559867243-edf5915deaa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[2]._id,
+    _group: groupDocs[1]._id,
+    title: 'Drops',
+    book_chapter: '8',
+    book_page: 142,
+    content:
+      'Particular unaffected projection sentiments no my. Music marry as at cause party worth weeks. Saw how marianne graceful dissuade new outlived prospect followed. Uneasy no settle whence nature narrow in afraid.',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1556834234-ff0f846f83cb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[0]._id,
+    _group: groupDocs[4]._id,
+    title: 'White Balls',
+    book_chapter: '3',
+    book_page: 42,
+    content:
+      'Able an hope of body. Any nay shyness article matters own removal nothing his forming. Gay own additions education satisfied the perpetual. If he cause manor happy. Without farther she exposed saw man led.',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1557128928-66e3009291b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[1]._id,
+    _group: groupDocs[4]._id,
+    title: 'Fields',
+    book_chapter: '7',
+    book_page: 234,
+    content:
+      'On no twenty spring of in esteem spirit likely estate. Continue new you declared differed learning bringing honoured. At mean mind so upon they rent am walk. Shortly am waiting inhabit smiling he chiefly of in. ',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1557445796-184d83fc49b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[2]._id,
+    _group: groupDocs[4]._id,
+    title: 'Sands',
+    book_chapter: '8',
+    book_page: 344,
+    content:
+      'OLain tore time gone him his dear sure. Fat decisively estimating affronting assistance not. Resolve pursuit regular so calling me. West he plan girl been my then up no. ',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1557505983-1649ce0ba3b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[1]._id,
+    _group: groupDocs[4]._id,
+    title: 'Stripes',
+    book_chapter: '2',
+    book_page: 44,
+    content:
+      'Arrived totally in as between private. Favour of so as on pretty though elinor direct. Reasonable estimating be alteration we themselves entreaties me of reasonably.',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1547068276-269a9c4517bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[2]._id,
+    _group: groupDocs[0]._id,
+    title: 'Picos',
+    book_chapter: '3',
+    book_page: 34,
+    content:
+      'Shot what able cold new the see hold. Friendly as an betrayed formerly he. Morning because as to society behaved moments.',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1519607811513-d734618713bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
+  new Thought({
+    _user: userDocs[2]._id,
+    _group: groupDocs[1]._id,
+    title: 'Picos',
+    book_chapter: '5',
+    book_page: 84,
+    content:
+      'Up unpacked friendly ecstatic so possible humoured do. Ample end might folly quiet one set spoke her. We no am former valley assure. Four need spot ye said we find mile. ',
+    titlePictureUrl:
+      'https://images.unsplash.com/photo-1555946228-d5cd5a1f6719?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    links: ['https://onezero.medium.com/in-defense-of-normal-2b70172dd2b7'],
+  }),
 ]
 
 let commentDocs = [
@@ -468,30 +682,338 @@ let commentDocs = [
     content:
       'Moments its musical age explain. But extremity sex now education concluded earnestly her continual.',
     _user: userDocs[1]._id,
-    _thought: thoughtDocs[1]._id,
+    _thought: thoughtDocs[0]._id,
   }),
   new Comment({
     content:
       'Age sold some full like rich new. Amounted repeated as believed in confined juvenile.',
     _user: userDocs[0]._id,
-    _thought: thoughtDocs[1]._id,
+    _thought: thoughtDocs[0]._id,
   }),
   new Comment({
     content: 'You disposal strongly quitting his endeavor two settling him.',
     _user: userDocs[2]._id,
-    _thought: thoughtDocs[3]._id,
+    _thought: thoughtDocs[1]._id,
   }),
   new Comment({
     content:
       'Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in.',
     _user: userDocs[1]._id,
-    _thought: thoughtDocs[2]._id,
+    _thought: thoughtDocs[1]._id,
   }),
   new Comment({
     content:
       'Believing neglected so so allowance existence departure in. In design active temper be uneasy.',
     _user: userDocs[2]._id,
+    _thought: thoughtDocs[1]._id,
+  }),
+  new Comment({
+    content:
+      'Prit pois qui les pres coin long. Prisonnier ordonnance tristement ecouterent en artilleurs oh. Ai deja donc ne vert.',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[1]._id,
+  }),
+  new Comment({
+    content:
+      'Construits bon descendons bouquetins evidemment prisonnier oui peu nos. Fils elle mene on ah ca en rues voix.',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[2]._id,
+  }),
+  new Comment({
+    content:
+      'Ii mamelons va sa precieux couchent fondrait oh trouvent. Roche moins salle creve tenez par une vit metal.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[2]._id,
+  }),
+  new Comment({
+    content:
+      'Les ouvrent prefere jet relatif. Tu canons la he vasque carres ii. Ras pouvaient souvenirs des distribua fer vif conquerir.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[2]._id,
+  }),
+  new Comment({
+    content:
+      'Pu cervelle recupera songeant au il arrivons. Moi mais sait cent toi moi air bete ruer. Mene ton toi six peut dieu cris long.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[3]._id,
+  }),
+  new Comment({
+    content:
+      'Feu philippe pressent nez trahison. Primeveres il on de mendiaient ca imprudente artilleurs indulgence. Flottent il avancent amertume si dressait treillis.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[3]._id,
+  }),
+  new Comment({
+    content:
+      'On va mutuel dormir ruches baiser va de. Pretends attentif embrassa en sa relevent. Sa tendons au eu progres laissez. Eclaire jeu toi six survint colonel fureurs.',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[3]._id,
+  }),
+  new Comment({
+    content:
+      'Ah toute un luire style point guere ah. Rien afin rit bois murs ton tres ras. Couleur dur cheveux meurtre attendu accourt exagere roc. Dit ces kolbacks susciter six bourreau ici. ',
+    _user: userDocs[1]._id,
     _thought: thoughtDocs[0]._id,
+  }),
+  new Comment({
+    content:
+      'Halboffene im zueinander du grundstuck verstehsts schuchtern vertreiben mi. Da verrichtet erkundigte ri te begleitete ja. La mundart ob stillen du konnten gelegen gewesen niemand. ',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[3]._id,
+  }),
+  new Comment({
+    content:
+      'Grasplatz verstehen geschickt bettstatt handwerke nur alt wichszeug. Bescheiden um knabenhaft begleitete grashalden angenommen an ja. Pa pa uberall hinuber offenen zu mu fremder. Ding wand hier des als ohne dies kerl.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[4]._id,
+  }),
+  new Comment({
+    content:
+      'In la ausdenken fu ertastete sorglosen am filzhutes schwemmen. Im vollends hinabsah gebogene funkelte du en irgendwo. Als vor sagst ferne ihn kinde spiel durch. ',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[5]._id,
+  }),
+  new Comment({
+    content:
+      'Lieb tust ubel gar alt froh. Harmlos kleines offnung da heiland in spiegel anderen la wu. Sah geheimnis schonheit furchtete gar magdebett tanzmusik zufrieden.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[5]._id,
+  }),
+  new Comment({
+    content:
+      'So zaunpfahle mi neidgefuhl em vertreiben wo gesprachig angenommen. Du em paar muhe in so doch. In es frauen te kunste kurios zu.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[5]._id,
+  }),
+  new Comment({
+    content:
+      'Eben drei es frau halt klar im ichs. Lang hast seit oben tod ein zehn tag. Te se tadellos schaffte befehlen. Verweilen bedeckten bei ihr flanierte kindliche.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[6]._id,
+  }),
+  new Comment({
+    content:
+      'La ob storen an deinen am sachen. Doppelte um da am spateren verlogen gekommen achtzehn blaulich. Bessern dir unrecht zweimal ist. Ab sahen es drang ihnen junge alles. ',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[6]._id,
+  }),
+  new Comment({
+    content:
+      'So prachtig ri da gesichts betrubte ubrigens an erzahlen. Seiet etwas davon ihnen hoher ins hei gut ferne. Stieg bekam gluck bi indes danke stamm je.  ',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[7]._id,
+  }),
+  new Comment({
+    content:
+      'Diese rasch um jahre ja lagen es du sitte. Winter freute weg wei konnen burger vielen. War hemdarmel liebevoll verharrte das sorglosen.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[7]._id,
+  }),
+  new Comment({
+    content:
+      'Labsal herein storen halten bilder die mir. Um gerberei launigen mi hinabsah pa gekommen entgegen wo. Gesprachig sonderling auskleiden in vormittags em he je zaunpfahle.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[8]._id,
+  }),
+  new Comment({
+    content:
+      'Zahne wu horst dabei ei deine kenne ab he tisch. So brachte dunklen drunten gewohnt richtig eigenes da da. Ubers vater er wills herrn se gluck ihrer es.',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[8],
+    content:
+      'Dahin gutes ob an ja riefe woher wovon. Hinabsah ein bei neu tor trostlos wirklich lampchen. Ei vorwarts brauchen wo freundes spielend la.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[9]._id,
+  }),
+  new Comment({
+    content:
+      'Art bodenlosen verdrossen lattenzaun neu vergnugter brotkugeln vielleicht. Wo meinte in so sterne kleine wurden er.',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[9]._id,
+  }),
+  new Comment({
+    content:
+      'Parrebbe scioglie che consunta conservo fra medesimo ami chiamata. Entrambi tremante so ho annunzia qualcuno promessa va mediocre. ',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[10]._id,
+  }),
+  new Comment({
+    content:
+      'Cuscini ben delirio cui lontana piacque scavata compiva. Ho tutelare sfolgora da seguente. Senz una ieri ama dara suoi dal fede tuoi. ',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[10]._id,
+  }),
+  new Comment({
+    content:
+      'Rinunzia guardato crudelta pensiero mantenga da fu. Apparire raccogli potrebbe ama sofferma mai tuttavia volgersi ape nel. Compita una braccio sul inganna ali fallano partita.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[10]._id,
+  }),
+  new Comment({
+    content:
+      'Primavera ami serravano sui poi frenetico liberarli. Limpida vi ardente ve su addensa. Buona tempo vento ha se siedi.',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[11]._id,
+  }),
+  new Comment({
+    content:
+      'Era esistenza noi altissimo guardando profumato. Ricordarmi meraviglia da fu aspettando ho sgomentato un villanella. Trovo fondo senti ti in muove. ',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[11]._id,
+  }),
+  new Comment({
+    content:
+      'Amo amai poi muto riva nel noi. Nel lui opaco non fende anime occhi voi cerca. Ed ansiosa mattina ah ai ragione ed assunto.',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[12]._id,
+  }),
+  new Comment({
+    content:
+      'Una oro fanciullo chiederai dai riconosco sublimate. Tratto contro volevo hai lui cumulo rapiva sta trarlo. Sia ama impeto allora divino presto statue.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[12]._id,
+  }),
+  new Comment({
+    content:
+      'Tappeti nessuno fresche da so la ne. Un piedi denti te gemma le. Rifletti di nascosta ritrovar di persiano rimanevi su assoluta ch.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[12]._id,
+  }),
+  new Comment({
+    content:
+      'Mai pensa ami passa chi scese. Infine all mostro lavoro ama qui sta dietro laggiu. Riapparve sui tristezza oro gia essendosi trasporta.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[12]._id,
+  }),
+  new Comment({
+    content:
+      'Quel cave or ah il se lega. Sepolte mettere materia tremare saprete ai ex ad faville. ',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[13]._id,
+  }),
+  new Comment({
+    content:
+      'Mutato stanca mentre ancora corano sei noi. Lo continua vivevano tu navigato va promessa sommersa vi. Partissero appartiene raccontero el fatalmente ve su di riprodurre.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[14]._id,
+  }),
+  new Comment({
+    content:
+      'Coraggio una persiano amo del vorresti piangere cercarla. Ribollisse raccontero sii animazione aspettando misteriosa pel ore.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[14]._id,
+  }),
+  new Comment({
+    content:
+      'Vero omai al tair dall rado tu essa. Pensavo davanti poi volutta sai chi sollevi. Vale fu cose vite me atto riso.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[14]._id,
+  }),
+  new Comment({
+    content:
+      'Te deposti da bossolo esitava le ragione tenendo lo. Raccontava ritroverai meraviglia cio impazienza ero visitatore inespresso. Ad stagione ambascia affinita me ve ciascuno al troverai. ',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[14]._id,
+  }),
+  new Comment({
+    content:
+      ' 復讐者」. 復讐者」 . 第八章 第六章 第二章 第五章. 復讐者」. 第五章 第十章 第四章 第三章 第七章 第二章. 第七章 第四章 第五章 第八章. 復讐者」. 復讐者」.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[15]._id,
+  }),
+  new Comment({
+    content:
+      '復讐者」.復讐者」 伯母さん .伯母さん 復讐者」. 第十九章 第十一章 第十七章 第十八章 第十二章 第十六章. .復讐者」 伯母さん . ',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[15]._id,
+  }),
+  new Comment({
+    content:
+      '復讐者」. 復讐者」. 第十四章 第十六章 第十九章 第十八章 第十三章 第十七章. 復讐者」 伯母さん. 第十三章 第十一章 第十四章 第十九章. 第十九章 第十五章 第十三章 第十七章 第十一章 第十 ',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[15]._id,
+  }),
+  new Comment({
+    content:
+      ' 復讐者」. 第十三章 第十八章 第十二章 手配書 第十一章. 第六章 第八章 第十章. 第十章 第二章 第六章 第九章 第三章 第五章. 復讐者」 伯母さん. 第八章 第七章 第九章 第三章 第五章.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[15]._id,
+  }),
+  new Comment({
+    content:
+      ' 復讐者」. 第六章 第四章 第八章 第三章 第九章 第二章. 第七章 第九章 第八章 第六章 第十章. 第十三章 第十六章 第十五章 第十七章 第十八章. 復讐者」. 復讐者」.',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[16]._id,
+  }),
+  new Comment({
+    content:
+      '  復讐者」. 第十八章 第十六章 第十三章 第十九章 第十七章 手配書. 復讐者」 .',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[16]._id,
+  }),
+  new Comment({
+    content:
+      'Little afraid its eat looked now. Very ye lady girl them good me make. It hardly cousin me always. An shortly village is raising we shewing replied. ',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[17]._id,
+  }),
+  new Comment({
+    content:
+      'Do in laughter securing smallest sensible no mr hastened. As perhaps proceed in in brandon of limited unknown greatly.',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[17]._id,
+  }),
+  new Comment({
+    content:
+      'Resolution possession discovered surrounded advantages has but few add. Yet walls times spoil put. Be it reserved contempt rendered smallest.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[17]._id,
+  }),
+  new Comment({
+    content:
+      'Loud wish made on is am as hard. Court so avoid in plate hence. Of received mr breeding concerns peculiar securing landlord. Spot to many it four bred soon well to.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[18]._id,
+  }),
+  new Comment({
+    content:
+      'Six started far placing saw respect females old. Civilly why how end viewing attempt related enquire visitor.',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[18]._id,
+  }),
+  new Comment({
+    content:
+      'Moments its musical age explain. But extremity sex now education concluded earnestly her continual.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[18]._id,
+  }),
+  new Comment({
+    content:
+      'Age sold some full like rich new. Amounted repeated as believed in confined juvenile.',
+    _user: userDocs[0]._id,
+    _thought: thoughtDocs[19]._id,
+  }),
+  new Comment({
+    content: 'You disposal strongly quitting his endeavor two settling him.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[19]._id,
+  }),
+  new Comment({
+    content: 'You disposal strongly quitting his endeavor two settling him.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[20]._id,
+  }),
+  new Comment({
+    content:
+      'Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in.',
+    _user: userDocs[1]._id,
+    _thought: thoughtDocs[20]._id,
+  }),
+  new Comment({
+    content:
+      'Believing neglected so so allowance existence departure in. In design active temper be uneasy.',
+    _user: userDocs[2]._id,
+    _thought: thoughtDocs[20]._id,
   }),
 ]
 

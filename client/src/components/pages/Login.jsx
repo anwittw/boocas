@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import api from '../../api'
 import { useForm } from '../../hooks'
+import { Link, NavLink } from 'react-router-dom'
 
 export default function Login(props) {
   const { formValues, getInputProps } = useForm({ lang: 'en' })
@@ -46,6 +47,21 @@ export default function Login(props) {
         </button>
       </form>
       {message && <div className="info info-danger">{message}</div>}
+
+      <div className="d-flex" style={{ marginTop: '5px' }}>
+        <small>Don't have an account, yet?</small>
+      </div>
+      <NavLink
+        style={{
+          fontSize: '12px',
+          float: 'right',
+          marginTop: '5px',
+          marginRight: '22px',
+        }}
+        to={'/signup'}
+      >
+        signup
+      </NavLink>
     </div>
   )
 }
