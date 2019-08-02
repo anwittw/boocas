@@ -30,6 +30,20 @@ function ThoughtDetail(props) {
     })
   }
 
+  function submitContentbyEnter(e) {
+    if (e.keyCode === 13 && comment.content !== '') {
+      api
+        .createComment(comment)
+        .then(response => {
+          setComment({
+            ...comment,
+            content: '',
+          })
+        })
+        .catch(err => console.log(err))
+    }
+  }
+
   function handleSubmitComment(e) {
     e.preventDefault()
     api
@@ -132,6 +146,7 @@ function ThoughtDetail(props) {
                   value={comment.content}
                   onChange={handleChangeComment}
                   placeholder="Comment"
+                  onKeyDown={submitContentbyEnter}
                 />
                 <br />
                 <Link
