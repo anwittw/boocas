@@ -27,8 +27,8 @@ The UI was created using **Reactstrap** to apply **Bootstrap** in Form of React 
 Boocas was created as contribution to the final projects for the 
 **IRONHACK Web Dev Bootcamp #144** by
 
-- Carlos Botto (#carlosbotto)
-- Ingo Großmann (#igrossma)
-- Andre Witter  (#anwittw)
+- Carlos Botto  [#carlosbotto](https://www.github.com/carlosbotto)
+- Ingo Großmann [#igrossma](https://www.github.com/igrossma)
+- Andre Witter  [#anwittw](https://www.github.com/anwittw)
 
 in Lisbon, July 2019 - in roughly 9 days.
