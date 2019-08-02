@@ -29,6 +29,6 @@ Boocas was created as contribution to the final projects for the
 
 - Carlos Botto  [#carlosbotto](https://www.github.com/carlosbotto)
 - Ingo Großmann [#igrossma](https://www.github.com/igrossma)
-- Andre Witter  [#anwittw](https://www.github.com/anwittw)
+- Andre Wittwer  [#anwittw](https://www.github.com/anwittw)
 
 in Lisbon, July 2019 - in roughly 9 days.
