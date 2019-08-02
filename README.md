@@ -1,16 +1,14 @@
 # Boocas
 
-# Boocas
-
 > A modern, digital approach to creating a bookclub
 
 ## The Idea
 
 Imagine, you are reading '*1984 - by George Orwell*', a book which fascinated generations of readers for more than seven decades. You are moved by it's relevance to nowadays political situation - and you want to share those thoughts.
 
-Boocas is for people, who not only want to *consume a book*, but to share their personal interpretation and the learnings they take from it*.*
+Boocas is for people, who not only want to *consume a book*, but to share their personal interpretation and the learnings they take from it.
 
- **Here you are able **to create groups to discuss a particular book, idea or Thought. 
+ Here you are able to create groups to discuss a particular book, idea or Thought. 
 
 ## Under the hood
 
