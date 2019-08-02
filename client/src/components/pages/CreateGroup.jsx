@@ -27,7 +27,7 @@ export default function CreateGroup(props) {
     translator: '',
     pages: 0,
     year: '',
-    coverPictureUrl: '../../../BookCover.jpg',
+    coverPictureUrl: '/BookCover.jpg',
     changeURL: '',
     picture: null,
   })
@@ -81,11 +81,12 @@ export default function CreateGroup(props) {
           year: response.data.items[0].volumeInfo.publishedDate.substring(0, 4),
           coverPictureUrl: response.data.items[0].volumeInfo.imageLinks
             ? response.data.items[0].volumeInfo.imageLinks.smallThumbnail
-            : 'https://res.cloudinary.com/djbsd3soa/image/upload/c_thumb,w_200,g_face/v1564667917/book-book-pictures/hdgcqlueqvpbkicpbol6.jpg',
+            : '/BookCoverNotAvailable.jpg',
         })
       })
       .catch(err => console.log(err))
   }
+  console.log(stateBook.coverPictureUrl)
 
   function handleSubmitGroup(e) {
     e.preventDefault()
@@ -215,11 +216,7 @@ export default function CreateGroup(props) {
               <Row className="my-3 text-center">
                 <Col xs="12" md={{ size: '2', offset: 5 }}>
                   <img
-                    src={
-                      stateBook.changeURL !== ''
-                        ? stateBook.changeURL
-                        : stateBook.coverPictureUrl
-                    }
+                    src={stateBook.changeURL || stateBook.coverPictureUrl}
                     alt="coverPictureUrl"
                     style={{ height: '200px' }}
                   />

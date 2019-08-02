@@ -49,7 +49,7 @@ function App(props) {
           <img
             alt="toogle-btn"
             className="toggle-sidebar"
-            style={{ height: '82px', marginTop: '18px', opacity: 0.5 }}
+            style={{ height: '65px', marginTop: '18px', opacity: 0.5 }}
             onClick={toggleSidebar}
             src={process.env.PUBLIC_URL + '/pushBar.png'}
           />
