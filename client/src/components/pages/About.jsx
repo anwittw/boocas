@@ -32,7 +32,7 @@ export default function About() {
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <img
               style={{ width: 110, height: 110, margin: '12px', opacity: 0.7 }}
-              src="/ingo-cover.png"
+              src={process.env.PUBLIC_URL + '/ingo-cover.png'}
               alt=""
             />
             <a style={{ fontSize: '14px' }} href="https://github.com/igrossma/">
@@ -42,7 +42,7 @@ export default function About() {
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <img
               style={{ width: 110, height: 110, margin: '12px', opacity: 0.7 }}
-              src="/andre-cover.png"
+              src={process.env.PUBLIC_URL + '/andre-cover.png'}
               alt=""
             />
             <a style={{ fontSize: '14px' }} href="https://github.com/anwittw/">
@@ -52,7 +52,7 @@ export default function About() {
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <img
               style={{ width: 110, height: 110, margin: '12px', opacity: 0.7 }}
-              src="/carlos-cover.png"
+              src={process.env.PUBLIC_URL + '/carlos-cover.png'}
               alt=""
             />
             <a
