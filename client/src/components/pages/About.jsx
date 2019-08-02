@@ -31,19 +31,20 @@ export default function About() {
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <img
+              alt="ingo"
               style={{ width: 110, height: 110, margin: '12px', opacity: 0.7 }}
               src={process.env.PUBLIC_URL + '/ingo-cover.png'}
-              alt=""
             />
+
             <a style={{ fontSize: '14px' }} href="https://github.com/igrossma/">
               Ingo Großmann
             </a>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <img
+              alt="andre"
               style={{ width: 110, height: 110, margin: '12px', opacity: 0.7 }}
               src={process.env.PUBLIC_URL + '/andre-cover.png'}
-              alt=""
             />
             <a style={{ fontSize: '14px' }} href="https://github.com/anwittw/">
               Andre Wittwer
@@ -51,9 +52,9 @@ export default function About() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <img
+              alt="carlos"
               style={{ width: 110, height: 110, margin: '12px', opacity: 0.7 }}
               src={process.env.PUBLIC_URL + '/carlos-cover.png'}
-              alt=""
             />
             <a
               style={{ fontSize: '14px' }}
