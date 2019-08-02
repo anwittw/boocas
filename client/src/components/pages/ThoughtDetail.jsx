@@ -106,7 +106,7 @@ function ThoughtDetail(props) {
                       return -1
                     }
                   })
-                  .map(comment, i => (
+                  .map((comment, i) => (
                     <CommentCard
                       key={i}
                       background="rgba(171, 191, 163, 0.1)"
@@ -161,8 +161,9 @@ function ThoughtDetail(props) {
                       return -1
                     }
                   })
-                  .map(comment => (
+                  .map((comment, i) => (
                     <CommentCard
+                      key={`R${i}`}
                       background="rgba(171, 191, 163, 0.1)"
                       comment={comment}
                     />

@@ -40,6 +40,22 @@ function GroupDetail(props) {
     })
   }, [groupId])
 
+  function refresh() {
+    Promise.all([
+      api.getGroup(groupId),
+      api.getMembershipsByGroup(groupId),
+      api.getThoughtsByGroup(groupId),
+      api.getMyThoughtsByGroup(groupId),
+    ]).then(([group, memberships, thoughts, myThoughts]) => {
+      setGroupDetails({
+        group: group,
+        memberships: memberships,
+        thoughts: thoughts,
+        myThoughts: myThoughts,
+      })
+    })
+  }
+
   function getIdOfCreator(memberships) {
     for (let i = 0; i < memberships.length; i++) {
       if (memberships[i].isCreator === true)
@@ -160,6 +176,7 @@ function GroupDetail(props) {
                           content={thought.content}
                           _id={thought._id}
                           group={groupId}
+                          refresh={() => refresh()}
                         />
                       </div>
                     ))}
